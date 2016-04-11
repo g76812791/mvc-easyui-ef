@@ -1,0 +1,24 @@
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Comm\bin\Debug\Comm.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Comm\bin\Debug\Comm.pdb
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Comm\obj\Debug\Comm.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Comm\obj\Debug\Comm.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Comm\obj\Debug\Comm.pdb
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Comm\bin\Debug\Comm.dll.config
+C:\Users\Administrator\Desktop\KBase\源码\Comm\bin\Debug\Comm.dll
+C:\Users\Administrator\Desktop\KBase\源码\Comm\bin\Debug\Comm.pdb
+C:\Users\Administrator\Desktop\KBase\源码\Comm\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\KBase\源码\Comm\obj\Debug\Comm.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\KBase\源码\Comm\obj\Debug\Comm.dll
+C:\Users\Administrator\Desktop\KBase\源码\Comm\obj\Debug\Comm.pdb
+D:\源码\Comm\bin\Debug\Comm.dll
+D:\源码\Comm\bin\Debug\Comm.pdb
+D:\源码\Comm\bin\Debug\Newtonsoft.Json.dll
+D:\源码\Comm\obj\Debug\Comm.dll
+D:\源码\Comm\obj\Debug\Comm.pdb
+D:\源码\Comm\obj\Debug\Comm.csprojResolveAssemblyReference.cache
+D:\tfs\KBaseQA\Web\KBaseAdmin\Comm\bin\Debug\Comm.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Comm\bin\Debug\Comm.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\Comm\bin\Debug\Newtonsoft.Json.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Comm\obj\Debug\Comm.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Comm\obj\Debug\Comm.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\Comm\obj\Debug\Comm.csprojResolveAssemblyReference.cache

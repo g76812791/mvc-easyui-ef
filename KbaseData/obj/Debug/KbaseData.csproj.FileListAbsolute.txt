@@ -1,0 +1,40 @@
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KbaseData\bin\Debug\KbaseData.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KbaseData\bin\Debug\KbaseData.pdb
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KbaseData\obj\Debug\KbaseData.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KbaseData\obj\Debug\KbaseData.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KbaseData\obj\Debug\KbaseData.pdb
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\obj\Debug\KbaseData.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\bin\Debug\KbaseData.dll
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\bin\Debug\KbaseData.pdb
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\bin\Debug\Entity.dll
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\bin\Debug\Entity.pdb
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\obj\Debug\KbaseData.dll
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\obj\Debug\KbaseData.pdb
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\bin\Debug\EntityFramework.dll
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\bin\Debug\EntityFramework.xml
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\bin\Debug\Comm.dll
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\KBase\源码\KbaseData\bin\Debug\Comm.pdb
+D:\源码\KbaseData\bin\Debug\KbaseData.dll
+D:\源码\KbaseData\bin\Debug\KbaseData.pdb
+D:\源码\KbaseData\bin\Debug\Comm.dll
+D:\源码\KbaseData\bin\Debug\Entity.dll
+D:\源码\KbaseData\bin\Debug\Newtonsoft.Json.dll
+D:\源码\KbaseData\bin\Debug\EntityFramework.dll
+D:\源码\KbaseData\bin\Debug\Comm.pdb
+D:\源码\KbaseData\bin\Debug\Entity.pdb
+D:\源码\KbaseData\obj\Debug\KbaseData.csprojResolveAssemblyReference.cache
+D:\源码\KbaseData\obj\Debug\KbaseData.dll
+D:\源码\KbaseData\obj\Debug\KbaseData.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Debug\KbaseData.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Debug\KbaseData.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Debug\Comm.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Debug\Entity.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Debug\Newtonsoft.Json.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Debug\EntityFramework.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Debug\Comm.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Debug\Entity.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\obj\Debug\KbaseData.csprojResolveAssemblyReference.cache
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\obj\Debug\KbaseData.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\obj\Debug\KbaseData.pdb

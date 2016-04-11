@@ -1,0 +1,53 @@
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\KBaseWeb.dll.config
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\KBaseWeb.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\KBaseWeb.pdb
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\System.Web.Helpers.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\System.Web.Mvc.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\System.Web.Razor.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\System.Web.Webpages.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\System.Web.Webpages.Razor.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\System.Web.Razor.xml
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\System.Web.Webpages.xml
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\System.Web.Webpages.Razor.xml
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\System.Web.Helpers.xml
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\System.Web.Mvc.xml
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\zh-Hans\System.Web.Razor.resources.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\zh-Hans\System.Web.Webpages.resources.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\zh-Hans\System.Web.Helpers.resources.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\bin\zh-Hans\System.Web.Mvc.resources.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\obj\Debug\KBaseWeb.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\obj\Debug\KBaseWeb.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\KBaseWeb\obj\Debug\KBaseWeb.pdb
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\KBaseWeb.dll.config
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\KBaseWeb.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\KBaseWeb.pdb
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\Comm.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\KbaseData.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\System.Web.Helpers.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\System.Web.Mvc.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\System.Web.Razor.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\System.Web.Webpages.Deployment.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\System.Web.Webpages.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\System.Web.Webpages.Razor.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\Newtonsoft.Json.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\Comm.pdb
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\KbaseData.pdb
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\System.Web.Razor.xml
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\System.Web.Webpages.xml
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\System.Web.Webpages.Deployment.xml
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\System.Web.Webpages.Razor.xml
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\System.Web.Helpers.xml
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\System.Web.Mvc.xml
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\zh-Hans\System.Web.Razor.resources.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\zh-Hans\System.Web.Webpages.resources.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\zh-Hans\System.Web.Webpages.Deployment.resources.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\zh-Hans\System.Web.Webpages.Razor.resources.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\zh-Hans\System.Web.Helpers.resources.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\bin\zh-Hans\System.Web.Mvc.resources.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\obj\Debug\KBaseWeb.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\obj\Debug\KBaseWeb.dll
+C:\Users\Administrator\Desktop\KBase\源码\KBaseWeb\obj\Debug\KBaseWeb.pdb

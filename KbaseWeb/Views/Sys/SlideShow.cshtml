@@ -1,0 +1,30 @@
+﻿<script>
+    //string order,int topn,bool isAsc
+    $.ajax({
+        url: '/Back/Download/GetListTop',
+        data: {
+            order: "UpDateTime",
+            topn: 1,
+            isAsc: false
+        },
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            var dom = $("#shide");
+            $.each(data, function (i, value) {
+                var domdownload = $('<a class="download" href="' + value.FilePath + '">软件下载</a>');
+                dom.append(domdownload);
+            });
+        },
+        error: function () {
+
+        }
+    });
+</script>
+<div class="slideshow">
+    <div class="banner" id="shide">
+        <h1><span class="disn">KBase全文数据库管理系统</span></h1>
+        <p><span class="disn">具有优异的全文检索性能和强大的海量非结构化数据存储管理能力，具备业界领先的中文智能信息处理能力。</span></p>
+        @*<a class="download" href="/Download/KBase.exe">软件下载</a>*@
+    </div>
+</div>

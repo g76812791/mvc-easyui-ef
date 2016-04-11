@@ -1,0 +1,119 @@
+/**
+ *********************************************
+ * Prototype of styles for horizontal CSS-menu
+ * @data 30.06.2009
+ *********************************************
+ * (X)HTML-scheme:
+ *  <div id="menu">
+ *      <ul class="menu">
+ *          <li><a href="#" class="parent"><span>level 1</span></a>
+ *              <ul>
+ *                  <li><a href="#" class="parent"><span>level 2</span></a>
+ *                      <ul><li><a href="#"><span>level 3</span></a></li></ul>
+ *                  </li>
+ *              </ul>
+ *          </li>
+ *          <li class="last"><a href="#"><span>level 1</span></a></li>
+ *      </ul>
+ *  </div>
+ *********************************************
+ */
+
+/* menu::base */
+
+div#menu {
+    height:96px;
+	background-repeat: repeat-x;
+	background-position: 0px top;
+}
+
+div#menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+}
+
+div#menu li {
+	position: relative;
+	z-index: 9;
+	margin: 0 1px 0 0;
+	padding: 0;
+	display: block;
+	float: left;
+	width:100px;
+}
+div#menu a {
+	position: relative;
+	z-index: 11;
+	height: 96px;
+	display: block;
+	float: left;
+	line-height:96px;
+	text-decoration: none;
+	font-size:14px;
+	width:100px;
+	*width:80px;
+	padding: 0px 0px 0 0px;
+	*padding: 0px 0px 0 0px;
+	color:#fff;
+	font-family:"微软雅黑";
+	text-align:center;
+	font-weight:bolder;
+}
+
+
+div#menu a:link   { text-decoration: none;}
+div#menu a:visited{text-decoration: none;}
+div#menu a:hover  { text-decoration: none;}
+div#menu a:focus {
+     outline:none;
+     -moz-outline:none;
+}
+
+/* lava lamp */
+div#menu li.back {
+    background: url(../images/lava.png) no-repeat left  -96px!important;
+    height: 96px;
+    z-index: 8;
+    position: absolute;
+    padding: 0 0 0 1px;
+		
+}
+div#menu li.back .left {
+    background: url(../images/lava.png) no-repeat left top !important;
+    height: 96px;
+	padding:0 8px 0 -14px;	
+}
+
+/*sunny*/
+
+.infoul{
+	position: absolute;
+	top: 0px;
+	right: 270px;	
+	float:left;
+	}
+div#menu ul ul.infoul{
+	position: absolute;
+	width: 303px;
+	top: 62px;
+	z-index: 15;
+	padding: 5px 4px 40px 20px;
+	background: url(../images/submenu-bottom.png) no-repeat 0px bottom;
+	_background: url(../images/submenu-bottom.gif) no-repeat 0px bottom;
+	margin: 1px 0 0 -178px;
+	left: -214px;
+}
+
+div#menu ul ul.infoul ul{
+	width: 230px;
+    margin:-69px 0 0px 255px !important;
+    margin-left:172px;
+	*margin-left:250px;
+	height:auto;
+	z-index: 18; 
+    padding: 20px 0px 40px 0px;   
+    background: url(../images/subsubmenu-bottom.png) no-repeat left bottom;
+    _background: url(../images/subsubmenu-bottom.gif) no-repeat 0px bottom;   
+	}

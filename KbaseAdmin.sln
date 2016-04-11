@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Comm", "Comm\Comm.csproj", "{A27B3A8B-9D0B-4935-8BE9-4FD73B518565}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entity", "Entity\Entity.csproj", "{BCE456D0-5E01-417E-A2DE-568C18326F36}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KbaseData", "KbaseData\KbaseData.csproj", "{CB4A66EB-EEF2-42F2-9AFE-808F416A609B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dll", "Dll\Dll.csproj", "{5967F4D0-2FD2-4E8D-80C7-63D2995BA6B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KbaseWeb", "KbaseWeb\KbaseWeb.csproj", "{78FACD1D-C755-40FB-9C2D-3AD907CE0E3F}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 6
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://192.168.100.145:8080/tfs/cnkikbase
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = Comm\\Comm.csproj
+		SccProjectName1 = Comm
+		SccLocalPath1 = Comm
+		SccProjectUniqueName2 = Entity\\Entity.csproj
+		SccProjectName2 = Entity
+		SccLocalPath2 = Entity
+		SccProjectUniqueName3 = KbaseData\\KbaseData.csproj
+		SccProjectName3 = KbaseData
+		SccLocalPath3 = KbaseData
+		SccProjectUniqueName4 = Dll\\Dll.csproj
+		SccProjectName4 = Dll
+		SccLocalPath4 = Dll
+		SccProjectUniqueName5 = KbaseWeb\\KbaseWeb.csproj
+		SccProjectName5 = KbaseWeb
+		SccLocalPath5 = KbaseWeb
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A27B3A8B-9D0B-4935-8BE9-4FD73B518565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A27B3A8B-9D0B-4935-8BE9-4FD73B518565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A27B3A8B-9D0B-4935-8BE9-4FD73B518565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A27B3A8B-9D0B-4935-8BE9-4FD73B518565}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCE456D0-5E01-417E-A2DE-568C18326F36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCE456D0-5E01-417E-A2DE-568C18326F36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCE456D0-5E01-417E-A2DE-568C18326F36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCE456D0-5E01-417E-A2DE-568C18326F36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CB4A66EB-EEF2-42F2-9AFE-808F416A609B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CB4A66EB-EEF2-42F2-9AFE-808F416A609B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CB4A66EB-EEF2-42F2-9AFE-808F416A609B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CB4A66EB-EEF2-42F2-9AFE-808F416A609B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5967F4D0-2FD2-4E8D-80C7-63D2995BA6B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5967F4D0-2FD2-4E8D-80C7-63D2995BA6B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5967F4D0-2FD2-4E8D-80C7-63D2995BA6B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5967F4D0-2FD2-4E8D-80C7-63D2995BA6B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78FACD1D-C755-40FB-9C2D-3AD907CE0E3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78FACD1D-C755-40FB-9C2D-3AD907CE0E3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78FACD1D-C755-40FB-9C2D-3AD907CE0E3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78FACD1D-C755-40FB-9C2D-3AD907CE0E3F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

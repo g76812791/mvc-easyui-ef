@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "KBase 后台登陆页";
+}
+
+@section css{
+    <style type="text/css">
+        #login {
+            padding: 6px 0 0 0;
+        }
+        p {
+            height: 22px;
+            line-height: 22px;
+            padding: 4px 0 0 25px;
+        }
+        .textbox {
+            height: 22px;
+            padding: 0 2px;
+        }
+        #btn {
+            text-align: center;
+        }
+        .easyui-linkbutton {
+            padding: 0 10px;
+        }
+    </style>
+}
+@section js
+   {
+    <script type="text/javascript">
+        $(function () {
+            $(document).keydown(function(event) {
+                if (event.keyCode == 13) {
+                    $("#btn a").click();
+                    event.preventDefault();
+                }
+            });
+
+           
+            //登录界面
+            $('#login').dialog({
+                title: '登录后台',
+                width: 300,
+                height: 180,
+                modal: true,
+                iconCls: 'icon-man',
+                buttons: '#btn',
+                closeable:false
+            });
+
+            //管理员帐号验证
+            $('#LoginName').validatebox({
+                required: true,
+                missingMessage: '请输入管理员帐号',
+                invalidMessage: '管理员帐号不得为空',
+            });
+
+            //管理员密码验证
+            $('#Pwd').validatebox({
+                required: true,
+                validType: 'length[1,30]',
+                missingMessage: '请输入管理员密码',
+                invalidMessage: '管理员密码不得为空',
+            });
+
+            //加载时判断验证
+            if (!$('#LoginName').validatebox('isValid')) {
+                $('#LoginName').focus();
+            }
+            else if (!$('#Pwd').validatebox('isValid')) {
+                $('#Pwd').focus();
+            }
+
+            //单击登录
+            $('#btn a').click(function () {
+                if (!$('#LoginName').validatebox('isValid')) {
+                    $('#LoginName').focus();
+                } else if (!$('#Pwd').validatebox('isValid')) {
+                    $('#Pwd').focus();
+                } else {
+                    ajaxOp.url = "/Back/KBaseLogin/Login";
+                    ajaxOp.data = { LoginName: $('#LoginName').val(), Pwd: $('#Pwd').val() };
+                    ajaxOp.su = function (result) {
+                        if (result != null && result.Message == "Error") {
+                            $.messager.alert('提示信息', '账号或密码错误！', 'warning');
+                        } else if (result.Message == "Success") {
+                            window.location = "/Back/Home/Index";
+                        } else {
+                            $.messager.alert('提示信息', '登陆失败请联系管理员！', 'warning');
+                        }
+                    };
+                    ajaxOp.Exec();
+                }
+            });
+
+           $("#btn a").click();
+        });
+    </script>
+}
+
+
+
+<div id="login">
+    <p>管理员帐号：<input type="text" id="LoginName" value="admin" class="textbox"></p>
+    <p>管理员密码：<input type="password" id="Pwd" value="123456" class="textbox"></p>
+</div>
+
+<div id="btn">
+    <a href="#" class="easyui-linkbutton">登录</a>
+</div>
+

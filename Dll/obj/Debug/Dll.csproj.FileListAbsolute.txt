@@ -1,0 +1,19 @@
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Dll\bin\Debug\Dll.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Dll\bin\Debug\Dll.pdb
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Dll\obj\Debug\Dll.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Dll\obj\Debug\Dll.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Dll\obj\Debug\Dll.pdb
+C:\Users\Administrator\Desktop\KBase\源码\Dll\bin\Debug\Dll.dll
+C:\Users\Administrator\Desktop\KBase\源码\Dll\bin\Debug\Dll.pdb
+C:\Users\Administrator\Desktop\KBase\源码\Dll\obj\Debug\Dll.dll
+C:\Users\Administrator\Desktop\KBase\源码\Dll\obj\Debug\Dll.pdb
+D:\源码\Dll\bin\Debug\Dll.dll
+D:\源码\Dll\bin\Debug\Dll.pdb
+D:\源码\Dll\obj\Debug\Dll.dll
+D:\源码\Dll\obj\Debug\Dll.pdb
+D:\源码\Dll\obj\Debug\Dll.csprojResolveAssemblyReference.cache
+D:\tfs\KBaseQA\Web\KBaseAdmin\Dll\bin\Debug\Dll.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Dll\bin\Debug\Dll.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\Dll\obj\Debug\Dll.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Dll\obj\Debug\Dll.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\Dll\obj\Debug\Dll.csprojResolveAssemblyReference.cache

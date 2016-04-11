@@ -1,0 +1,34 @@
+﻿@using Entity;
+@model anlidetails
+
+@{
+    ViewBag.Title = Model.Title;
+    //ViewBag.Title = "卫生部卫生政策决策支持项目（HPSP）知识管理系统";
+}
+<div class="productcenter">
+    <div class="maincontent01"></div>
+    <div class="maincontent">
+        <div class="jdcontitle"><a href="cases.html" class="casetitle">企业知识门户</a></div>
+        <div class="jdcon01">
+            <div class="jdcont01">@(Model.Title)</div>
+            <div class="jdcon02">
+                <article>
+                    @Html.Raw(Model.Content);
+                </article>
+                @*<p class="padlef">
+                    为提高中国贫困人口健康状况，卫生部、英国国际发展署和世界卫生组织合作开展了卫生政策支持项目（HPSP）。
+                    该项目主要关注的内容包括高质量的利贫政策的研究，快速对政策建议做出反应，有效的知识管理，证据和政策的传播，以及高级决策者
+                    培训等。其中，由同方知网（北京）技术有限公司担任HPSP知识管理系统的建设工作。
+                </p>
+                <p class="padlef"> HPSP知识管理系统分为知识整合、知识共享、信息交流平台、数据发布与共享、人力资源管理、门户及内容管理系统等6大子系统。</p>
+                <p class="padlef">
+                    HPSP项目知识管理对现有证据进行有效收集、分析、综合和传播，以保证相关利贫卫生政策的制定是以知识或证据为基础。
+                    这将是一个动态的过程，当证据从HPSP其他部分或其他地方出现时，通过知识管理系统，使各级卫生决策者能以合适方式及时地获得，
+                    从而为决策和管理服务。通过对该系统的建设，通过该系统的建设，中国政府将逐步建立起一个高效、公平和高质量的卫生系统。
+                </p>*@
+            </div>
+        </div>
+
+        <div style="clear:both"></div>
+    </div>
+</div>

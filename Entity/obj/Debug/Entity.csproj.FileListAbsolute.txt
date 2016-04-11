@@ -1,0 +1,34 @@
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Entity\bin\Debug\Entity.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Entity\bin\Debug\Entity.pdb
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Entity\obj\Debug\Entity.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Entity\obj\Debug\Entity.pdb
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Entity\bin\Debug\Entity.dll.config
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Entity\bin\Debug\MySql.Data.dll
+C:\Users\Administrator\documents\visual studio 2013\Projects\Solution1\Entity\bin\Debug\MySql.Data.Entity.EF6.dll
+C:\Users\Administrator\Desktop\KBase\源码\Entity\bin\Debug\Entity.dll
+C:\Users\Administrator\Desktop\KBase\源码\Entity\bin\Debug\Entity.pdb
+C:\Users\Administrator\Desktop\KBase\源码\Entity\obj\Debug\Entity.dll
+C:\Users\Administrator\Desktop\KBase\源码\Entity\obj\Debug\Entity.pdb
+C:\Users\Administrator\Desktop\KBase\源码\Entity\bin\Debug\Entity.dll.config
+C:\Users\Administrator\Desktop\KBase\源码\Entity\bin\Debug\EntityFramework.dll
+C:\Users\Administrator\Desktop\KBase\源码\Entity\bin\Debug\EntityFramework.xml
+C:\Users\Administrator\Desktop\KBase\源码\Entity\bin\Debug\zh-Hans\EntityFramework.resources.dll
+C:\Users\Administrator\Desktop\KBase\源码\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+D:\源码\Entity\bin\Debug\Entity.dll.config
+D:\源码\Entity\bin\Debug\Entity.dll
+D:\源码\Entity\bin\Debug\Entity.pdb
+D:\源码\Entity\bin\Debug\EntityFramework.dll
+D:\源码\Entity\obj\Debug\Entity.dll
+D:\源码\Entity\obj\Debug\Entity.pdb
+D:\源码\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Debug\Entity.dll.config
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Debug\Entity.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Debug\Entity.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Debug\EntityFramework.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\obj\Debug\Entity.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\obj\Debug\Entity.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Debug\Comm.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Debug\Newtonsoft.Json.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Debug\Comm.pdb

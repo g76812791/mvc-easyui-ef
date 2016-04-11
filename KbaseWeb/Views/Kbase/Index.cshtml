@@ -1,0 +1,46 @@
+﻿@{
+    ViewBag.Title = "KBase首页";
+}
+@Html.Partial("~/Views/Sys/SlideShow.cshtml")
+
+<div class="centerinfo clearfix">
+
+    <div class="lside">
+        <h2 class="aboutus"><span class="disn">KBase软件介绍（Soft Introduction）</span></h2>
+        <p>KBase知识库管理系统是清华同方知网（北京）技术有限公司（“同方知网”）拥有完全自主知识产权的，也是国际上第一个直接支持网格应用的专用数据库系统，对异构数据源提供统一访问和统一管理手段。</p>
+        <a href="~/Kbase/product.html#productinfo" class="more"><span class="disn">more</span></a>
+    </div>
+
+    <div>
+        <h2 class="features"><span class="disn">功能特点</span></h2>
+        <p>1. 高效、准确的全文检索</p>
+        <p>2. 海量非结构化数据管理</p>
+        <p>3. 功能强大的关系数据库全文检索网关</p>
+        <p> 4. 大规模并发处理能力</p>
+        <a href="~/Kbase/product.html#function" class="more"><span class="disn">more</span></a>
+    </div>
+
+    <div class="rside">
+        <h2 class="service"><span class="disn">服务对象</span></h2>
+        <p>KBase知识库管理系统性能稳定、功能完善、检索准确高效，可以广泛应用于高校、公共图书馆、医院、科研院所、大型企业、党政机关、中小学图书馆等。</p>
+        <a href="~/Kbase/product.html#severobj" class="more"><span class="disn">more</span></a>
+    </div>
+
+</div>
+<div class="relatedlink">
+    <div class="slide">
+        <a href="#" class="prev">&lt;</a>
+        <a href="#" class="next">&gt;</a>
+        <div class="slideMask">
+            <ul class="plist" style="width:auto;left:0px;">
+                <li><a href="http://www.cnki.net/" target="_blank"><img alt="中国知网" src="@(AppConfig.ImagesPicPath)cnki.png" /></a>
+                <li><a href="http://cajviewer.cnki.net/" target="_blank"><img alt="CAJViewer" src="@(AppConfig.ImagesPicPath)cajview.png" /></a></li>
+                <li><a href="http://dict.cnki.net/" target="_blank"><img src="@(AppConfig.ImagesPicPath)translate.png" alt="CNKI翻译助手" /></a></li>
+                <li><a href="http://www.cnki.com.cn/" target="_blank"><img class="rollimg" alt="知网空间" src="@(AppConfig.ImagesPicPath)cnkispace.png"></a></li>
+                <li><a href="http://wap.cnki.net/" target="_blank"><img class="rollimg" alt="手机知网" src="@(AppConfig.ImagesPicPath)phone.png"></a></li>
+                <li><a href="http://mall.cnki.net/" target="_blank"><img class="rollimg" alt="数字出版超市" src="@(AppConfig.ImagesPicPath)public.png"></a></li>
+                <li><a href="http://ad.cnki.net/index.aspx" target="_blank"><img class="rollimg" alt="知网广告" src="@(AppConfig.ImagesPicPath)ads.png"></a></li>
+            </ul>
+        </div>
+    </div>
+</div>

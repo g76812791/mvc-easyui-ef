@@ -1,0 +1,39 @@
+﻿@using Entity;
+@model List<question>
+
+<div class="productcenter">
+    <div class="maincontent02"></div>
+
+    <div class="maincontent">
+        <div class="jdcontitle">常见问题</div>
+        <div class="quescon01">
+            <ul class="quescon02">
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    if (i != Model.Count - 1)
+                    {
+                        <li class="quescon03">@(i + 1)、@Model[i].Title</li>
+                        <li class="quescon04">答：@Model[i].Content</li>
+                    }
+                    else
+                    {
+                        <li class="quescon03">@(i + 1)、@Model[i].Title</li>
+                        <li class="quescon05">答：@Model[i].Content</li>
+                    }
+                }
+                @*<li class="quescon03">1、创建数据表提示语法错误，为什么？</li>
+                <li class="quescon04">答：创建数据表的表名，在服务器中必须唯一，并且符合标识符的规则。表名最多可以包含 128个字符，不能含有‘-’，‘/’，如果含有，会提示语法错误，可以包含‘_’‘\‘。 </li>
+
+                <li class="quescon03">2、利用insert语句插入值有时报错，为什么？</li>
+                <li class="quescon04">答：利用insert语句插入值的时候，最好将数据值用引号标注上，否则当碰见一些特殊的数据内容时，会报语法错误。</li>
+
+                <li class="quescon03">3、从REC文件引入数据时，为何很慢？如何提高导入数据效率？</li>
+                <li class="quescon05">答：从REC导入数据时，在KBASE企业管理器中，选择菜单：工具-》选项，在弹出窗口选择“其他”，设置从REC文件引入数据时自动索引为“是”。表示导入数据同时建立索引。系统每读一行，就要调用函数建立索引。当批量导入数据时，会非常耗时，效率低下。为提高效率，此处应当设置为“否”，表示导入数据时不建立索引。在数据导入后，再建立全表索引。这样可以提高导入数据效率。</li>*@
+
+
+            </ul>
+        </div>
+    </div>
+
+    <div style="clear:both"></div>
+</div>

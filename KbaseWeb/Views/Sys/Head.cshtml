@@ -1,0 +1,13 @@
+﻿<div class="indexcontent">
+    <div class="top">
+        <div class="logo"><img src="@(AppConfig.ImagesPath)logo.png" alt="中国知网KBase" /></div>
+        <ul class="menu">
+            <li><a @(ViewBag.Flag==1?"class=cur":"")  href="/Kbase/index.html"><span>首  页</span></a></li>
+            <li><a @(ViewBag.Flag == 2 ? "class=cur" : "") href="/Kbase/product.html"><span>产品介绍</span></a></li>
+            <li><a @(ViewBag.Flag == 3 ? "class=cur" : "") href="/Kbase/cases.html"><span>经典案例</span></a></li>
+            <li><a @(ViewBag.Flag == 4 ? "class=cur" : "") href="/Kbase/download.html"><span>软件下载</span></a></li>
+            <li><a  href="http://service.cnki.net/" target="_blank"><span>技术支持</span></a></li>
+            <li class="last"><a @(ViewBag.Flag == 5 ? "class=cur" : "") href="/Kbase/question.html"><span>常见问题</span></a></li>
+        </ul>
+    </div>
+</div>

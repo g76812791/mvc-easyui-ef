@@ -1,0 +1,72 @@
+.bold{font-weight:bold;}
+.black{color:#000000;}
+a.a-green:link,a.a-green:visited{color:#65bb10;	text-decoration:underline;}
+a.a-green:hover{text-decoration:none;}
+a.a-black:link,a.a-black:visited{color:#000000;	text-decoration:underline;}
+a.a-black:hover{text-decoration:none;}
+a.a-grey:link,a.a-grey:visited{color:#787878;	text-decoration:underline;}
+a.a-grey:hover{text-decoration:none;}
+.green{color:#65bb10;}
+.12grey{ color:#787878;}
+.f14{font-size:14px;}
+.f12{font-size:12px;}
+.floatleft{ float:left;}
+.floatright{ float:right;}
+.lineheight{line-height:150%;}
+.fontweightbold{ font-weight:bold;}
+.clearboth{ clear:both;}
+.red{color:#905C5C;}
+a:link {color:#333;  text-decoration: none;}
+a:visited {color:#333; text-decoration: none;}
+a:hover {color:#000;  text-decoration: underline;}
+
+a.red12:link {color: red; font-size: 12px; text-decoration: none;}
+a.red12:visited {color: red; font-size: 12px; text-decoration: none;}
+a.red12:hover {color: red; font-size: 12px; text-decoration: underline;}
+
+a.white14:link {color:#fff; font-size: 14px; text-decoration: none;}
+a.white14:visited {color:#fff; font-size: 14px; text-decoration: none;}
+a.white14:hover {color:#fff; font-size: 14px; text-decoration: underline;}
+
+a.black14:link {color:black; font-size: 14px; text-decoration: none;}
+a.black14:visited {color:black; font-size: 14px; text-decoration: none;}
+a.black14:hover {color:black; font-size: 14px; text-decoration: underline;}
+
+
+a.grey14:link {color:#787878; font-size: 14px; text-decoration: none;}
+a.grey14:visited {color:#787878; font-size: 14px; text-decoration: none;}
+a.grey14:hover {color:#787878; font-size: 14px; text-decoration: underline;}
+
+a.green12:link   {color:#65bb10; font-size: 12px; text-decoration: none;}
+a.green12:visited{color:#65bb10; font-size: 12px; text-decoration: none;}
+a.green12:hover  {color:#65bb10; font-size: 12px; text-decoration: underline;}
+
+a.black12:link {color: black; font-size: 12px; text-decoration: none;}
+a.black12:visited {color: black; font-size: 12px; text-decoration: none;}
+a.black12:hover {color: black; font-size: 12px; text-decoration: underline;}
+
+a.casetitle:link {color:#257dd3; font-size: 14px; text-decoration: none;font-weight:bold;}
+a.casetitle:visited {color:#257dd3; font-size: 14px; text-decoration: none;font-weight:bold;}
+a.casetitle:hover {color:#257dd3; font-size: 14px; text-decoration: none;font-weight:bold;}
+
+
+/*CSS black2 style pagination*/
+
+DIV.black2 {
+	PADDING-RIGHT: 7px; PADDING-LEFT: 7px; PADDING-BOTTOM: 7px; MARGIN: 3px; PADDING-TOP: 7px; TEXT-ALIGN: center
+}
+DIV.black2 A {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN: 2px; BORDER-LEFT: #000000 1px solid; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: #000000 1px solid; TEXT-DECORATION: none
+}
+DIV.black2 A:hover {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; COLOR: #fff; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-COLOR: #000
+}
+DIV.black2 A:active {
+	BORDER-RIGHT: #000000 1px solid; BORDER-TOP: #000000 1px solid; BORDER-LEFT: #000000 1px solid; COLOR: #fff; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-COLOR: #000
+}
+DIV.black2 SPAN.current {
+	BORDER-RIGHT: #000000 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #000000 1px solid; PADDING-LEFT: 5px; FONT-WEIGHT: bold; PADDING-BOTTOM: 2px; MARGIN: 2px; BORDER-LEFT: #000000 1px solid; COLOR: #fff; PADDING-TOP: 2px; BORDER-BOTTOM: #000000 1px solid; BACKGROUND-COLOR: #000000
+}
+DIV.black2 SPAN.disabled {
+	BORDER-RIGHT: #eee 1px solid; PADDING-RIGHT: 5px; BORDER-TOP: #eee 1px solid; PADDING-LEFT: 5px; PADDING-BOTTOM: 2px; MARGIN: 2px; BORDER-LEFT: #eee 1px solid; COLOR: #ddd; PADDING-TOP: 2px; BORDER-BOTTOM: #eee 1px solid
+}

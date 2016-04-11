@@ -1,0 +1,78 @@
+@charset "utf-8";
+div.sdmenu {
+	width: 200px; 
+	font-size:14px; 
+	font-weight:bold;  
+	min-height:200px; 
+	padding-top:10px; 
+	padding-bottom:5px;
+	float:right;
+}
+div.sdmenu div {
+	background-color:#fff;
+	overflow: hidden;
+	border-bottom: 1px solid #b1915c;
+}
+
+* html div.sdmenu div{
+    float:left; 
+}
+div.sdmenu div.collapsed {
+	height: 32px;
+}
+div.sdmenu div span {
+	display: block;
+	line-height:28px;
+	width:140px;
+	font-weight: bold;
+	color: #318ae0;
+	cursor: pointer; 
+	margin-left:40px;
+	
+}
+div.sdmenu div span a{
+    padding:0; 
+	background:none; 
+	border:0; 
+	font-size:14px;
+	line-height:32px;
+	display:block; 
+	
+}
+div.sdmenu div.collapsed {
+
+	width:140px; 
+	color:#fff; 
+}
+div.sdmenu div.collapsed span{
+    color:#fff; 
+	line-height:32px; 
+}
+div.sdmenu div.collapsed span a.current{
+    color:#fff;
+}
+div.sdmenu div a {
+	padding-left:47px;
+	display: block;
+	border-bottom: 1px solid #b1915c;
+	color: #fff;
+	font-size:13px; 
+	background:url(../img/menu_sub_icon.gif) no-repeat 27px 7px ; 
+	line-height:28px;
+}
+div.sdmenu div a.current {
+	background : url(../img/linkarrow.png) no-repeat ;  
+	color:#318ae0; 
+}
+div.sdmenu div span a.current {
+	background :none; 
+	color:#fff; 
+}
+div.sdmenu div a:hover {
+	background : url(../img/menu_sub_icon.png) no-repeat ;
+	text-decoration: none;
+	color:#318ae0;
+}
+div.sdmenu div span a:hover {
+	background:none;
+}

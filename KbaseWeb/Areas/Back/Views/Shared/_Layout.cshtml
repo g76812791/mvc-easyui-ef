@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <meta charset="UTF-8" />
+    @Html.Partial("~/Areas/Back/Views/Sys/IncludePart.cshtml")
+    @RenderSection("css", required: false)
+</head>
+<body class="easyui-layout" style="overflow-y: hidden" scroll="no">
+    @RenderBody()
+    @RenderSection("js", required: false)
+    <script type="text/javascript">
+        ///ajax执行
+        ajaxOp = {
+            url: '',
+            data: {},
+            su: function () { },
+            Exec: function () {
+                $.ajax({
+                    async: true,
+                    type: "POST",
+                    url: ajaxOp.url,
+                    cache: false,
+                    timeout: 60 * 60 * 1000,
+                    dataType: "json",
+                    data: ajaxOp.data,
+                    success: ajaxOp.su,
+                    error: function (exp, msg) {
+                        console.log(msg);
+                    }
+                });
+            }
+        }
+
+        var buttons = $.extend([], $.fn.datebox.defaults.buttons);
+        buttons.splice(1, 0, {
+            text: '清空',
+            handler: function (target) {
+                $(target).combo("setValue", "").combo("setText", ""); // 设置空值
+                $(target).combo("hidePanel"); // 点击清空按钮之后关闭日期选择面板
+            }
+        });
+
+        $.extend($.fn.validatebox.defaults.rules, {
+            isBlank: {
+                validator: function (value, param) { return $.trim(value) != '' },
+                message: '不能为空，不能填写为空格'
+            }
+        });
+
+        $(document).ajaxComplete(function (event, xhr, settings) {
+            if (xhr.responseText.indexOf("script")>0) {
+                parent.parent.window.location = '@(AppConfig.LoginUrl)';
+            }
+        });
+    </script>
+</body>
+</html>

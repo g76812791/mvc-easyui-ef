@@ -1,0 +1,32 @@
+﻿@Html.Partial("~/Views/Sys/SlideShow.cshtml")
+<script>
+    //string order,int topn,bool isAsc
+    $.ajax({
+        url: '/Back/Download/GetListTop',
+        data: {
+            order: "UpDateTime",
+            topn: 0,
+            isAsc:false
+        },
+        type: 'post',
+        dataType: 'json',
+        success: function (data) {
+            var dom = $("#ma");
+            $.each(data, function (i, value) {
+                var domdownload = $('<div class="dncol"><span><b>更新时间：' + value.UpDateTime + '</b><a href="' + value.FilePath + '" class="dnbtn">本地下载</a></span>软件名称：' + value.FileName + '</div>');
+                dom.append(domdownload);
+            });
+        },
+        error: function () {
+
+        }
+    });
+</script>
+<div class="main" id="ma">
+    @*<div class="dncol"><span><b>更新时间：2013-09-10</b><a href="KBase/KBase[V10.0 20130116].exe" class="dnbtn">本地下载</a></span>软件名称：KBase[V10.0 20130116]</div>
+    <div class="dncol"><span><b>更新时间：2013-09-10</b><a href="KBase/KBase64[V10.0 20130513].exe" class="dnbtn">本地下载</a></span>软件名称：KBase64[V10.0 20130513]</div>
+    <div class="dncol"><span><b>更新时间：2013-09-10</b><a href="KBase/KBase64Update[V10.0 20130816].exe" class="dnbtn">本地下载</a></span>软件名称：KBase64Update[V10.0 20130816]</div>
+    <div class="dncol"><span><b>更新时间：2013-09-10</b><a href="KBase/KBaseUpdate(For KNS&Grid)[V10.0 20130816].exe" class="dnbtn">本地下载</a></span>软件名称：KBaseUpdate(For KNS&Grid)[V10.0 20130816]</div>
+    <div class="dncol"><span><b>更新时间：2013-09-10</b><a href="KBase/KBaseUpdate[V10.0 20130816].exe" class="dnbtn">本地下载</a></span>软件名称：KBaseUpdate[V10.0 20130816]</div>*@
+</div>
+

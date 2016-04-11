@@ -1,0 +1,149 @@
+/*
+	AnythingSlider v1.5.10+ Default (base) theme
+	By Chris Coyier: http://css-tricks.com
+	with major improvements by Doug Neiner: http://pixelgraphics.us/
+	based on work by Remy Sharp: http://jqueryfordesigners.com/
+*/
+
+/******* SET DEFAULT DIMENSIONS HERE ********/
+body{margin:0px;padding:0px;}
+div.anythingSlider {
+	width: 962px;
+	height: 334px;
+	margin: 0px;
+	padding:0px;
+	overflow: hidden; /* needed for Opera and Safari */
+}
+
+/****** SET COLORS HERE *******/
+/* Default State */
+div.anythingSlider .thumbNav a.cur, div.anythingSlider .thumbNav a {
+	background-image: url(../images/cellshade.png);
+	_background-image: url(../images/cellshade.gif);
+	color: #000;
+}
+div.anythingSlider .start-stop {
+	width:0px; height:0px; display:none;
+}
+
+
+/* Active State */
+div.anythingSlider.activeSlider .anythingWindow {
+	z-index:10;
+}
+div.anythingSlider.activeSlider .thumbNav a.cur, div.anythingSlider.activeSlider .thumbNav a {
+	padding:0px;
+	margin:0px;
+}
+
+
+
+
+/**** DO NOT CHANGE BELOW THIS LINE ****/
+/* anythingSlider viewport window */
+div.anythingSlider .anythingWindow {
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	z-index:10;
+	
+
+}
+/* wrapper: 45px right & left padding for the arrows, 28px @ bottom for navigation */
+div.anythingSlider {
+	position: relative;
+	padding: 0 45px 28px 0px;
+}
+/* anythingSlider base */
+.anythingBase {
+	background: transparent;
+	list-style: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+}
+.anythingBase .panel {
+	background: transparent;
+	display: block;
+	overflow: hidden;
+	float: left;
+	padding: 0;
+	margin: 0;
+}
+
+/* Navigation Arrows */
+div.anythingSlider .arrow {
+	top: 50%;
+	position: absolute;
+	display: block;
+	z-index:1000;
+}
+div.anythingSlider .arrow a {
+	display: block;
+	height: 120px;
+	margin: -70px 0 0 -45px; /* half height of image */
+	width: 45px;
+	text-align: center;
+	outline: 0;
+	background: url(../images/arrows-default.png) no-repeat;
+	_background: url(../images/arrows-default.gif) no-repeat;
+}
+div.anythingSlider .arrow a span { display: block; text-indent: -9999px; }
+div.anythingSlider .forward { right: 19px; }
+div.anythingSlider .back { left:18px; }
+div.anythingSlider .forward a { background-position: 0 -40px; }
+div.anythingSlider .back a { background-position: -88px -40px; }
+div.anythingSlider .forward a:hover, div.anythingSlider .forward a.hover { background-position: 0 -240px; }
+div.anythingSlider .back a:hover, div.anythingSlider .back a.hover { background-position: -88px -240px; }
+div.anythingSlider .forward.disabled { display: none; } /* disabled arrows, hide or reduce opacity: opacity: .5; filter: alpha(opacity=50); */
+div.anythingSlider .back.disabled { display: none; }
+
+/* Navigation Links */
+div.anythingSlider .anythingControls {
+	z-index:15;
+	position: absolute;
+	margin:0px;
+	left: 0px;
+	top: 326px;
+	background: transparent;
+}
+div.anythingSlider .thumbNav { margin:0; padding: 0; }
+div.anythingSlider .thumbNav li { display: inline;float:left;margin:0; padding: 0; }
+div.anythingSlider .thumbNav a {
+	float:left;
+	background-image: url(../images/cellshade-2.png);
+	_background-image: url(../images/cellshade-2.gif);
+	color:#65bb10;
+	text-decoration: none;	
+	width:240.5px;
+	*width:237px;
+	height:24px;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 12px;
+	text-align: left;
+	text-indent: 3px;
+	line-height:35px;
+	overflow:hidden;
+}
+
+
+/* slider autoplay right-to-left, reverse order of nav links to look better */
+div.anythingSlider.rtl .thumbNav a { float: right; } /* reverse order of nav links */
+div.anythingSlider.rtl .thumbNav { float: left; }    /* move nav link group to left */
+div.anythingSlider.rtl .anythingWindow {
+	direction: ltr;
+	unicode-bidi: bidi-override;
+	z-index:10px;
+}
+/* div.anythingSlider.rtl .start-stop { float: right; } */ /* move start/stop button - in case you want to switch sides */
+
+/* Autoplay Start/Stop button */
+div.anythingSlider, div.anythingSlider .anythingWindow, div.anythingSlider .thumbNav a, div.anythingSlider .arrow a{
+	transition-duration: 0;
+	-o-transition-duration: 0;
+	-moz-transition-duration: 0;
+	-webkit-transition-duration: 0;
+}

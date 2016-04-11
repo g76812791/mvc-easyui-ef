@@ -1,0 +1,6 @@
+D:\tfs\KBaseQA\Web\KBaseAdmin\Comm\bin\Release\Comm.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Comm\bin\Release\Comm.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\Comm\bin\Release\Newtonsoft.Json.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Comm\obj\Release\Comm.csprojResolveAssemblyReference.cache
+D:\tfs\KBaseQA\Web\KBaseAdmin\Comm\obj\Release\Comm.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Comm\obj\Release\Comm.pdb

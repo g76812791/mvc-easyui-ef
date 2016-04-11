@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2a147e1d7f9c4e31929fec74d08dad8f" Name="Diagram1" ZoomLevel="77">
+        <EntityTypeShape EntityType="kbase_adminModel.anlidetails" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kbase_adminModel.anlitype" Width="1.5" PointX="2.75" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="kbase_adminModel.downfile" Width="1.5" PointX="2.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kbase_adminModel.loginlog" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kbase_adminModel.user" Width="1.5" PointX="4.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kbase_adminModel.view_loginlog" Width="1.5" PointX="6.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="kbase_adminModel.view_anlidetails" Width="1.5" PointX="0.75" PointY="6.75" />
+        <EntityTypeShape EntityType="kbase_adminModel.question" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="kbase_adminModel.image" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="kbase_adminModel.fankui" Width="1.5" PointX="7.375" PointY="6.75" />
+        <EntityTypeShape EntityType="kbase_adminModel.homeinfo" Width="1.5" PointX="9.375" PointY="0.75" />
+        <EntityTypeShape EntityType="kbase_adminModel.product" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="kbase_adminModel.daohang" Width="1.5" PointX="7" PointY="3.875" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

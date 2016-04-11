@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kbase_adminModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityType Name="anlidetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AId" Type="Int64" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="OrderNum" Type="Int32" />
+  </EntityType>
+  <EntityType Name="anlitype">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="OrderNum" Type="Int32" />
+  </EntityType>
+  <EntityType Name="downfile">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FileName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Version" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="FileSize" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FilePath" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="UpDateTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="loginlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Uid" Type="Int64" />
+    <Property Name="LogTime" Type="DateTime" />
+    <Property Name="Ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="user">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="view_loginlog">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="Uid" Type="Int64" />
+    <Property Name="LogTime" Type="DateTime" />
+    <Property Name="Ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityContainer Name="kbase_adminEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="anlidetails" EntityType="Self.anlidetails" />
+    <EntitySet Name="anlitype" EntityType="Self.anlitype" />
+    <EntitySet Name="downfile" EntityType="Self.downfile" />
+    <EntitySet Name="loginlog" EntityType="Self.loginlog" />
+    <EntitySet Name="user" EntityType="Self.user" />
+    <EntitySet Name="view_loginlog" EntityType="Self.view_loginlog" />
+    <EntitySet Name="view_anlidetails" EntityType="kbase_adminModel.view_anlidetails" />
+    <EntitySet Name="question" EntityType="kbase_adminModel.question" />
+  </EntityContainer>
+  <EntityType Name="view_anlidetails">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="AId" Type="Int64" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="5000" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" />
+    <Property Name="OrderNum" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="question">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Content" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="CreatTime" Type="DateTime" />
+  </EntityType>
+</Schema>

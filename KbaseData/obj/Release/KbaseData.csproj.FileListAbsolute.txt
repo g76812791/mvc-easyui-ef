@@ -1,0 +1,11 @@
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Release\KbaseData.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Release\KbaseData.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Release\Comm.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Release\Entity.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Release\Newtonsoft.Json.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Release\EntityFramework.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Release\Comm.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Release\Entity.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\obj\Release\KbaseData.csprojResolveAssemblyReference.cache
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\obj\Release\KbaseData.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\obj\Release\KbaseData.pdb

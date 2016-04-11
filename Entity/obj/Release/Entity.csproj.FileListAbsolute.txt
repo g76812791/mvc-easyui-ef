@@ -1,0 +1,10 @@
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Release\Entity.dll.config
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Release\Entity.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Release\Entity.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Release\Comm.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Release\EntityFramework.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Release\Newtonsoft.Json.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Release\Comm.pdb
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\obj\Release\Entity.csprojResolveAssemblyReference.cache
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\obj\Release\Entity.dll
+D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\obj\Release\Entity.pdb

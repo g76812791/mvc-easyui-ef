@@ -1,0 +1,65 @@
+﻿@using KbaseWeb.Models;
+@model System.Collections.Generic.List<caseview>
+<div class="productcenter">
+    <div class="maincontent01"></div>
+    <div class="jdcon">
+
+        @foreach (var d in Model)
+        {
+            <h2>@d.type.Name</h2>
+            <ul>
+                @foreach (var m in d.detalis)
+                {
+                    <li>&middot;@Html.ActionLink(m.Title, "ShowCases", new { Id = m.Id }) </li>
+                }
+            </ul>
+        }
+    </div>
+</div>
+@*<div class="productcenter">
+    <div class="maincontent01"></div>
+
+    <div class="jdcon">
+        <h2>企业知识门户</h2>
+        <ul>
+            <li>&middot;@Html.ActionLink("卫生部卫生政策决策支持项目（HPSP）知识管理系统", "ShowCases", new { Id = 1 }) </li>
+            <li>&middot;@Html.ActionLink("某大型有色金属企业知识管理平台", "ShowCases", new { Id = 2 }) </li>
+        </ul>
+
+        <h2>数字档案馆</h2>
+        <ul>
+            <li>&middot;<a href="showcase3.html">齐鲁石化数字档案馆项目</a></li>
+            <li>&middot;<a href="showcase4.html">航天某研究院数字档案馆</a></li>
+        </ul>
+
+        <h2>竞争情报</h2>
+        <ul>
+            <li>&middot;<a href="showcase5.html"> 华通人竞争情报系统</a></li>
+        </ul>
+
+        <h2>网络监管</h2>
+        <ul>
+            <li>&middot;<a href="showcase6.html">信息产业部无线电检测中心，无线电管理技术标准数字图书馆</a></li>
+        </ul>
+
+        <h2>内容管理</h2>
+        <ul>
+            <li>&middot;<a href="showcase7.html">人民日报社内容管理系统</a></li>
+            <li>&middot;<a href="showcase8.html">国家发改委金宏工程经济文献共享数据库系统</a></li>
+            <li>&middot;<a href="showcase9.html">农业科学院中国农业信息资源中心门户</a></li>
+        </ul>
+
+        <h2>数字图书馆</h2>
+        <ul>
+            <li>&middot;<a href="showcase10.html">全国人大常委会数字图书馆</a></li>
+            <li>&middot;<a href="showcase11.html">中国人民银行数字图书馆项目</a></li>
+            <li>&middot;<a href="showcase12.html">中石油数字图书馆项目</a></li>
+            <li>&middot;<a href="showcase13.html">武汉大学数字图书馆长江资源特色库系统</a></li>
+            <li>&middot;<a href="showcase14.html">中央财经大学</a></li>
+            <li>&middot;<a href="showcase15.html">中石油数字图书馆项目</a></li>
+            <li>&middot;<a href="showcase16.html">大连市委党校</a></li>
+        </ul>
+
+    </div>
+
+</div>*@
