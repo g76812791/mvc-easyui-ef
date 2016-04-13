@@ -34,9 +34,9 @@ namespace Entity
         public DbSet<view_anlidetails> view_anlidetails { get; set; }
         public DbSet<question> question { get; set; }
         public DbSet<image> image { get; set; }
-        public DbSet<fankui> fankui { get; set; }
         public DbSet<homeinfo> homeinfo { get; set; }
         public DbSet<product> product { get; set; }
         public DbSet<daohang> daohang { get; set; }
+        public DbSet<fankui> fankui { get; set; }
     }
 }

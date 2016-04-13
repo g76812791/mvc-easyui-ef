@@ -14,7 +14,7 @@ namespace KbaseWeb.Areas.Back.Controllers
     {
         //
         // GET: /Back/UserLog/
-        LoginLogDal dal= new LoginLogDal();
+        LoginLogDal logdal= new LoginLogDal();
 
         public ActionResult Index()
         {
@@ -44,7 +44,7 @@ namespace KbaseWeb.Areas.Back.Controllers
                     p.endDate = p.endDate.AddDays(1);
                     where = where.And((q) => q.LogTime < p.endDate);
                 }
-                var list = dal.GetList(p.rows, p.page, out total, where);
+                var list = logdal.GetList(p.rows, p.page, out total, where);
                 return DateJson(new { total = total, rows = list });
             }
             catch (Exception e)

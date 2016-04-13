@@ -123,6 +123,7 @@
     <Compile Include="Areas\Back\Controllers\BaseController.cs" />
     <Compile Include="Areas\Back\Controllers\DaoHangController.cs" />
     <Compile Include="Areas\Back\Controllers\DownloadController.cs" />
+    <Compile Include="Areas\Back\Controllers\FanKuiController.cs" />
     <Compile Include="Areas\Back\Controllers\HomeController.cs" />
     <Compile Include="Areas\Back\Controllers\HomeInfoController.cs" />
     <Compile Include="Areas\Back\Controllers\KBaseLoginController.cs" />
@@ -134,6 +135,7 @@
     <Compile Include="Common\AppConfig.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\KbaseController.cs" />
+    <Compile Include="Controllers\navigationController.cs" />
     <Compile Include="Filters\ImageFilter.cs" />
     <Compile Include="Filters\IsLoginAttribute.cs" />
     <Compile Include="Global.asax.cs">
@@ -447,6 +449,7 @@
     <Content Include="Areas\Back\Views\DaoHang\Index.cshtml" />
     <Content Include="Areas\Back\Views\Product\Index.cshtml" />
     <Content Include="Areas\Back\Views\HomeInfo\Index.cshtml" />
+    <Content Include="Areas\Back\Views\FanKui\Index.cshtml" />
     <None Include="Properties\PublishProfiles\11.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Resource\images\aboutus-bj.png" />

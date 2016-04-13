@@ -50,6 +50,10 @@
     <Property Name="QQ" Type="varchar" MaxLength="50" />
     <Property Name="Email" Type="varchar" MaxLength="200" />
     <Property Name="Context" Type="varchar" MaxLength="4000" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="UpdateTime" Type="datetime" Precision="0" />
+    <Property Name="Flag" Type="smallint" />
+    <Property Name="Remark" Type="varchar" MaxLength="2000" />
   </EntityType>
   <EntityType Name="homeinfo">
     <Key>
@@ -59,6 +63,8 @@
     <Property Name="Title" Type="varchar" MaxLength="200" />
     <Property Name="Content" Type="varchar" MaxLength="4000" />
     <Property Name="OrderNum" Type="int" />
+    <Property Name="Url" Type="varchar" MaxLength="200" />
+    <Property Name="Class" Type="varchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="image">
     <Key>

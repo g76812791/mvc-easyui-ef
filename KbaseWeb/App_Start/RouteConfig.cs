@@ -15,8 +15,9 @@ namespace KbaseWeb
             routes.MapRoute("Error", "Error.html", new { Controller = "Error", Action = "Index" });
             routes.MapRoute("Default", "", new { Controller = "Kbase", Action = "Index" });
             routes.MapRoute("Login", "Login.html", new { Controller = "Login", Action = "Index" });
-            routes.MapRoute("do", "{Controller}/{Action}.do");
             routes.MapRoute("html", "{Controller}/{Action}.html");
+            routes.MapRoute("do", "{Controller}/{Action}.do");
+            
         }
     }
 }

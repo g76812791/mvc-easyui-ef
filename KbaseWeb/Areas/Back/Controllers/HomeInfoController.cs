@@ -11,7 +11,7 @@ namespace KbaseWeb.Areas.Back.Controllers
     {
         public HomeInfoController()
         {
-            fileds = new[] {"Title","Content","OrderNum"};
+            fileds = new[] {"Title","Content","OrderNum","Url"};
         }
         public ActionResult Index()
         {

@@ -98,21 +98,11 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="fankui">
-      <EntityTypeMapping TypeName="kbase_adminModel.fankui">
-        <MappingFragment StoreEntitySet="fankui">
-          <ScalarProperty Name="Context" ColumnName="Context" />
-          <ScalarProperty Name="Email" ColumnName="Email" />
-          <ScalarProperty Name="QQ" ColumnName="QQ" />
-          <ScalarProperty Name="Phone" ColumnName="Phone" />
-          <ScalarProperty Name="Name" ColumnName="Name" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="homeinfo">
       <EntityTypeMapping TypeName="kbase_adminModel.homeinfo">
         <MappingFragment StoreEntitySet="homeinfo">
+          <ScalarProperty Name="Class" ColumnName="Class" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
           <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
           <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="Title" ColumnName="Title" />
@@ -138,6 +128,22 @@
           <ScalarProperty Name="IsOut" ColumnName="IsOut" />
           <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
           <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fankui">
+      <EntityTypeMapping TypeName="kbase_adminModel.fankui">
+        <MappingFragment StoreEntitySet="fankui">
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="Flag" ColumnName="Flag" />
+          <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Context" ColumnName="Context" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="QQ" ColumnName="QQ" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>

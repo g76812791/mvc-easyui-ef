@@ -18,11 +18,12 @@ namespace KbaseWeb.Controllers
         BaseDal<anlidetails> ddal = new BaseDal<anlidetails>();
         BaseDal<anlitype> tdal = new BaseDal<anlitype>();
         BaseDal<question> qdal = new BaseDal<question>();
+        BaseDal<homeinfo> hdal = new BaseDal<homeinfo>();
         public ActionResult Index()
         {
-           
+            var homedata = hdal.GetListTopN(p => 1 == 1, "OrderNum", true, 0).ToList();
             ViewBag.Flag = 1;
-            return View();
+            return View(homedata);
         }
 
 
@@ -67,6 +68,10 @@ namespace KbaseWeb.Controllers
             var qdata = qdal.GetListTopN(p=>1==1,"CreatTime",true,0).ToList();
             ViewBag.Flag = 5;
             return View(qdata);
+        }
+        public ActionResult feedback()
+        {
+            return View();
         }
     }
 }

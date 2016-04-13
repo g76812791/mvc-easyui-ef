@@ -49,11 +49,24 @@ namespace Entity
             db.Entry<T>(entity).State = EntityState.Deleted;
             return db.SaveChanges() > 0;
         }
-
+        /// <summary>
+        /// 删除by ids
+        /// </summary>
+        /// <param name="ids"></param>
+        /// <returns></returns>
         public bool DeleByIds(string ids)
         {
             string tableName = typeof(T).Name;
             return db.Database.ExecuteSqlCommand(string.Format("delete from {0}  WHERE id in ({1})",tableName,ids)) > 0;
+        }
+        /// <summary>
+        /// 执行sql命令
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public bool ExecSqlCommand(string sql)
+        {
+            return db.Database.ExecuteSqlCommand(sql) > 0;
         }
 
         //查询

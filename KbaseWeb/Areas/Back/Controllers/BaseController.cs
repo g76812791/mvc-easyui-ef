@@ -18,7 +18,7 @@ namespace KbaseWeb.Areas.Back.Controllers
     [IsLogin]
     public class BaseController<T> : Controller where T : class
     {
-        BaseDal<T> dal = new BaseDal<T>();
+       public  BaseDal<T> dal = new BaseDal<T>();
 
         #region 登陆信息记录
 
@@ -217,6 +217,8 @@ namespace KbaseWeb.Areas.Back.Controllers
 
         protected string listOrder { get; set; }
 
+        protected bool ListIsAsc = true;
+
         /// <summary>
         /// 获取列表
         /// </summary>
@@ -228,7 +230,7 @@ namespace KbaseWeb.Areas.Back.Controllers
             try
             {
                 var list = dal.GetList((int)typeof(T).GetProperty("rows").GetValue(en, null),
-                    (int)typeof(T).GetProperty("page").GetValue(en, null), out total, listWhere, listOrder);
+                    (int)typeof(T).GetProperty("page").GetValue(en, null), out total, listWhere, listOrder,ListIsAsc);
                 return DateJson(new { total = total, rows = list });
             }
             catch (Exception e)
@@ -271,7 +273,7 @@ namespace KbaseWeb.Areas.Back.Controllers
             }
             catch (Exception ex)
             {
-
+                throw ex;
             }
             return props;
         }
@@ -282,7 +284,7 @@ namespace KbaseWeb.Areas.Back.Controllers
         /// <typeparam name="T"></typeparam>
         /// <param name="collection">HttpContext.Current.Request.Form</param>
         /// <returns></returns>
-        public T PagerUpdateEn<T>(NameValueCollection collection)
+        public T PagerUpdateEn(NameValueCollection collection)
         {
             PropertyInfo[] propertyInfoList = GetPropertyInfoArray(typeof(T));
             object obj = Activator.CreateInstance(typeof(T), null); //创建指定类型实例
@@ -341,6 +343,21 @@ namespace KbaseWeb.Areas.Back.Controllers
 
         #endregion
 
+
+        public virtual ActionResult Handle(string ids, int Flag)
+        {
+            try
+            {
+                string sql = string.Format("update {0} set flag={1} where Id in ({2})", typeof(T).Name, Flag, ids);
+                dal.ExecSqlCommand(sql);
+                return Success();
+            }
+            catch (Exception e)
+            {
+                return Error(e);
+            }
+
+        }
     }
 
     #region 控制器过滤

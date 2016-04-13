@@ -55,6 +55,10 @@
           <Property Name="QQ" Type="varchar" MaxLength="50" />
           <Property Name="Email" Type="varchar" MaxLength="200" />
           <Property Name="Context" Type="varchar" MaxLength="4000" />
+          <Property Name="CreateTime" Type="datetime" Precision="0" />
+          <Property Name="UpdateTime" Type="datetime" Precision="0" />
+          <Property Name="Flag" Type="smallint" />
+          <Property Name="Remark" Type="varchar" MaxLength="2000" />
         </EntityType>
         <EntityType Name="homeinfo">
           <Key>
@@ -64,6 +68,8 @@
           <Property Name="Title" Type="varchar" MaxLength="200" />
           <Property Name="Content" Type="varchar" MaxLength="4000" />
           <Property Name="OrderNum" Type="int" />
+          <Property Name="Url" Type="varchar" MaxLength="200" />
+          <Property Name="Class" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="image">
           <Key>
@@ -243,10 +249,10 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
           <EntitySet Name="view_anlidetails" EntityType="kbase_adminModel.view_anlidetails" />
           <EntitySet Name="question" EntityType="kbase_adminModel.question" />
           <EntitySet Name="image" EntityType="kbase_adminModel.image" />
-          <EntitySet Name="fankui" EntityType="kbase_adminModel.fankui" />
           <EntitySet Name="homeinfo" EntityType="kbase_adminModel.homeinfo" />
           <EntitySet Name="product" EntityType="kbase_adminModel.product" />
           <EntitySet Name="daohang" EntityType="kbase_adminModel.daohang" />
+          <EntitySet Name="fankui" EntityType="kbase_adminModel.fankui" />
         </EntityContainer>
         <EntityType Name="view_anlidetails">
           <Key>
@@ -278,17 +284,6 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
           <Property Name="Img" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
           <Property Name="ContentType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
-        <EntityType Name="fankui">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="QQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Context" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-        </EntityType>
         <EntityType Name="homeinfo">
           <Key>
             <PropertyRef Name="Id" />
@@ -297,6 +292,8 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
           <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Content" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
           <Property Name="OrderNum" Type="Int32" />
+          <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Class" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="product">
           <Key>
@@ -318,6 +315,21 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
           <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="OrderNum" Type="Int32" />
           <Property Name="IsOut" Type="Int16" />
+        </EntityType>
+        <EntityType Name="fankui">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="QQ" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Context" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" />
+          <Property Name="UpdateTime" Type="DateTime" />
+          <Property Name="Flag" Type="Int16" />
+          <Property Name="Remark" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -422,21 +434,11 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="fankui">
-            <EntityTypeMapping TypeName="kbase_adminModel.fankui">
-              <MappingFragment StoreEntitySet="fankui">
-                <ScalarProperty Name="Context" ColumnName="Context" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="QQ" ColumnName="QQ" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="homeinfo">
             <EntityTypeMapping TypeName="kbase_adminModel.homeinfo">
               <MappingFragment StoreEntitySet="homeinfo">
+                <ScalarProperty Name="Class" ColumnName="Class" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
                 <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -462,6 +464,22 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
                 <ScalarProperty Name="IsOut" ColumnName="IsOut" />
                 <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fankui">
+            <EntityTypeMapping TypeName="kbase_adminModel.fankui">
+              <MappingFragment StoreEntitySet="fankui">
+                <ScalarProperty Name="Remark" ColumnName="Remark" />
+                <ScalarProperty Name="Flag" ColumnName="Flag" />
+                <ScalarProperty Name="UpdateTime" ColumnName="UpdateTime" />
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Context" ColumnName="Context" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="QQ" ColumnName="QQ" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

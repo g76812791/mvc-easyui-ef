@@ -27,9 +27,9 @@ namespace KbaseData
         /// <param name="where"></param>
         /// <param name="orderByLambda"></param>
         /// <returns></returns>
-        public IQueryable<T> GetList(int pageSize, int pageIndex, out int total, Expression<Func<T, bool>> where, string order)
+        public IQueryable<T> GetList(int pageSize, int pageIndex, out int total, Expression<Func<T, bool>> where, string order,bool isAsc=true)
         {
-            IQueryable<T> list = LoadPagerEntities(pageSize, pageIndex, out total, where, true, order);
+            IQueryable<T> list = LoadPagerEntities(pageSize, pageIndex, out total, where, isAsc, order);
             return list;
         }
 
@@ -48,7 +48,11 @@ namespace KbaseData
         {
             return UpdateEntities(en, fileds);
         }
-
+        /// <summary>
+        /// 修改所有字段
+        /// </summary>
+        /// <param name="en"></param>
+        /// <returns></returns>
         public bool Update(T en)
         {
             return UpdateEntities(en);
@@ -81,6 +85,15 @@ namespace KbaseData
         public bool Delete(string ids)
         {
             return DeleByIds(ids);
+        }
+        /// <summary>
+        /// 执行sql命令
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns></returns>
+        public bool ExecSqlCommand(string sql)
+        {
+            return base.ExecSqlCommand(sql);
         }
 
     }

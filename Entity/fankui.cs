@@ -22,6 +22,10 @@ namespace Entity
             
             
             
+            CreateTime =DateTime.Now;
+            UpdateTime =DateTime.Now;
+            
+            
         }
         public long Id { get; set; }
         public string Name { get; set; }
@@ -29,5 +33,9 @@ namespace Entity
         public string QQ { get; set; }
         public string Email { get; set; }
         public string Context { get; set; }
+        public Nullable<System.DateTime> CreateTime { get; set; }
+        public Nullable<System.DateTime> UpdateTime { get; set; }
+        public Nullable<short> Flag { get; set; }
+        public string Remark { get; set; }
     }
 }
