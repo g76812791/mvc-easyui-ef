@@ -65,6 +65,7 @@
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BaseRepository.cs" />
+    <Compile Include="HomeTree.cs" />
     <Compile Include="MySqlHelper.cs" />
     <Compile Include="daohang.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
@@ -78,7 +79,6 @@
     <Compile Include="homeinfo.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="HomeTree.cs" />
     <Compile Include="image.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>

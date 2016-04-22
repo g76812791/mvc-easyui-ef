@@ -132,8 +132,11 @@
     <Compile Include="Areas\Back\Controllers\HomeController.cs" />
     <Compile Include="Areas\Back\Controllers\HomeInfoController.cs" />
     <Compile Include="Areas\Back\Controllers\KBaseLoginController.cs" />
-    <Compile Include="Areas\Back\Controllers\MenueController.cs" />
+    <Compile Include="Areas\Back\Controllers\MenueController.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Areas\Back\Controllers\PermissionController.cs" />
+    <Compile Include="Areas\Back\Controllers\ProductController.cs" />
     <Compile Include="Areas\Back\Controllers\RoleController.cs" />
     <Compile Include="Areas\Back\Controllers\UserController.cs" />
     <Compile Include="Areas\Back\Controllers\UserLogController.cs" />
