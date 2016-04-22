@@ -17,7 +17,7 @@ namespace KbaseWeb.Areas.Back
             context.MapRoute(
                 "Back_default",
                 "Back/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional },
+                new { controller = "KBaseLogin", action = "Index", id = UrlParameter.Optional },
                 namespaces: new[] { "KbaseWeb.Areas.Back.Controllers" } //指定该路由查找控制器类的命名空间
             );
         }
