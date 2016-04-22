@@ -38,3 +38,14 @@ D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Debug\Entity.pdb
 D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\obj\Debug\KbaseData.csprojResolveAssemblyReference.cache
 D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\obj\Debug\KbaseData.dll
 D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\obj\Debug\KbaseData.pdb
+C:\git\KBaseAdmin\KbaseData\bin\Debug\KbaseData.dll
+C:\git\KBaseAdmin\KbaseData\bin\Debug\KbaseData.pdb
+C:\git\KBaseAdmin\KbaseData\bin\Debug\Comm.dll
+C:\git\KBaseAdmin\KbaseData\bin\Debug\Entity.dll
+C:\git\KBaseAdmin\KbaseData\bin\Debug\Newtonsoft.Json.dll
+C:\git\KBaseAdmin\KbaseData\bin\Debug\EntityFramework.dll
+C:\git\KBaseAdmin\KbaseData\bin\Debug\Comm.pdb
+C:\git\KBaseAdmin\KbaseData\bin\Debug\Entity.pdb
+C:\git\KBaseAdmin\KbaseData\obj\Debug\KbaseData.csprojResolveAssemblyReference.cache
+C:\git\KBaseAdmin\KbaseData\obj\Debug\KbaseData.dll
+C:\git\KBaseAdmin\KbaseData\obj\Debug\KbaseData.pdb

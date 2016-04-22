@@ -32,3 +32,13 @@ D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\obj\Debug\Entity.pdb
 D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Debug\Comm.dll
 D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Debug\Newtonsoft.Json.dll
 D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Debug\Comm.pdb
+C:\git\KBaseAdmin\Entity\bin\Debug\Entity.dll.config
+C:\git\KBaseAdmin\Entity\bin\Debug\Entity.dll
+C:\git\KBaseAdmin\Entity\bin\Debug\Entity.pdb
+C:\git\KBaseAdmin\Entity\bin\Debug\Comm.dll
+C:\git\KBaseAdmin\Entity\bin\Debug\EntityFramework.dll
+C:\git\KBaseAdmin\Entity\bin\Debug\Newtonsoft.Json.dll
+C:\git\KBaseAdmin\Entity\bin\Debug\Comm.pdb
+C:\git\KBaseAdmin\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+C:\git\KBaseAdmin\Entity\obj\Debug\Entity.dll
+C:\git\KBaseAdmin\Entity\obj\Debug\Entity.pdb
