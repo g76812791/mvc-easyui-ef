@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AES.cs" />
+    <Compile Include="CacheHelper.cs" />
     <Compile Include="ClientIp.cs" />
     <Compile Include="Config.cs" />
     <Compile Include="CookieHelp.cs" />

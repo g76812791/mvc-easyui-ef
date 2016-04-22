@@ -48,6 +48,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EntityFramework.dll" />
+    <Content Include="MySql.Data.dll" />
     <Content Include="Newtonsoft.Json.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

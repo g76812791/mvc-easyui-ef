@@ -78,16 +78,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="question">
-      <EntityTypeMapping TypeName="kbase_adminModel.question">
-        <MappingFragment StoreEntitySet="question">
-          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
-          <ScalarProperty Name="Content" ColumnName="Content" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="image">
       <EntityTypeMapping TypeName="kbase_adminModel.image">
         <MappingFragment StoreEntitySet="image">
@@ -103,18 +93,6 @@
         <MappingFragment StoreEntitySet="homeinfo">
           <ScalarProperty Name="Class" ColumnName="Class" />
           <ScalarProperty Name="Url" ColumnName="Url" />
-          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-          <ScalarProperty Name="Content" ColumnName="Content" />
-          <ScalarProperty Name="Title" ColumnName="Title" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="product">
-      <EntityTypeMapping TypeName="kbase_adminModel.product">
-        <MappingFragment StoreEntitySet="product">
-          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-          <ScalarProperty Name="Anchor" ColumnName="Anchor" />
           <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
           <ScalarProperty Name="Content" ColumnName="Content" />
           <ScalarProperty Name="Title" ColumnName="Title" />
@@ -145,6 +123,59 @@
           <ScalarProperty Name="QQ" ColumnName="QQ" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="menue">
+      <EntityTypeMapping TypeName="kbase_adminModel.menue">
+        <MappingFragment StoreEntitySet="menue">
+          <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="MenueName" ColumnName="MenueName" />
+          <ScalarProperty Name="Icon" ColumnName="Icon" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="permission">
+      <EntityTypeMapping TypeName="kbase_adminModel.permission">
+        <MappingFragment StoreEntitySet="permission">
+          <ScalarProperty Name="SmallName" ColumnName="SmallName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Mid" ColumnName="Mid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="role">
+      <EntityTypeMapping TypeName="kbase_adminModel.role">
+        <MappingFragment StoreEntitySet="role">
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Detail" ColumnName="Detail" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userrole">
+      <EntityTypeMapping TypeName="kbase_adminModel.userrole">
+        <MappingFragment StoreEntitySet="userrole">
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
+          <ScalarProperty Name="Uid" ColumnName="Uid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="view_user">
+      <EntityTypeMapping TypeName="kbase_adminModel.view_user">
+        <MappingFragment StoreEntitySet="view_user">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+          <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>

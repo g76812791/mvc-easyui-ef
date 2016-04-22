@@ -89,25 +89,35 @@
           <Property Name="LogTime" Type="datetime" Precision="0" />
           <Property Name="Ip" Type="varchar" MaxLength="50" />
         </EntityType>
-        <EntityType Name="product">
+        <EntityType Name="menue">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="200" />
-          <Property Name="Content" Type="varchar" MaxLength="4000" />
+          <Property Name="Icon" Type="varchar" MaxLength="200" />
+          <Property Name="MenueName" Type="varchar" MaxLength="200" />
+          <Property Name="Url" Type="varchar" MaxLength="200" />
+          <Property Name="ParentId" Type="bigint" />
+          <Property Name="Level" Type="smallint" />
           <Property Name="OrderNum" Type="int" />
-          <Property Name="Anchor" Type="varchar" MaxLength="500" />
-          <Property Name="CreateTime" Type="datetime" Precision="0" />
         </EntityType>
-        <EntityType Name="question">
+        <EntityType Name="permission">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Title" Type="varchar" MaxLength="200" />
-          <Property Name="Content" Type="varchar" MaxLength="4000" />
-          <Property Name="CreatTime" Type="datetime" Precision="0" />
+          <Property Name="Mid" Type="bigint" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="SmallName" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Detail" Type="varchar" MaxLength="200" />
+          <Property Name="CreateTime" Type="datetime" Precision="0" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -117,6 +127,14 @@
           <Property Name="LoginName" Type="varchar" MaxLength="50" />
           <Property Name="Pwd" Type="varchar" MaxLength="50" />
           <Property Name="CreatTime" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="userrole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Uid" Type="bigint" />
+          <Property Name="Rid" Type="bigint" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“def.kbase_admin.view_anlidetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -144,6 +162,18 @@
           <Property Name="Ip" Type="varchar" MaxLength="50" />
           <Property Name="LoginName" Type="varchar" MaxLength="50" />
         </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“def.kbase_admin.view_user”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="view_user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" Nullable="false" />
+          <Property Name="LoginName" Type="varchar" MaxLength="50" />
+          <Property Name="Pwd" Type="varchar" MaxLength="50" />
+          <Property Name="CreatTime" Type="datetime" Precision="0" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+        </EntityType>
         <EntityContainer Name="kbase_adminModelStoreContainer">
           <EntitySet Name="anlidetails" EntityType="Self.anlidetails" Schema="kbase_admin" store:Type="Tables" />
           <EntitySet Name="anlitype" EntityType="Self.anlitype" Schema="kbase_admin" store:Type="Tables" />
@@ -153,9 +183,11 @@
           <EntitySet Name="homeinfo" EntityType="Self.homeinfo" Schema="kbase_admin" store:Type="Tables" />
           <EntitySet Name="image" EntityType="Self.image" Schema="kbase_admin" store:Type="Tables" />
           <EntitySet Name="loginlog" EntityType="Self.loginlog" Schema="kbase_admin" store:Type="Tables" />
-          <EntitySet Name="product" EntityType="Self.product" Schema="kbase_admin" store:Type="Tables" />
-          <EntitySet Name="question" EntityType="Self.question" Schema="kbase_admin" store:Type="Tables" />
+          <EntitySet Name="menue" EntityType="Self.menue" Schema="kbase_admin" store:Type="Tables" />
+          <EntitySet Name="permission" EntityType="Self.permission" Schema="kbase_admin" store:Type="Tables" />
+          <EntitySet Name="role" EntityType="Self.role" Schema="kbase_admin" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="kbase_admin" store:Type="Tables" />
+          <EntitySet Name="userrole" EntityType="Self.userrole" Schema="kbase_admin" store:Type="Tables" />
           <EntitySet Name="view_anlidetails" EntityType="Self.view_anlidetails" store:Type="Views" store:Schema="kbase_admin">
             <DefiningQuery>SELECT
 `view_anlidetails`.`Id`, 
@@ -175,6 +207,15 @@ FROM `view_anlidetails` AS `view_anlidetails`</DefiningQuery>
 `view_loginlog`.`Ip`, 
 `view_loginlog`.`LoginName`
 FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="view_user" EntityType="Self.view_user" store:Type="Views" store:Schema="kbase_admin">
+            <DefiningQuery>SELECT
+`view_user`.`Id`, 
+`view_user`.`LoginName`, 
+`view_user`.`Pwd`, 
+`view_user`.`CreatTime`, 
+`view_user`.`Name`
+FROM `view_user` AS `view_user`</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -247,12 +288,15 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
           <EntitySet Name="user" EntityType="Self.user" />
           <EntitySet Name="view_loginlog" EntityType="Self.view_loginlog" />
           <EntitySet Name="view_anlidetails" EntityType="kbase_adminModel.view_anlidetails" />
-          <EntitySet Name="question" EntityType="kbase_adminModel.question" />
           <EntitySet Name="image" EntityType="kbase_adminModel.image" />
           <EntitySet Name="homeinfo" EntityType="kbase_adminModel.homeinfo" />
-          <EntitySet Name="product" EntityType="kbase_adminModel.product" />
           <EntitySet Name="daohang" EntityType="kbase_adminModel.daohang" />
           <EntitySet Name="fankui" EntityType="kbase_adminModel.fankui" />
+          <EntitySet Name="menue" EntityType="kbase_adminModel.menue" />
+          <EntitySet Name="permission" EntityType="kbase_adminModel.permission" />
+          <EntitySet Name="role" EntityType="kbase_adminModel.role" />
+          <EntitySet Name="userrole" EntityType="kbase_adminModel.userrole" />
+          <EntitySet Name="view_user" EntityType="kbase_adminModel.view_user" />
         </EntityContainer>
         <EntityType Name="view_anlidetails">
           <Key>
@@ -265,15 +309,6 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
           <Property Name="CreateTime" Type="DateTime" />
           <Property Name="OrderNum" Type="Int32" />
           <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="question">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Content" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="CreatTime" Type="DateTime" />
         </EntityType>
         <EntityType Name="image">
           <Key>
@@ -294,17 +329,6 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
           <Property Name="OrderNum" Type="Int32" />
           <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="Class" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-        </EntityType>
-        <EntityType Name="product">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Content" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-          <Property Name="OrderNum" Type="Int32" />
-          <Property Name="Anchor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="CreateTime" Type="DateTime" />
         </EntityType>
         <EntityType Name="daohang">
           <Key>
@@ -330,6 +354,54 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
           <Property Name="UpdateTime" Type="DateTime" />
           <Property Name="Flag" Type="Int16" />
           <Property Name="Remark" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="menue">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Icon" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MenueName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ParentId" Type="Int64" />
+          <Property Name="Level" Type="Int16" />
+          <Property Name="OrderNum" Type="Int32" />
+        </EntityType>
+        <EntityType Name="permission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Mid" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="SmallName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="role">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Detail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreateTime" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="userrole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Uid" Type="Int64" />
+          <Property Name="Rid" Type="Int64" />
+        </EntityType>
+        <EntityType Name="view_user">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" />
+          <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatTime" Type="DateTime" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -414,16 +486,6 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="question">
-            <EntityTypeMapping TypeName="kbase_adminModel.question">
-              <MappingFragment StoreEntitySet="question">
-                <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="image">
             <EntityTypeMapping TypeName="kbase_adminModel.image">
               <MappingFragment StoreEntitySet="image">
@@ -439,18 +501,6 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
               <MappingFragment StoreEntitySet="homeinfo">
                 <ScalarProperty Name="Class" ColumnName="Class" />
                 <ScalarProperty Name="Url" ColumnName="Url" />
-                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
-                <ScalarProperty Name="Content" ColumnName="Content" />
-                <ScalarProperty Name="Title" ColumnName="Title" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="product">
-            <EntityTypeMapping TypeName="kbase_adminModel.product">
-              <MappingFragment StoreEntitySet="product">
-                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
-                <ScalarProperty Name="Anchor" ColumnName="Anchor" />
                 <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
                 <ScalarProperty Name="Content" ColumnName="Content" />
                 <ScalarProperty Name="Title" ColumnName="Title" />
@@ -481,6 +531,59 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
                 <ScalarProperty Name="QQ" ColumnName="QQ" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menue">
+            <EntityTypeMapping TypeName="kbase_adminModel.menue">
+              <MappingFragment StoreEntitySet="menue">
+                <ScalarProperty Name="OrderNum" ColumnName="OrderNum" />
+                <ScalarProperty Name="Level" ColumnName="Level" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="MenueName" ColumnName="MenueName" />
+                <ScalarProperty Name="Icon" ColumnName="Icon" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="permission">
+            <EntityTypeMapping TypeName="kbase_adminModel.permission">
+              <MappingFragment StoreEntitySet="permission">
+                <ScalarProperty Name="SmallName" ColumnName="SmallName" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Mid" ColumnName="Mid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="role">
+            <EntityTypeMapping TypeName="kbase_adminModel.role">
+              <MappingFragment StoreEntitySet="role">
+                <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+                <ScalarProperty Name="Detail" ColumnName="Detail" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userrole">
+            <EntityTypeMapping TypeName="kbase_adminModel.userrole">
+              <MappingFragment StoreEntitySet="userrole">
+                <ScalarProperty Name="Rid" ColumnName="Rid" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_user">
+            <EntityTypeMapping TypeName="kbase_adminModel.view_user">
+              <MappingFragment StoreEntitySet="view_user">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
+                <ScalarProperty Name="Pwd" ColumnName="Pwd" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>

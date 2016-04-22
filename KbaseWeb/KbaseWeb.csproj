@@ -44,6 +44,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MySql.Data, Version=6.8.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -127,10 +131,12 @@
     <Compile Include="Areas\Back\Controllers\HomeController.cs" />
     <Compile Include="Areas\Back\Controllers\HomeInfoController.cs" />
     <Compile Include="Areas\Back\Controllers\KBaseLoginController.cs" />
-    <Compile Include="Areas\Back\Controllers\ProductController.cs" />
-    <Compile Include="Areas\Back\Controllers\QuestionController.cs" />
+    <Compile Include="Areas\Back\Controllers\MenueController.cs" />
+    <Compile Include="Areas\Back\Controllers\PermissionController.cs" />
+    <Compile Include="Areas\Back\Controllers\RoleController.cs" />
     <Compile Include="Areas\Back\Controllers\UserController.cs" />
     <Compile Include="Areas\Back\Controllers\UserLogController.cs" />
+    <Compile Include="Areas\Back\Controllers\UserViewController.cs" />
     <Compile Include="Areas\Back\Models\Page.cs" />
     <Compile Include="Common\AppConfig.cs" />
     <Compile Include="Controllers\ImageController.cs" />
@@ -395,6 +401,8 @@
     <Content Include="Resource\easyui\themes\default\validatebox.css" />
     <Content Include="Resource\easyui\themes\default\window.css" />
     <Content Include="Resource\easyui\themes\icon.css" />
+    <Content Include="Resource\easyui\themes\icons\menue_home.png" />
+    <Content Include="Resource\easyui\themes\icons\menue.png" />
     <Content Include="Resource\easyui\themes\icons\back.png" />
     <Content Include="Resource\easyui\themes\icons\blank.gif" />
     <Content Include="Resource\easyui\themes\icons\cancel.png" />
@@ -450,6 +458,8 @@
     <Content Include="Areas\Back\Views\Product\Index.cshtml" />
     <Content Include="Areas\Back\Views\HomeInfo\Index.cshtml" />
     <Content Include="Areas\Back\Views\FanKui\Index.cshtml" />
+    <Content Include="Areas\Back\Views\Menue\Index.cshtml" />
+    <Content Include="Areas\Back\Views\Role\Index.cshtml" />
     <None Include="Properties\PublishProfiles\11.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Resource\images\aboutus-bj.png" />
@@ -550,6 +560,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.metadata.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -583,6 +594,7 @@
     <Content Include="Views\Sys\SlideShow.cshtml" />
     <Content Include="Views\Kbase\ShowCases.cshtml" />
     <Content Include="Views\Img\Index.cshtml" />
+    <Content Include="Views\Kbase\feedback.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

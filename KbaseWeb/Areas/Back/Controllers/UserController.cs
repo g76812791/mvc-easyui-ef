@@ -19,22 +19,7 @@ namespace KbaseWeb.Areas.Back.Controllers
         {
             return View();
         }
-        /// <summary>
-        /// 获取用户列表
-        /// </summary>
-        /// <param name="rows">页大小</param>
-        /// <param name="p">第页</param>
-        /// <returns></returns>
-        public override ActionResult GetList(user p)
-        {
-            listWhere = ExpressExtens.True<user>();
-            if (!string.IsNullOrEmpty(p.LoginName))
-            {
-                listWhere = listWhere.And((q) => q.LoginName.Contains(p.LoginName));
-            }
-            listOrder = "Id";
-            return base.GetList(p);
-        }
+        
         public override ActionResult Add(user u)
         {
             Expression<Func<user, bool>> where = q => q.LoginName == u.LoginName.Trim();

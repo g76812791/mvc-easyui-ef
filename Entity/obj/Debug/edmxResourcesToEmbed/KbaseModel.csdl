@@ -66,12 +66,15 @@
     <EntitySet Name="user" EntityType="Self.user" />
     <EntitySet Name="view_loginlog" EntityType="Self.view_loginlog" />
     <EntitySet Name="view_anlidetails" EntityType="kbase_adminModel.view_anlidetails" />
-    <EntitySet Name="question" EntityType="kbase_adminModel.question" />
     <EntitySet Name="image" EntityType="kbase_adminModel.image" />
     <EntitySet Name="homeinfo" EntityType="kbase_adminModel.homeinfo" />
-    <EntitySet Name="product" EntityType="kbase_adminModel.product" />
     <EntitySet Name="daohang" EntityType="kbase_adminModel.daohang" />
     <EntitySet Name="fankui" EntityType="kbase_adminModel.fankui" />
+    <EntitySet Name="menue" EntityType="kbase_adminModel.menue" />
+    <EntitySet Name="permission" EntityType="kbase_adminModel.permission" />
+    <EntitySet Name="role" EntityType="kbase_adminModel.role" />
+    <EntitySet Name="userrole" EntityType="kbase_adminModel.userrole" />
+    <EntitySet Name="view_user" EntityType="kbase_adminModel.view_user" />
   </EntityContainer>
   <EntityType Name="view_anlidetails">
     <Key>
@@ -84,15 +87,6 @@
     <Property Name="CreateTime" Type="DateTime" />
     <Property Name="OrderNum" Type="Int32" />
     <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="question">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="Content" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-    <Property Name="CreatTime" Type="DateTime" />
   </EntityType>
   <EntityType Name="image">
     <Key>
@@ -113,17 +107,6 @@
     <Property Name="OrderNum" Type="Int32" />
     <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Class" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-  </EntityType>
-  <EntityType Name="product">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="Title" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="Content" Type="String" MaxLength="4000" FixedLength="false" Unicode="false" />
-    <Property Name="OrderNum" Type="Int32" />
-    <Property Name="Anchor" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="CreateTime" Type="DateTime" />
   </EntityType>
   <EntityType Name="daohang">
     <Key>
@@ -149,5 +132,53 @@
     <Property Name="UpdateTime" Type="DateTime" />
     <Property Name="Flag" Type="Int16" />
     <Property Name="Remark" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="menue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Icon" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="MenueName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Url" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="Level" Type="Int16" />
+    <Property Name="OrderNum" Type="Int32" />
+  </EntityType>
+  <EntityType Name="permission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Mid" Type="Int64" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="SmallName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Detail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="userrole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Uid" Type="Int64" />
+    <Property Name="Rid" Type="Int64" />
+  </EntityType>
+  <EntityType Name="view_user">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CreatTime" Type="DateTime" />
+    <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

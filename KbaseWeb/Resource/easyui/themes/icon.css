@@ -99,6 +99,13 @@
 .icon-table{
 	background:url('icons/table.png') no-repeat center center;
 }
+.icon-menue{
+    background:url('icons/menue.png') no-repeat center center;
+}
+.icon-menuehome{
+    background:url('icons/menue_home.png') no-repeat center center;
+}
+
 /*¼æÈÝÈÕÆÚ*/
 .textbox{
 	height:20px;

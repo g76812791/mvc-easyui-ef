@@ -17,8 +17,10 @@ namespace KbaseWeb.Controllers
         UserDal dal = new UserDal();
         BaseDal<anlidetails> ddal = new BaseDal<anlidetails>();
         BaseDal<anlitype> tdal = new BaseDal<anlitype>();
-        BaseDal<question> qdal = new BaseDal<question>();
+//        BaseDal<question> qdal = new BaseDal<question>();
         BaseDal<homeinfo> hdal = new BaseDal<homeinfo>();
+//        BaseDal<product> pdal = new BaseDal<product>();
+        BaseDal<fankui> fdal = new BaseDal<fankui>();
         public ActionResult Index()
         {
             var homedata = hdal.GetListTopN(p => 1 == 1, "OrderNum", true, 0).ToList();
@@ -26,12 +28,13 @@ namespace KbaseWeb.Controllers
             return View(homedata);
         }
 
-
-        public ActionResult Product()
-        {
-            ViewBag.Flag = 2;
-            return View();
-        }
+//
+//        public ActionResult Product()
+//        {
+//            //ViewBag.Flag = 2;
+//            var products = pdal.GetListTopN(p => 1 == 1, "OrderNum", true, 0).ToList();
+//            return View(products);
+//        }
         public ActionResult Cases()
         {
            // var tdal = new BaseDal<anlitype>();
@@ -63,15 +66,24 @@ namespace KbaseWeb.Controllers
             ViewBag.Flag = 4;
             return View();
         }
-        public ActionResult Question()
-        {
-            var qdata = qdal.GetListTopN(p=>1==1,"CreatTime",true,0).ToList();
-            ViewBag.Flag = 5;
-            return View(qdata);
-        }
+//        public ActionResult Question()
+//        {
+//            var qdata = qdal.GetListTopN(p=>1==1,"CreatTime",true,0).ToList();
+//            ViewBag.Flag = 5;
+//            return View(qdata);
+//        }
         public ActionResult feedback()
         {
             return View();
+        }
+        public ActionResult SaveFeedback(fankui feedback)
+        {
+            feedback.Flag = 0;
+            var t= fdal.Add(feedback);
+            if (t.Id>0)
+                return Content("<script>alert('提交成功');window.location='/Kbase/Index.do'</script>;");
+            else
+                return Content("<script>alert('提交失败');window.location='/Kbase/Index.do'</script>;");
         }
     }
 }

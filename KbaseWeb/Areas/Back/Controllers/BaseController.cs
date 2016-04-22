@@ -69,6 +69,11 @@ namespace KbaseWeb.Areas.Back.Controllers
             return Json(new { Message = Tip.Success });
         }
 
+        public virtual ActionResult Success(Object en)
+        {
+            return Json(new { Message = Tip.Success ,Context=en});
+        }
+
         public virtual ActionResult Error(Exception e)
         {
             return Json(new { Message = Tip.Error, Context = e.Message });
@@ -143,7 +148,7 @@ namespace KbaseWeb.Areas.Back.Controllers
             try
             {
                 dal.Add(en);
-                return Success();
+                return Success(en);
             }
             catch (Exception e)
             {
@@ -343,12 +348,13 @@ namespace KbaseWeb.Areas.Back.Controllers
 
         #endregion
 
+        #region 处理状态执行sql
 
         public virtual ActionResult Handle(string ids, int Flag)
         {
             try
             {
-                string sql = string.Format("update {0} set flag={1} where Id in ({2})", typeof(T).Name, Flag, ids);
+                string sql = string.Format("update {0} set flag={1} where Id in ({2})", typeof (T).Name, Flag, ids);
                 dal.ExecSqlCommand(sql);
                 return Success();
             }
@@ -358,6 +364,10 @@ namespace KbaseWeb.Areas.Back.Controllers
             }
 
         }
+
+        #endregion
+
+  
     }
 
     #region 控制器过滤

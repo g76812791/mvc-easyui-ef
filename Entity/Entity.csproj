@@ -41,6 +41,10 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dll\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="MySql.Data, Version=6.8.7.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dll\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -61,6 +65,7 @@
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BaseRepository.cs" />
+    <Compile Include="MySqlHelper.cs" />
     <Compile Include="daohang.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
@@ -73,6 +78,7 @@
     <Compile Include="homeinfo.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="HomeTree.cs" />
     <Compile Include="image.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
@@ -94,22 +100,32 @@
     <Compile Include="loginlog.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="menue.cs">
+      <DependentUpon>KbaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Pager.cs" />
     <Compile Include="partuser.cs" />
-    <Compile Include="product.cs">
+    <Compile Include="permission.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="question.cs">
+    <Compile Include="role.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Tree.cs" />
     <Compile Include="user.cs">
+      <DependentUpon>KbaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="userrole.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="view_anlidetails.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
     <Compile Include="view_loginlog.cs">
+      <DependentUpon>KbaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="view_user.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>

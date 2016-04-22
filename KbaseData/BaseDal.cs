@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using Entity;
+using MySql.Data.MySqlClient;
 
 namespace KbaseData
 {
@@ -38,10 +40,9 @@ namespace KbaseData
             IQueryable<T> list = LoadEntities(wherelambda, order, isAsc, topn);
             return list;
         }
-
         /// <summary>
         /// 修改指定字段
-        /// </summary>
+        /// </summary>Expression<Func<T, T>> selector
         /// <param name="u"></param>
         /// <returns></returns>
         public bool Update(T en , string[] fileds)
@@ -91,10 +92,14 @@ namespace KbaseData
         /// </summary>
         /// <param name="sql"></param>
         /// <returns></returns>
-        public bool ExecSqlCommand(string sql)
+        public new bool ExecSqlCommand(string sql)
         {
             return base.ExecSqlCommand(sql);
         }
 
+        public new int ExecuteSqlNonQuery(string commandText, DbParameter[] parameters)
+        {
+            return base.ExecuteSqlNonQuery(commandText, parameters);
+        }
     }
 }

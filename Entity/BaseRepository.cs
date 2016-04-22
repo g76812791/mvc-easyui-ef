@@ -1,16 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Data.Entity.Infrastructure;
+using System.Data.EntityClient;
 using System.Data.Metadata.Edm;
 using System.Data.Objects;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using Comm;
+using MySql.Data.MySqlClient;
+
 namespace Entity
 {
-   
+
     public class BaseRepository<T> where T : class
     {
         //实例化EF框架
@@ -57,7 +62,7 @@ namespace Entity
         public bool DeleByIds(string ids)
         {
             string tableName = typeof(T).Name;
-            return db.Database.ExecuteSqlCommand(string.Format("delete from {0}  WHERE id in ({1})",tableName,ids)) > 0;
+            return db.Database.ExecuteSqlCommand(string.Format("delete from {0}  WHERE id in ({1})", tableName, ids)) > 0;
         }
         /// <summary>
         /// 执行sql命令
@@ -69,6 +74,43 @@ namespace Entity
             return db.Database.ExecuteSqlCommand(sql) > 0;
         }
 
+
+
+        /// <summary>  
+        /// 执行原始SQL命令  
+        /// </summary>  
+        /// <param name="commandText">SQL命令</param>  
+        /// <param name="parameters">参数</param>  
+        /// <returns>影响的记录数</returns>  
+        public int ExecuteSqlNonQuery(string commandText, DbParameter[] parameters)
+        {
+            DbConnection con = db.Database.Connection;
+            DbCommand cmd = con.CreateCommand();
+            cmd.Parameters.AddRange(parameters);
+            cmd.CommandType=CommandType.StoredProcedure;
+            cmd.CommandText = commandText;
+            con.Open();
+            int val=  cmd.ExecuteNonQuery();
+            con.Close();
+            return val;
+
+//           MySqlHelper mysql= new MySqlHelper(db.Database.Connection.ConnectionString);
+//           return mysql.ExecuteNonQuery(CommandType.StoredProcedure, commandText,parameters);
+        }
+        public  int Add(object value)
+        {
+            MySqlParameter mySqlParameter = value as MySqlParameter;
+            if (mySqlParameter == null)
+            {
+                throw new Exception("Only MySqlParameter objects may be stored");
+            }
+            if (mySqlParameter.ParameterName == null || mySqlParameter.ParameterName == string.Empty)
+            {
+                throw new Exception("Parameters must be named");
+            }
+            return 0;
+        }
+
         //查询
         public IQueryable<T> LoadEntities(Expression<Func<T, bool>> wherelambda)
         {
@@ -78,7 +120,7 @@ namespace Entity
         //查询top N topn==0 取得全部
         public IQueryable<T> LoadEntities(Expression<Func<T, bool>> wherelambda, string order, bool isAsc, int topn)
         {
-            if (topn==0)
+            if (topn == 0)
             {
                 return db.Set<T>().Where<T>(wherelambda).OrderBy(order, isAsc).AsQueryable();
 
@@ -89,7 +131,6 @@ namespace Entity
             }
         }
 
-
         /// <summary>
         /// 是否存在
         /// </summary>
@@ -97,8 +138,8 @@ namespace Entity
         /// <returns></returns>
         public bool ExistEntitis(Expression<Func<T, bool>> wherelambda)
         {
-             var tempData = db.Set<T>().Where<T>(wherelambda);
-             return tempData.Count() > 0;
+            var tempData = db.Set<T>().Where<T>(wherelambda);
+            return tempData.Count() > 0;
         }
 
         //分页

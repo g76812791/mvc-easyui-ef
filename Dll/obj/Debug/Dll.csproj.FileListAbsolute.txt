@@ -16,4 +16,3 @@ D:\tfs\KBaseQA\Web\KBaseAdmin\Dll\bin\Debug\Dll.dll
 D:\tfs\KBaseQA\Web\KBaseAdmin\Dll\bin\Debug\Dll.pdb
 D:\tfs\KBaseQA\Web\KBaseAdmin\Dll\obj\Debug\Dll.dll
 D:\tfs\KBaseQA\Web\KBaseAdmin\Dll\obj\Debug\Dll.pdb
-D:\tfs\KBaseQA\Web\KBaseAdmin\Dll\obj\Debug\Dll.csprojResolveAssemblyReference.cache

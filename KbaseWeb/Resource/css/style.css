@@ -16,7 +16,7 @@ a:hover { color:#c12107; text-decoration:underline; }
 /*menu*/
 .top { width:1000px; height:98px; }
 .logo { float:left; padding:30px 0 0 0;	}
-.menu { float:left; width:598px; height:34px; margin:38px 0 24px 180px; }
+.menu { float:left; width:700px; height:34px; margin:38px 0 24px 80px; }
 .menu li { float: left; display: block; *display:inline; width:98px; background:url(../images/indexSpirit.png) 97px 9px no-repeat transparent; }
 .menu li.last { background:none; }
 .menu li a { display:block; width:86px; height:34px; line-height:32px; text-align:center; color:#fff; font-family:微软雅黑; font-size:14px; font-weight:bold; }
@@ -475,4 +475,17 @@ div.sdmenu div a:hover {
 }
 div.sdmenu div span a:hover {
 	background:none;
+}
+/*反馈页面样式*/
+.txtinput {
+    width: 280px;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #ababab;
+    display: inline;
+}
+#fankuitable {
+    font: normal 14px/30px 宋体;
+    text-indent: 2em;
+    color: #555;
 }

@@ -14,7 +14,6 @@ namespace KbaseWeb.Filters
     /// 验证特性（验证是否拥登录）
     /// </summary>
     [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
-   
     public class IsLoginAttribute : ActionFilterAttribute, IActionFilter
     {
         /// <summary>
@@ -51,4 +50,24 @@ namespace KbaseWeb.Filters
             }
         }
     }
+
+    /// <summary>
+    /// 验证特性（验证是否拥有控制器操作权限）
+    /// </summary>
+    [AttributeUsage(AttributeTargets.Method | AttributeTargets.Class, Inherited = true, AllowMultiple = true)]
+    public class CheckAc : ActionFilterAttribute, IActionFilter
+    {
+        public string OpName = string.Empty;
+        public string UserId = string.Empty;
+
+        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            string a = filterContext.ActionDescriptor.ActionName;
+            string b = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
+            var temp = filterContext.ActionParameters;
+            //cacheHelp list dict
+        }
+         
+    }
+
 }
