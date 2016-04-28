@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Comm;
 using Entity;
+using KbaseData;
 
 namespace KbaseWeb.Areas.Back.Controllers
 {
@@ -12,7 +13,7 @@ namespace KbaseWeb.Areas.Back.Controllers
     {
         public RoleController()
         {
-            fileds = new[] {"Name","Detail"};
+            fileds = new[] { "Name", "Detail" };
         }
 
         public ActionResult Index()
@@ -30,7 +31,30 @@ namespace KbaseWeb.Areas.Back.Controllers
             }
             listOrder = "CreateTime";
             return base.GetList(en);
-            
+
+        }
+
+        public ActionResult SaveRoleMenue(long Rid, string Mids)
+        {
+            BaseDal<rolemenue> rmDal = new BaseDal<rolemenue>();
+            rolemenue rmModel = new rolemenue();
+            try
+            {
+                rmDal.ExecSqlCommand(string.Format("delete from {0}  WHERE rid = {1}", "rolemenue", Rid));
+                Mids.Split(',').ToList().ForEach(
+                q =>
+                {
+                    rmModel = new rolemenue() { Rid = Rid, Mid = Convert.ToInt64(q) };
+                    rmDal.Add(rmModel);
+                }
+                );
+                return Success();
+            }
+            catch (Exception e)
+            {
+                return Error(e);
+            }
+
         }
     }
 }
