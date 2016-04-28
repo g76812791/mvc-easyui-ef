@@ -26,7 +26,7 @@ namespace KbaseWeb.Areas.Back.Controllers
             //有条件添加 判断 用户名是否存在
             Expression<Func<user, bool>> where = q => q.LoginName == u.LoginName.Trim();
             string Rid = Request["Rid"];
-
+            userrole urole = new userrole();
             try
             {
                 if (dal.Exist(where))
@@ -40,7 +40,7 @@ namespace KbaseWeb.Areas.Back.Controllers
                     Rid.Split(',').ToList().ForEach(
                         q =>
                         {
-                            userrole urole = new userrole() { Uid = uid, Rid = Convert.ToInt64(q) };
+                            urole = new userrole() { Uid = uid, Rid = Convert.ToInt64(q) };
                             urDal.Add(urole);
                         }
                         );
@@ -64,7 +64,7 @@ namespace KbaseWeb.Areas.Back.Controllers
             fileds = new[] { "LoginName", "Pwd" };
             Expression<Func<user, bool>> where = q => q.Id != u.Id;
             where = where.And(q => q.LoginName == u.LoginName.Trim());
-
+            userrole urole=new userrole();
             try
             {
                 if (dal.Exist(where))
@@ -74,13 +74,13 @@ namespace KbaseWeb.Areas.Back.Controllers
                 else
                 {
                     dal.Update(u, fileds);
-                   
-                    urDal.ExecSqlCommand(string.Format("delete from {0}  WHERE uid = {1}","userrole", u.Id));
+
+                    urDal.ExecSqlCommand(string.Format("delete from {0}  WHERE uid = {1}", "userrole", u.Id));
 
                     Rid.Split(',').ToList().ForEach(
                      q =>
                      {
-                         userrole urole = new userrole() { Uid = u.Id, Rid = Convert.ToInt64(q) };
+                         urole = new userrole() { Uid = u.Id, Rid = Convert.ToInt64(q) };
                          urDal.Add(urole);
                      }
                      );

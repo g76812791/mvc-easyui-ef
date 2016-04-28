@@ -21,6 +21,7 @@
         <EntityTypeShape EntityType="kbase_adminModel.role" Width="1.5" PointX="9.375" PointY="7.75" />
         <EntityTypeShape EntityType="kbase_adminModel.userrole" Width="1.5" PointX="0.75" PointY="10.75" />
         <EntityTypeShape EntityType="kbase_adminModel.view_user" Width="1.5" PointX="5.375" PointY="10.75" />
+        <EntityTypeShape EntityType="kbase_adminModel.rolemenue" Width="1.5" PointX="7.375" PointY="10.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

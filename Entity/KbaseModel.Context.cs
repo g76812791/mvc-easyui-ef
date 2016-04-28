@@ -41,5 +41,6 @@ namespace Entity
         public DbSet<role> role { get; set; }
         public DbSet<userrole> userrole { get; set; }
         public DbSet<view_user> view_user { get; set; }
+        public DbSet<rolemenue> rolemenue { get; set; }
     }
 }

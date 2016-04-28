@@ -181,5 +181,14 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="rolemenue">
+      <EntityTypeMapping TypeName="kbase_adminModel.rolemenue">
+        <MappingFragment StoreEntitySet="rolemenue">
+          <ScalarProperty Name="Mid" ColumnName="Mid" />
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
