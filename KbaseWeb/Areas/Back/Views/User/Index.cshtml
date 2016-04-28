@@ -29,14 +29,6 @@
                         field: 'Name',
                         title: '角色名称',
                         width: 200
-                    }, {
-                        field: 'Id',
-                        title: '操作',
-                        width: 200,
-                        formatter: function (value, row, index) {
-                            return "<a href='javascript:op.role(" + row.Id + ")'>分配角色</a>";
-                        },
-                        align: 'center'
                     }
                 ]],
 
@@ -53,6 +45,15 @@
                 pagePosition: 'bottom',
             });
 
+
+            $('#combo').combobox({
+                valueField: 'Id',
+                textField: 'Name',
+                url: '/Back/User/GetCombo',
+                multiple:true,
+                required: true,
+                editable: false
+            });
 
         });
         var url = '';
@@ -151,11 +152,12 @@
     </div>
 </div>
 <!--弹出添加用户-->
-<div id="dlg" class="easyui-dialog" modal="true" style="width:300px;height:180px;padding:10px 20px"
+<div id="dlg" class="easyui-dialog" modal="true" style="width:300px;height:280px;padding:10px 20px"
      closed="true" buttons="#dlg-buttons">
     <form id="fm" method="post">
         <p>帐号：<input name="LoginName" id="LoginName" class="easyui-validatebox" data-options="required:true"></p>
         <p>密码：<input name="Pwd" id="Pwd" class="easyui-validatebox" data-options="required:true"></p>
+        <p>角色：<input id="combo" name="Rid" style="width:152px;" ></p>
     </form>
 </div>
 <div id="dlg-buttons">

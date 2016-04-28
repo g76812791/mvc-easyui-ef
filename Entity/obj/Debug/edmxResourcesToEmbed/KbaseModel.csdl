@@ -180,5 +180,6 @@
     <Property Name="Pwd" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="CreatTime" Type="DateTime" />
     <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Rid" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

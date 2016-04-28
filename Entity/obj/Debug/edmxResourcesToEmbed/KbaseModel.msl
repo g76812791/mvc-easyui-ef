@@ -172,6 +172,7 @@
     <EntitySetMapping Name="view_user">
       <EntityTypeMapping TypeName="kbase_adminModel.view_user">
         <MappingFragment StoreEntitySet="view_user">
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
           <ScalarProperty Name="Name" ColumnName="Name" />
           <ScalarProperty Name="CreatTime" ColumnName="CreatTime" />
           <ScalarProperty Name="Pwd" ColumnName="Pwd" />

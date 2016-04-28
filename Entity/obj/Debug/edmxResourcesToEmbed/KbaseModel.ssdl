@@ -167,7 +167,8 @@
     <Property Name="LoginName" Type="varchar" MaxLength="50" />
     <Property Name="Pwd" Type="varchar" MaxLength="50" />
     <Property Name="CreatTime" Type="datetime" Precision="0" />
-    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Name" Type="text" />
+    <Property Name="Rid" Type="text" />
   </EntityType>
   <EntityContainer Name="kbase_adminModelStoreContainer">
     <EntitySet Name="anlidetails" EntityType="Self.anlidetails" Schema="kbase_admin" store:Type="Tables" />
@@ -209,7 +210,8 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
 `view_user`.`LoginName`, 
 `view_user`.`Pwd`, 
 `view_user`.`CreatTime`, 
-`view_user`.`Name`
+`view_user`.`Name`, 
+`view_user`.`Rid`
 FROM `view_user` AS `view_user`</DefiningQuery>
     </EntitySet>
   </EntityContainer>
