@@ -178,6 +178,17 @@
     <Property Name="Name" Type="text" />
     <Property Name="Rid" Type="text" />
   </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“def.kbase_admin.view_userrole”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="view_userrole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Uid" Type="bigint" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Rid" Type="bigint" />
+    <Property Name="Id" Type="bigint" Nullable="false" />
+  </EntityType>
   <EntityContainer Name="kbase_adminModelStoreContainer">
     <EntitySet Name="anlidetails" EntityType="Self.anlidetails" Schema="kbase_admin" store:Type="Tables" />
     <EntitySet Name="anlitype" EntityType="Self.anlitype" Schema="kbase_admin" store:Type="Tables" />
@@ -222,6 +233,14 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
 `view_user`.`Name`, 
 `view_user`.`Rid`
 FROM `view_user` AS `view_user`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_userrole" EntityType="Self.view_userrole" store:Type="Views" store:Schema="kbase_admin">
+      <DefiningQuery>SELECT
+`view_userrole`.`Uid`, 
+`view_userrole`.`Name`, 
+`view_userrole`.`Rid`, 
+`view_userrole`.`Id`
+FROM `view_userrole` AS `view_userrole`</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>

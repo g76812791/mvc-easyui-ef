@@ -56,5 +56,26 @@ namespace KbaseWeb.Areas.Back.Controllers
             }
 
         }
+
+        public ActionResult GetRole()
+        {
+          //  base.UserId;
+
+            BaseDal<view_userrole> daluDal= new BaseDal<view_userrole>();
+
+            try
+            {
+                long uid = Convert.ToInt64(base.UserId);
+                var list = daluDal.GetListTopN(q => q.Uid ==uid , "Id", true, 0);
+
+                return DateJson(list);
+            }
+            catch (Exception e)
+            {
+                return Error(e);
+            }
+
+        }
+
     }
 }

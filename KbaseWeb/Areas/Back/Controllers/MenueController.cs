@@ -33,6 +33,7 @@ namespace KbaseWeb.Areas.Back.Controllers
             List<Tree> trees = new List<Tree>();
             List<menue> all = dal.GetListTopN(q => true, "Id", true, 0).ToList();
             List<menue> roots = all.Where(q => q.ParentId == 0).ToList();
+            //菜单表转成easyui tree格式
             foreach (var root in roots)
             {
                 trees.Add(GetDiGuiTree(root, all));

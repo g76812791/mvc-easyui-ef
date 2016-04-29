@@ -60,11 +60,14 @@ namespace KbaseWeb.Areas.Back.Controllers
         {
             BaseDal<menue> mdal= new BaseDal<menue>();
             List<HomeTree> trees = new List<HomeTree>();
+
             List<menue> all = mdal.GetListTopN(q => true, "Id", true, 0).ToList();
             //根节点
             menue root = all.Where(q => q.ParentId == 0).FirstOrDefault();
             //一级子几点
             List<menue> _menus = all.Where(q => q.ParentId == root.Id).ToList();
+
+            //菜单表转成 HomeTree 格式 添加集合
             foreach (var menue in _menus)
             {
                 trees.Add(GetDiGuiTree(menue, all));

@@ -183,6 +183,17 @@
           <Property Name="Name" Type="text" />
           <Property Name="Rid" Type="text" />
         </EntityType>
+        <!--生成过程中发现错误:
+警告 6002: 表/视图“def.kbase_admin.view_userrole”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+        <EntityType Name="view_userrole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Uid" Type="bigint" />
+          <Property Name="Name" Type="varchar" MaxLength="200" />
+          <Property Name="Rid" Type="bigint" />
+          <Property Name="Id" Type="bigint" Nullable="false" />
+        </EntityType>
         <EntityContainer Name="kbase_adminModelStoreContainer">
           <EntitySet Name="anlidetails" EntityType="Self.anlidetails" Schema="kbase_admin" store:Type="Tables" />
           <EntitySet Name="anlitype" EntityType="Self.anlitype" Schema="kbase_admin" store:Type="Tables" />
@@ -227,6 +238,14 @@ FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
 `view_user`.`Name`, 
 `view_user`.`Rid`
 FROM `view_user` AS `view_user`</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="view_userrole" EntityType="Self.view_userrole" store:Type="Views" store:Schema="kbase_admin">
+            <DefiningQuery>SELECT
+`view_userrole`.`Uid`, 
+`view_userrole`.`Name`, 
+`view_userrole`.`Rid`, 
+`view_userrole`.`Id`
+FROM `view_userrole` AS `view_userrole`</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -309,6 +328,7 @@ FROM `view_user` AS `view_user`</DefiningQuery>
           <EntitySet Name="userrole" EntityType="kbase_adminModel.userrole" />
           <EntitySet Name="view_user" EntityType="kbase_adminModel.view_user" />
           <EntitySet Name="rolemenue" EntityType="kbase_adminModel.rolemenue" />
+          <EntitySet Name="view_userrole" EntityType="kbase_adminModel.view_userrole" />
         </EntityContainer>
         <EntityType Name="view_anlidetails">
           <Key>
@@ -423,6 +443,15 @@ FROM `view_user` AS `view_user`</DefiningQuery>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Rid" Type="Int64" />
           <Property Name="Mid" Type="Int64" />
+        </EntityType>
+        <EntityType Name="view_userrole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Uid" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Rid" Type="Int64" />
+          <Property Name="Id" Type="Int64" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -619,6 +648,16 @@ FROM `view_user` AS `view_user`</DefiningQuery>
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="view_userrole">
+            <EntityTypeMapping TypeName="kbase_adminModel.view_userrole">
+              <MappingFragment StoreEntitySet="view_userrole">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Rid" ColumnName="Rid" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Uid" ColumnName="Uid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -634,7 +673,7 @@ FROM `view_user` AS `view_user`</DefiningQuery>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="False" />
         <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="无" />
       </DesignerInfoPropertySet>

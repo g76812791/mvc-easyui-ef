@@ -8,7 +8,7 @@
 @section js{
     <script src="~/Resource/easyui/home.js"></script>
     <script type="text/javascript">
-        var _menus = {
+       /* var _menus = {
             "menus": [
                  {
                      "menuid": "1", "icon": "icon-sys", "menuname": "下载管理",
@@ -42,7 +42,25 @@
                      ]
                  },
             ]
-        };
+        };*/
+
+        $('#Role').combobox({
+            valueField: 'Rid',
+            textField: 'Name',
+            url: '/Back/Role/GetRole',
+            onLoadSuccess: function (data) {
+                $('#Role').combobox('setValue', data[0].Rid);
+            },
+            required: true,
+            editable: false,
+            panelHeight: 'auto',
+            onChange: function (newValue, oldValue) {
+                alert(newValue);
+            }  
+          
+        });
+
+
         //设置登录窗口
         function openPwd() {
             $('#w').window({
@@ -140,7 +158,7 @@
     </div>
 </noscript>
 <div region="north"  split="true" border="false" style="overflow: hidden; height: 30px; background: url( ~/Resource/easyui/images/layout-browser-hd-bg.gif) #7f99be repeat-x center 50%; line-height: 20px; color: #fff; font-family: Verdana, 微软雅黑,黑体">
-    <span style="float:right; padding-right:20px;" class="head">欢迎您 @(CookieHelp.GetCookieValByKey("LoginName")) <a href="#" id="editpass">修改密码</a> <a href="#" id="loginOut">安全退出</a></span>
+    <span style="float:right; padding-right:20px;" class="head">欢迎您 @(CookieHelp.GetCookieValByKey("LoginName"))&nbsp;角色：<input id="Role" style="width:100px;" name="Role"> <a href="#" id="editpass">修改密码</a> <a href="#" id="loginOut">安全退出</a></span>
     <span style="padding-left:10px; font-size: 16px; "><img src="~/Resource/easyui/images/blocks.gif" width="20" height="20" align="absmiddle" /> Kbase后台管理系统</span>
 </div>
 <div region="south" split="false" style="height: 30px; background: #D2E0F2; ">

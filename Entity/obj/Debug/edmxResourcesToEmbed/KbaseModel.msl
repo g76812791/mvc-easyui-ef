@@ -190,5 +190,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="view_userrole">
+      <EntityTypeMapping TypeName="kbase_adminModel.view_userrole">
+        <MappingFragment StoreEntitySet="view_userrole">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Uid" ColumnName="Uid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
