@@ -1,0 +1,248 @@
+﻿@{
+    ViewBag.Title = "角色列表页";
+}
+@section js {
+    <script type="text/javascript">
+        $(function () {
+
+            $('#box').datagrid({
+                width: 700,
+                url: '/Back/Role/GetList',
+                title: '角色列表',
+                iconCls: 'icon-table',
+                height: '400',
+                nowrap: true,
+                striped: true,
+                border: true,
+                collapsible: false,//是否可折叠的
+                fit: true,//自动大小
+                columns: [[
+                    {
+                        field: 'Name',
+                        title: '角色名称',
+                        width: 200,
+                    },
+                    {
+                        field: 'Detail',
+                        title: '角色描述',
+                        width: 200
+                    },
+                    {
+                        field: 'CreateTime',
+                        title: '创建时间',
+                        width: 130
+                    },
+                    {
+                        field: 'Id',
+                        title: '操作',
+                        width: 170,
+                        formatter: function (value, row, index) {
+                            return "<a href='#'  onclick='op.fencaidan(" + row.Id + ")'>分配菜单</a>" +"&nbsp;&nbsp;"+
+                                   "<a href='#'  onclick='op.fenquanxian(" + row.Id + ")'>分配权限</a>"
+                                   ;
+                        },
+                        align:'center'
+                    }
+                ]],
+
+                singleSelect: false,//是否单选
+                rownumbers: true,//行号
+                frozenColumns: [[
+                    { field: 'ck', checkbox: true }
+                ]],
+                toolbar: '#tb',
+                pagination: true,
+                pageSize: 20,
+                pageList: [10, 20, 40, 50, 100],
+                pageNumber: 1,
+                pagePosition: 'bottom',
+            });
+
+
+            $('#menue').tree({
+                
+                checkbox: true, //是否勾选
+                cascadeCheck: true, //是否自动关联父节点
+                onlyLeafCheck: false, //是否最后层级显示checkbox
+
+                url: '/Back/menue/GetTree',
+                formatter: function (node) {
+                    return '' + node.text + '';
+                },
+
+                onClick: function (node) {
+                    // $("#box").datagrid('setTitle', node.text + 'node.text');
+                    if (node.attributes.Level < 2) {
+                        $("#mainPanle").hide();
+                    } else {
+                        $("#mainPanle").show();
+                        var fu = $('#menue').tree('getParent', node.target);
+                        drawtable(fu.text + "->" + node.text + "->" + '权限列表');
+
+                    }
+                },
+                onLoadSuccess: function (node, data) {
+                    if (data) {
+                        $(data).each(function (index, value) {
+                            if (this.state == 'closed') {
+                                $('#menue').tree('expandAll');
+                            }
+                        });
+                    }
+                }
+            });
+
+
+        });
+        
+        var url = '';
+        var op = {
+            search: function () {
+                $('#box').datagrid('load', {
+                    Name: $.trim($('#Name').val()),
+                });
+            },
+            add: function () {
+                $('#dlg').dialog('open').dialog('setTitle', '添加角色');
+                $('#fm').form('clear');
+                url = "/Back/Role/Add";
+            },
+            remove: function () {
+                var rows = $('#box').datagrid('getSelections');
+                if (rows.length > 0) {
+                    $.messager.confirm('确定操作', '您正在要删除所选的记录吗？', function (flag) {
+                        if (flag) {
+                            var ids = [];
+                            for (var i = 0; i < rows.length; i++) {
+                                ids.push(rows[i].Id);
+                            }
+                            ajaxOp.url = "/Back/Role/Delete";
+                            ajaxOp.data = { ids: ids.join(',') };
+                            ajaxOp.su = function (result) {
+                                if (result != null && result.Message == "Success") {
+                                    $('#box').datagrid('reload');
+                                } else {
+                                    $.messager.alert('提示信息', '删除异常！', 'warning');
+                                }
+                            };
+                            ajaxOp.Exec();
+                        }
+                    });
+                } else {
+                    $.messager.alert('提示', '请选择要删除的记录！', 'info');
+                }
+            },
+            edit: function () {
+                debugger
+                var rows = $('#box').datagrid('getSelections');
+                if (rows.length == 1) {
+                    var row = $('#box').datagrid('getSelected');
+                    if (row) {
+                        $('#dlg').dialog('open').dialog('setTitle', '编辑角色');
+                        $('#fm').form('load', row);
+                        url = "/Back/Role/Update?Id=" + row.Id;
+                    }
+                } else {
+                    $.messager.alert('警告', '修改必须或只能选择一行！', 'warning');
+                }
+            },
+            fencaidan: function (id) {
+                debugger
+                $('#hidid').val(id);
+                console.log($('#hidid').val());
+                $('#dlgtree').dialog('open');
+                event.stopPropagation();
+            },
+            fenquanxian:function(id) {
+                alert(id);
+                event.stopPropagation();
+            }
+        };
+
+
+        function save() {
+            $('#fm').form('submit', {
+                url: url,
+                onSubmit: function () {
+                    return $(this).form('validate');
+                },
+                success: function (result) {
+                    result = JSON.parse(result);
+                    if (result != null && result.Message == "Success") {
+                        $('#dlg').dialog('close');
+                        $('#box').datagrid('reload');
+                    }
+                    else {
+                        $.messager.alert({
+                            title: '提示',
+                            msg: result.Context
+                        });
+                    }
+                }
+            });
+        }
+
+        function getChecked() {
+            var arr = [];
+            var checkeds = $('#menue').tree('getChecked', 'checked');
+            for (var i = 0; i < checkeds.length; i++) {
+                arr.push(checkeds[i].id);
+            }
+            return arr.join(',');
+        }
+
+        function savetree() {
+            var Rid = $('#hidid').val();
+            var Mids = getChecked();
+            ajaxOp.url = "/Back/Role/SaveRoleMenue";
+            ajaxOp.data = {  Rid:Rid,Mids:Mids };
+            ajaxOp.su = function (result) {
+                if (result != null && result.Message == "Success") {
+                    $('#box').datagrid('reload');
+                } else {
+                    $.messager.alert('提示信息', '删除异常！', 'warning');
+                }
+            };
+            ajaxOp.Exec();
+        }
+    </script>
+}
+
+<input id="hidid" value="0" type="hidden" />
+
+<table id="box"></table>
+
+
+
+<div id="tb" style="padding:5px;">
+    <div style="margin-bottom:5px;">
+        <a href="#" class="easyui-linkbutton" iconcls="icon-add" onclick="op.add()" plain="true">添加</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-edit" plain="true" onclick="op.edit()">修改</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="op.remove()">删除</a>
+    </div>
+    <div style="padding:0 0 0 7px;color:#333;">
+        角色名称：<input type="text" class="textbox" id="Name" name="Name" style="width:110px">
+        <a href="#" class="easyui-linkbutton" iconcls="icon-search" onclick="op.search();">查询</a>
+    </div>
+</div>
+<!--弹出添加用户-->
+<div id="dlg" class="easyui-dialog" data-options="maximizable:'true',onMaximize:function(){}" draggable="false" modal="true" closed="true" style="width:320px;height:180px;padding:10px 20px" buttons="#dlg-buttons">
+    <form id="fm" method="post">
+        <p>角色名称：<input name="Name" style="width: 200px;" class="easyui-validatebox" data-options="required:true,validType:'isBlank'"></p>
+        <p>角色描述：<input name="Detail" style="width:200px;" ></p>
+    </form>
+</div>
+<div id="dlg-buttons">
+    <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="save()">保存</a>
+    <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlg').dialog('close')">取消</a>
+</div>
+
+<div id="dlgtree" class="easyui-dialog" title="分配菜单" data-options="maximizable:'true',onMaximize:function(){}" draggable="false" modal="true" closed="true" style="width:320px;height:550px;padding:10px 20px" buttons="#dlgtree-buttons">
+    <ul id="menue"></ul>
+</div>
+<div id="dlgtree-buttons">
+    <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="savetree()">保存</a>
+    <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlgtree').dialog('close')">取消</a>
+</div>
+
+

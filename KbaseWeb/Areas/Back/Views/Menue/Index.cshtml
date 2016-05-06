@@ -1,0 +1,390 @@
+﻿@{
+    ViewBag.Title = "菜单/权限管理页";
+    // var action = ViewContext.RouteData.Values["Action"].ToString().ToLower();
+    var controllerName = ViewContext.RouteData.Values["controller"].ToString().ToLower();
+    var areaName = ViewContext.RouteData.DataTokens["area"].ToString();
+}
+@section js {
+    <script type="text/javascript">
+
+        $(function() {
+            $('#menue').tree({
+                onContextMenu: function(e, node) {
+                    e.preventDefault();
+                    $(this).tree('select', node.target);
+
+                    if (node.attributes.Level < 2) {
+                        $("#mainPanle").hide();
+                    } else {
+                        $("#mainPanle").show();
+                        var fu = $('#menue').tree('getParent', node.target);
+                        drawtable(fu.text + "->" + node.text + "->" + '权限列表');
+                    }
+
+                    // 显示快捷菜单
+                    $('#opmenu').menu('show', {
+                        left: e.pageX,
+                        top: e.pageY
+                    });
+
+                    //判断是否根节点删除是否可用
+                    if (node.attributes.Level == 0) {
+                        $('#mm-delete').attr("disabled", "disabled").css({ "cursor": "default", "opacity": "0.4" });
+                        $('#mm-delete').attr('onclick', '');
+                        $('#mm-update').attr("disabled", "disabled").css({ "cursor": "default", "opacity": "0.4" });
+                        $('#mm-update').attr('onclick', '');
+
+                    } else {
+                        $('#mm-delete').removeAttr("disabled").css({ "cursor": "pointer", "opacity": "1" });
+                        $('#mm-delete').attr('onclick', 'opCaidan.remove()');
+                        $('#mm-update').removeAttr("disabled").css({ "cursor": "pointer", "opacity": "1" });
+                        $('#mm-update').attr('onclick', 'opCaidan.edit()');
+
+                    }
+
+                    //根节点和一级节点可以添加菜单
+                    if (node.attributes.Level < 2) {
+                        $('#mm-add').removeAttr("disabled").css({ "cursor": "pointer", "opacity": "1" });
+                        $('#mm-add').attr('onclick', 'opCaidan.add()');
+                    } else {
+                        $('#mm-add').attr("disabled", "disabled").css({ "cursor": "default", "opacity": "0.4" });
+                        $('#mm-add').attr('onclick', '');
+                    }
+                },
+                checkbox: false, //是否勾选
+                cascadeCheck: true, //是否自动关联父节点
+                onlyLeafCheck: true, //是否最后层级显示checkbox
+
+                url: '/Back/menue/GetTree',
+                formatter: function(node) {
+                    return '' + node.text + '';
+                },
+
+                onClick: function(node) {
+                    // $("#box").datagrid('setTitle', node.text + 'node.text');
+                    if (node.attributes.Level < 2) {
+                        $("#mainPanle").hide();
+                    } else {
+                        $("#mainPanle").show();
+                        var fu = $('#menue').tree('getParent', node.target);
+                        drawtable(fu.text + "->" + node.text + "->" + '权限列表');
+
+                    }
+                },
+                onLoadSuccess: function(node, data) {
+                    if (data) {
+                        $(data).each(function(index, value) {
+                            if (this.state == 'closed') {
+                                $('#menue').tree('expandAll');
+                            }
+                        });
+                    }
+                }
+            });
+
+        });
+
+
+        var drawtable = function(title) {
+            var selectnode = $('#menue').tree('getSelected');
+            $('#box').datagrid({
+                width: 700,
+                url: '@Url.Action("GetListByMid", "Permission")',
+                queryParams: { Mid: selectnode.id },
+                title: title,
+                iconCls: 'icon-table',
+                height: '400',
+                nowrap: true,
+                striped: true,
+                border: true,
+                collapsible: false, //是否可折叠的
+                fit: true, //自动大小
+                columns: [
+                    [
+                        {
+                            field: 'Name',
+                            title: '权限名称',
+                            fitColumns: false,
+                            width: 220,
+
+                        },
+                        {
+                            field: 'SmallName',
+                            title: '权限简称',
+                            fitColumns: false,
+                            width: 220,
+                        }
+                    ]
+                ],
+                singleSelect: false, //是否单选
+                rownumbers: true, //行号
+                frozenColumns: [
+                    [
+                        { field: 'ck', checkbox: true }
+                    ]
+                ],
+                toolbar: '#tb',
+            });
+        };
+
+
+        var url = '';
+        var op = {
+            add: function() {
+                var selectnode = $('#menue').tree('getSelected');
+                $('#dlg').dialog('open').dialog('setTitle', '添加权限');
+                $('#fm').form('clear');
+                url = "/Back/Permission/Add?Mid=" + selectnode.id;
+            },
+            remove: function() {
+                var rows = $('#box').datagrid('getSelections');
+                if (rows.length > 0) {
+                    $.messager.confirm('确定操作', '您正在要删除所选的记录吗？', function(flag) {
+                        if (flag) {
+                            var ids = [];
+                            for (var i = 0; i < rows.length; i++) {
+                                ids.push(rows[i].Id);
+                            }
+                            ajaxOp.url = "/Back/Permission/Delete";
+                            ajaxOp.data = { ids: ids.join(',') };
+                            ajaxOp.su = function(result) {
+                                if (result != null && result.Message == "Success") {
+                                    $('#box').datagrid('reload');
+                                } else {
+                                    $.messager.alert('提示信息', '删除异常！', 'warning');
+                                }
+                            };
+                            ajaxOp.Exec();
+                        }
+                    });
+                } else {
+                    $.messager.alert('提示', '请选择要删除的记录！', 'info');
+                }
+            },
+            edit: function() {
+                var rows = $('#box').datagrid('getSelections');
+                if (rows.length == 1) {
+                    var row = $('#box').datagrid('getSelected');
+                    if (row) {
+                        $('#dlg').dialog('open').dialog('setTitle', '编辑权限');
+                        $('#fm').form('load', row);
+                        url = "/Back/Permission/Update?Id=" + row.Id;
+                    }
+                } else {
+                    $.messager.alert('警告', '修改必须或只能选择一行！', 'warning');
+                }
+            },
+            muban: function() {
+                var selectnode = $('#menue').tree('getSelected');
+
+                if (selectnode.attributes.Url != null) {
+                    var SmallName = selectnode.attributes.Url.split('/')[2];
+
+
+                    ajaxOp.url = "/Back/Permission/AddMuBan";
+                    ajaxOp.data = { Mid: selectnode.id, SmallName: SmallName };
+                    ajaxOp.su = function(result) {
+                        if (result != null && result.Message == "Success") {
+                            $('#box').datagrid('reload');
+                        } else {
+                            $.messager.alert('提示信息', '删除异常！', 'warning');
+                        }
+                    };
+                    ajaxOp.Exec();
+                } else {
+                    alert('菜单连接地址不能为空');
+                }
+
+            }
+        };
+
+        var urlCaidan = '';
+        var opCaidan = {
+            add: function() {
+                var node = $('#menue').tree('getSelected');
+                $('#caidan').dialog('open').dialog('setTitle', '添加菜单');
+                $('#fmCaidan').form('clear');
+                $("#Icon").val('icon-set');
+                urlCaidan = "/Back/Menue/Add?ParentId=" + node.id + "&Level=" + (node.attributes.Level + 1);
+            },
+            remove: function() {
+                debugger
+                $.messager.confirm('确定操作', '您正在要删除所选的记录吗？', function(flag) {
+                    if (flag) {
+                        var node = $('#menue').tree('getSelected');
+                        if (node) {
+                            ajaxOp.url = "/Back/Menue/DeleteTree";
+                            ajaxOp.data = { id: node.id };
+                            ajaxOp.su = function(result) {
+
+                                if (result != null && result.Message == "Success") {
+                                    $("#menue").tree("remove", node.target);
+                                    $("#mainPanle").hide();
+                                } else {
+                                    $.messager.alert('提示信息', '删除异常！', 'warning');
+                                }
+                            };
+                            ajaxOp.Exec();
+                        } else {
+                            $.messager.alert('提示', '请选择要删除的记录！', 'info');
+                        }
+                    }
+                });
+            },
+            edit: function() {
+                debugger
+                var selectnode = $('#menue').tree('getSelected');
+                if (selectnode) {
+                    $('#caidan').dialog('open').dialog('setTitle', '编辑菜单');
+                    $('#fmCaidan').form('clear');
+                    $('#fmCaidan').form('load', selectnode.attributes);
+                    $("#MenueName").val(selectnode.text);
+                    urlCaidan = "/Back/Menue/Update?Id=" + selectnode.id;
+                }
+
+            }
+        };
+
+
+        function save() {
+            $('#fm').form('submit', {
+                url: url,
+                onSubmit: function() {
+                    return $(this).form('validate');
+                },
+                success: function(result) {
+                    result = JSON.parse(result);
+                    if (result != null && result.Message == "Success") {
+                        $('#dlg').dialog('close');
+                        $('#box').datagrid('reload');
+                    } else {
+                        $.messager.alert({
+                            title: '提示',
+                            msg: result.Context
+                        });
+                    }
+                }
+            });
+        }
+
+        function saveCaidan() {
+            debugger
+            $('#fmCaidan').form('submit', {
+                url: urlCaidan,
+                onSubmit: function() {
+                    return $(this).form('validate');
+                },
+                success: function(result) {
+                    debugger
+                    var selectnode = $('#menue').tree('getSelected');
+                    result = JSON.parse(result);
+                    $('#caidan').dialog('close');
+
+                    if (result != null && result.Message == "Success") {
+                        if (urlCaidan.indexOf('Add') > 0) {
+                            var node = result.Context;
+                            $('#menue').tree('append', {
+                                parent: selectnode.target,
+                                data: node
+                            });
+                        } else {
+                            selectnode.text = $("#MenueName").val();
+                            selectnode.attributes.Icon = $("#Icon").val();
+                            selectnode.attributes.Url = $("#Url").val();
+                            $('#menue').tree("reload");
+                            $("#mainPanle").hide();
+                            //$('#menue').tree('update', selectnode);
+                        }
+                    } else {
+                        $.messager.alert({
+                            title: '提示',
+                            msg: result.Context
+                        });
+                    }
+
+
+                }
+            });
+        }
+
+
+//全选反选
+        //参数:selected:传入this,表示当前点击的组件
+        //treeMenu:要操作的tree的id；如：id="userTree"
+        function treeChecked(selected, treeMenu) {
+            debugger
+            var roots = $('#' + treeMenu).tree('getRoots'); //返回tree的所有根节点数组
+            if (selected.checked) {
+                for (var i = 0; i < roots.length; i++) {
+                    var node = $('#' + treeMenu).tree('find', roots[i].id); //查找节点
+                    $('#' + treeMenu).tree('check', node.target); //将得到的节点选中
+                }
+            } else {
+                for (var i = 0; i < roots.length; i++) {
+                    var node = $('#' + treeMenu).tree('find', roots[i].id);
+                    $('#' + treeMenu).tree('uncheck', node.target);
+                }
+            }
+        }
+
+
+    </script>
+}
+
+
+<div region="west" iconcls="icon-menue" title="菜单管理" style="width:213px;" id="west">
+    <ul id="menue"></ul>
+@*    <input title="全选/反选" type="checkbox" onclick="treeChecked(this, 'menue')" />*@
+</div>
+
+<div id="opmenu"  class="easyui-menu" style="width:120px;display:none;">
+    <div id="mm-add" onclick="opCaidan.add()" iconcls="icon-add">增加</div>
+    <div id="mm-update" onclick="opCaidan.edit()" iconcls="icon-edit">修改</div>
+    <div id="mm-delete"  onclick="opCaidan.remove()" iconcls="icon-remove">删除</div>
+</div>
+
+
+<div id="mainPanle" iconcls="icon-table" border="false" region="center" style="display: none;" style="background: #eee; overflow-y:hidden">
+    <table id="box"></table>
+
+    <div id="tb" style="padding:5px; display: none;">
+        <div style="margin-bottom:5px;">
+            <a href="#" class="easyui-linkbutton" iconcls="icon-add" onclick="op.add()" plain="true">添加</a>
+            <a href="#" class="easyui-linkbutton" iconcls="icon-edit" plain="true" onclick="op.edit()">修改</a>
+            <a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="op.remove()">删除</a>
+            <a href="#" class="easyui-linkbutton" iconcls="icon-sum" plain="true" onclick="op.muban()">执行模板</a>
+        </div>
+    </div>
+    <!--弹出添加权限-->
+    <div id="dlg" class="easyui-dialog" draggable="false" modal="true" closed="true" style="width:320px;height:200px;padding:10px 20px" buttons="#dlg-buttons">
+        <form id="fm" method="post">
+            <p>权限名称：<input name="Name" id="Name" style="width: 200px;" class="easyui-validatebox" data-options="required:true,validType:'isBlank'"></p>
+            <p>权限简称：<input id="SmallName" style="width:200px;" name="SmallName" class="easyui-validatebox" data-options="required:true,validType:'isBlank'"></p>
+        </form>
+    </div>
+    <div id="dlg-buttons">
+        <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="save()">保存</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlg').dialog('close')">取消</a>
+    </div>
+    
+    <!--弹出添加菜单-->
+    <div id="caidan" class="easyui-dialog"  draggable="false" modal="true" closed="true" style="width:335px;height:260px;padding:10px 20px" buttons="#caidanbuttons">
+        <form id="fmCaidan" method="post">
+            <p>菜单名称：<input name="MenueName" id="MenueName" style="width: 200px;" class="easyui-validatebox" data-options="required:true,validType:'isBlank'"></p>
+            <p>图标样式：<input id="Icon" name="Icon" style="width:200px;" class="easyui-validatebox" ></p>
+            <p>指向连接：<input id="Url" name="Url" style="width: 200px;" class="easyui-validatebox" ></p>
+            <p>顺序号&nbsp;&nbsp;：<input id="OrderNum" name="OrderNum" style="width: 200px;" class="easyui-numberbox" missingmessage="必须为整数 " data-options="required:true"></p>
+        </form>
+    </div>
+    <div id="caidanbuttons">
+        <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="saveCaidan()">保存</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#caidan').dialog('close')">取消</a>
+    </div>
+</div>
+
+
+
+
+
+
+

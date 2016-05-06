@@ -1,0 +1,126 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Highcharts Example</title>
+
+    <script type="text/javascript" src="http://cdn.hcharts.cn/jquery/jquery-1.8.3.min.js"></script>
+    <style type="text/css">
+        $ {
+            demo .css;
+        }
+    </style>
+    <script type="text/javascript">
+        $(function () {
+            $(document).ready(function () {
+                Highcharts.setOptions({
+                    global: {
+                        useUTC: false
+                    }
+                });
+
+                $('#container').highcharts({
+                    chart: {
+                        type: 'spline',
+                        animation: Highcharts.svg, // don't animate in old IE
+                        marginRight: 10,
+                        //                events: {
+                        //                    load: function () {
+                        //
+                        //                        // set up the updating of the chart each second
+                        //                        var series = this.series[0];
+                        //                        setInterval(function () {
+                        //                            var x = (new Date()).getTime(); // current time
+                        //
+                        //
+                        //
+                        //                               // y = Math.random()*1000;
+                        //                            series.addPoint([x, y], true, true);
+                        //                        }, 1000);
+                        //                    }
+                        //                }
+                    },
+                    title: {
+                        text: '过去一秒的检索次数'
+                    },
+                    xAxis: {
+                        type: 'datetime',
+                        tickPixelInterval: 150
+                    },
+                    yAxis: {
+                        title: {
+                            text: '次数'
+                        },
+                        plotLines: [{
+                            value: 0,
+                            width: 1,
+                            color: '#808080'
+                        }]
+                    },
+                    tooltip: {
+                        formatter: function () {
+                            return '<b>' + this.series.name + '</b><br/>' +
+                                Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                                Highcharts.numberFormat(this.y, 2);
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    exporting: {
+                        enabled: false
+                    },
+                    series: [{
+                        name: '时段值',
+                        data: (function () {
+                            // generate an array of random data
+                            var data = [],
+                                time = (new Date()).getTime(),
+                                i;
+
+                            for (i = -19; i <= 0; i += 1) {
+                                data.push({
+                                    x: time + i * 1000,
+                                    y: 0//Math.random()
+                                });
+                            }
+                            return data;
+                        }())
+                    }]
+                });
+            });
+
+
+            //获取后台数据
+            function getForm() {
+                $.ajax({
+                    type: "get",
+                    url: "http://localhost:22479/api/KeyWord?word=gfdgfdg",
+                    dataType: "jsonp",
+                    //成功获取数据
+                    success: function (data) {
+                        debugger 
+                        // set up the updating of the chart each second
+                        var series = this.series[0];
+                        var x = (new Date()).getTime(), // current time
+                         y = Math.random() * 1000;
+                        series.addPoint([x, y], true, true);
+                    }
+
+                });
+            }
+
+            window.setInterval(getForm, 1000);
+
+        });
+    </script>
+</head>
+<body>
+    <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
+    <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
+
+    <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+</body>
+</html>
