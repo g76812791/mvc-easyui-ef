@@ -41,6 +41,27 @@ namespace KbaseWeb.Areas.Back.Controllers
             return Json(trees);
         }
 
+        public ActionResult GetTreeByRid(long Rid)
+        {
+
+//            BaseDal<rolemenue> rmDal = new BaseDal<rolemenue>();
+//            try
+//            {
+//                var list= rmDal.GetListTopN(q => q.Rid == Rid, "Id", true, 0);
+//                return DateJson(list);
+//            }
+
+            List<Tree> trees = new List<Tree>();
+            List<menue> all = dal.GetListTopN(q => true, "Id", true, 0).ToList();
+            List<menue> roots = all.Where(q => q.ParentId == 0).ToList();
+            //菜单表转成easyui tree格式
+            foreach (var root in roots)
+            {
+                trees.Add(GetDiGuiTree(root, all));
+            }
+            return Json(trees);
+        }
+        
         /// <summary>
         /// 递归获取数据
         /// </summary>

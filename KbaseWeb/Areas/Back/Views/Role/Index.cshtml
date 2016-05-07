@@ -127,14 +127,10 @@
             }
         }
         
-        var innertree = function() {
+        var innertree = function(Rid) {
 
             $('#innertree').tree({
-                url: '/Back/menue/GetTree',
-                formatter: function(node) {
-                    return '' + node.text + '';
-                },
-
+                url: '/Back/menue/GetTreeByRid?Rid='+Rid,
                 onClick: function(node) {
                     // $("#box").datagrid('setTitle', node.text + 'node.text');
                     if (node.attributes.Level < 2) {
@@ -264,7 +260,7 @@
                 event.stopPropagation();
             },
             fenquanxian: function(id) {
-                innertree();
+                innertree(id);
                 $('#dlgsplit').dialog('open');
                 event.stopPropagation();
             }
@@ -293,8 +289,9 @@
         }
 
         function getChecked() {
+            debugger 
             var arr = [];
-            var checkeds = $('#menue').tree('getChecked', 'checked');
+            var checkeds = $('#menue').tree('getCheckedExt');
             for (var i = 0; i < checkeds.length; i++) {
                 arr.push(checkeds[i].id);
             }
@@ -308,7 +305,7 @@
             ajaxOp.data = { Rid: Rid, Mids: Mids };
             ajaxOp.su = function(result) {
                 if (result != null && result.Message == "Success") {
-                    $('#box').datagrid('reload');
+                    $('#dlgtree').dialog('close');
                 } else {
                     $.messager.alert('提示信息', '删除异常！', 'warning');
                 }
@@ -355,9 +352,9 @@
     <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlgtree').dialog('close')">取消</a>
 </div>
 
-<div id="dlgsplit" class="easyui-dialog" title="分配权限" data-options="maximizable:'true',onMaximize:function(){}" draggable="false" modal="true" closed="true" style="width:520px;height:550px;" buttons="#dlgsplit-buttons">
+<div id="dlgsplit" class="easyui-dialog" title="分配权限" data-options="maximizable:'true',onMaximize:function(){}" draggable="false" modal="true" closed="true" style="width:820px;height:550px;" buttons="#dlgsplit-buttons">
     <div class="easyui-layout" fit="true">
-        <div region="west" split="true">
+        <div region="west" style="width: 190px;" split="true">
             <ul id="innertree">
             </ul>
         </div>
