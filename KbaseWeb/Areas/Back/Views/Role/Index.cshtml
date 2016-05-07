@@ -3,7 +3,7 @@
 }
 @section js {
     <script type="text/javascript">
-        $(function () {
+        $(function() {
 
             $('#box').datagrid({
                 width: 700,
@@ -14,42 +14,45 @@
                 nowrap: true,
                 striped: true,
                 border: true,
-                collapsible: false,//是否可折叠的
-                fit: true,//自动大小
-                columns: [[
-                    {
-                        field: 'Name',
-                        title: '角色名称',
-                        width: 200,
-                    },
-                    {
-                        field: 'Detail',
-                        title: '角色描述',
-                        width: 200
-                    },
-                    {
-                        field: 'CreateTime',
-                        title: '创建时间',
-                        width: 130
-                    },
-                    {
-                        field: 'Id',
-                        title: '操作',
-                        width: 170,
-                        formatter: function (value, row, index) {
-                            return "<a href='#'  onclick='op.fencaidan(" + row.Id + ")'>分配菜单</a>" +"&nbsp;&nbsp;"+
-                                   "<a href='#'  onclick='op.fenquanxian(" + row.Id + ")'>分配权限</a>"
-                                   ;
+                collapsible: false, //是否可折叠的
+                fit: true, //自动大小
+                columns: [
+                    [
+                        {
+                            field: 'Name',
+                            title: '角色名称',
+                            width: 200,
                         },
-                        align:'center'
-                    }
-                ]],
+                        {
+                            field: 'Detail',
+                            title: '角色描述',
+                            width: 200
+                        },
+                        {
+                            field: 'CreateTime',
+                            title: '创建时间',
+                            width: 130
+                        },
+                        {
+                            field: 'Id',
+                            title: '操作',
+                            width: 170,
+                            formatter: function(value, row, index) {
+                                return "<a href='#'  onclick='op.fencaidan(" + row.Id + ")'>分配菜单</a>" + "&nbsp;&nbsp;" +
+                                    "<a href='#'  onclick='op.fenquanxian(" + row.Id + ")'>分配权限</a>";
+                            },
+                            align: 'center'
+                        }
+                    ]
+                ],
 
-                singleSelect: false,//是否单选
-                rownumbers: true,//行号
-                frozenColumns: [[
-                    { field: 'ck', checkbox: true }
-                ]],
+                singleSelect: false, //是否单选
+                rownumbers: true, //行号
+                frozenColumns: [
+                    [
+                        { field: 'ck', checkbox: true }
+                    ]
+                ],
                 toolbar: '#tb',
                 pagination: true,
                 pageSize: 20,
@@ -60,17 +63,16 @@
 
 
             $('#menue').tree({
-                
                 checkbox: true, //是否勾选
                 cascadeCheck: true, //是否自动关联父节点
                 onlyLeafCheck: false, //是否最后层级显示checkbox
 
                 url: '/Back/menue/GetTree',
-                formatter: function (node) {
+                formatter: function(node) {
                     return '' + node.text + '';
                 },
 
-                onClick: function (node) {
+                onClick: function(node) {
                     // $("#box").datagrid('setTitle', node.text + 'node.text');
                     if (node.attributes.Level < 2) {
                         $("#mainPanle").hide();
@@ -81,9 +83,9 @@
 
                     }
                 },
-                onLoadSuccess: function (node, data) {
+                onLoadSuccess: function(node, data) {
                     if (data) {
-                        $(data).each(function (index, value) {
+                        $(data).each(function(index, value) {
                             if (this.state == 'closed') {
                                 $('#menue').tree('expandAll');
                             }
@@ -94,23 +96,129 @@
 
 
         });
+
+
+        var selectTree = function (Rid) {
+            clearTree();
+            $.ajax({
+                url: "/Back/Role/GetMenueByRid",
+                dataType: "json",
+                cache: false,
+                async: true,
+                data: {Rid:Rid},
+                success: function (data) {
+                    debugger 
+                    $(data).each(function(i, obj) {
+                        var n = $("#menue").tree('find', obj.Mid);
+                        if (n) {
+                            $("#menue").tree('check', n.target);
+                        }
+                    });
+                },
+                error: function() { alert("发送请求失败"); }
+            });
+        }
+
+        var clearTree = function() {
+            var roots = $('#menue').tree('getRoots');
+            for (var i = 0; i < roots.length; i++) {
+                var node = $('#menue').tree('find', roots[i].id);
+                $('#menue').tree('uncheck', node.target);
+            }
+        }
         
+        var innertree = function() {
+
+            $('#innertree').tree({
+                url: '/Back/menue/GetTree',
+                formatter: function(node) {
+                    return '' + node.text + '';
+                },
+
+                onClick: function(node) {
+                    // $("#box").datagrid('setTitle', node.text + 'node.text');
+                    if (node.attributes.Level < 2) {
+                        $("#mainPanle").hide();
+                    } else {
+                        $("#mainPanle").show();
+                        var fu = $('#innertree').tree('getParent', node.target);
+                        drawtable(fu.text + "->" + node.text + "->" + '权限列表');
+
+                    }
+                },
+                onLoadSuccess: function(node, data) {
+                    if (data) {
+                        $(data).each(function(index, value) {
+                            if (this.state == 'closed') {
+                                $('#menue').tree('expandAll');
+                            }
+                        });
+                    }
+                }
+            });
+
+        }
+
+
+        var drawtable = function(title) {
+            var selectnode = $('#innertree').tree('getSelected');
+            $('#innerbox').datagrid({
+                width: 700,
+                url: '@Url.Action("GetListByMid", "Permission")',
+                queryParams: { Mid: selectnode.id },
+                title: title,
+                iconCls: 'icon-table',
+                height: '400',
+                nowrap: true,
+                striped: true,
+                border: true,
+                collapsible: false, //是否可折叠的
+                fit: true, //自动大小
+                columns: [
+                    [
+                        {
+                            field: 'Name',
+                            title: '权限名称',
+                            fitColumns: false,
+                            width: 220,
+
+                        },
+                        {
+                            field: 'SmallName',
+                            title: '权限简称',
+                            fitColumns: false,
+                            width: 220,
+                        }
+                    ]
+                ],
+                singleSelect: false, //是否单选
+
+                frozenColumns: [
+                    [
+                        { field: 'ck', checkbox: true }
+                    ]
+                ],
+
+            });
+        }
+
+
         var url = '';
         var op = {
-            search: function () {
+            search: function() {
                 $('#box').datagrid('load', {
                     Name: $.trim($('#Name').val()),
                 });
             },
-            add: function () {
+            add: function() {
                 $('#dlg').dialog('open').dialog('setTitle', '添加角色');
                 $('#fm').form('clear');
                 url = "/Back/Role/Add";
             },
-            remove: function () {
+            remove: function() {
                 var rows = $('#box').datagrid('getSelections');
                 if (rows.length > 0) {
-                    $.messager.confirm('确定操作', '您正在要删除所选的记录吗？', function (flag) {
+                    $.messager.confirm('确定操作', '您正在要删除所选的记录吗？', function(flag) {
                         if (flag) {
                             var ids = [];
                             for (var i = 0; i < rows.length; i++) {
@@ -118,7 +226,7 @@
                             }
                             ajaxOp.url = "/Back/Role/Delete";
                             ajaxOp.data = { ids: ids.join(',') };
-                            ajaxOp.su = function (result) {
+                            ajaxOp.su = function(result) {
                                 if (result != null && result.Message == "Success") {
                                     $('#box').datagrid('reload');
                                 } else {
@@ -132,7 +240,7 @@
                     $.messager.alert('提示', '请选择要删除的记录！', 'info');
                 }
             },
-            edit: function () {
+            edit: function() {
                 debugger
                 var rows = $('#box').datagrid('getSelections');
                 if (rows.length == 1) {
@@ -146,15 +254,18 @@
                     $.messager.alert('警告', '修改必须或只能选择一行！', 'warning');
                 }
             },
-            fencaidan: function (id) {
+            fencaidan: function(id) {
                 debugger
                 $('#hidid').val(id);
-                console.log($('#hidid').val());
+                selectTree(id);
+
+
                 $('#dlgtree').dialog('open');
                 event.stopPropagation();
             },
-            fenquanxian:function(id) {
-                alert(id);
+            fenquanxian: function(id) {
+                innertree();
+                $('#dlgsplit').dialog('open');
                 event.stopPropagation();
             }
         };
@@ -163,16 +274,15 @@
         function save() {
             $('#fm').form('submit', {
                 url: url,
-                onSubmit: function () {
+                onSubmit: function() {
                     return $(this).form('validate');
                 },
-                success: function (result) {
+                success: function(result) {
                     result = JSON.parse(result);
                     if (result != null && result.Message == "Success") {
                         $('#dlg').dialog('close');
                         $('#box').datagrid('reload');
-                    }
-                    else {
+                    } else {
                         $.messager.alert({
                             title: '提示',
                             msg: result.Context
@@ -195,8 +305,8 @@
             var Rid = $('#hidid').val();
             var Mids = getChecked();
             ajaxOp.url = "/Back/Role/SaveRoleMenue";
-            ajaxOp.data = {  Rid:Rid,Mids:Mids };
-            ajaxOp.su = function (result) {
+            ajaxOp.data = { Rid: Rid, Mids: Mids };
+            ajaxOp.su = function(result) {
                 if (result != null && result.Message == "Success") {
                     $('#box').datagrid('reload');
                 } else {
@@ -244,5 +354,24 @@
     <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="savetree()">保存</a>
     <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlgtree').dialog('close')">取消</a>
 </div>
+
+<div id="dlgsplit" class="easyui-dialog" title="分配权限" data-options="maximizable:'true',onMaximize:function(){}" draggable="false" modal="true" closed="true" style="width:520px;height:550px;" buttons="#dlgsplit-buttons">
+    <div class="easyui-layout" fit="true">
+        <div region="west" split="true">
+            <ul id="innertree">
+            </ul>
+        </div>
+        <div region="center" border="false" border="false">
+            <table id="innerbox" ></table>
+        </div>
+        </div>
+
+      
+    </div>
+<div id="dlgsplit-buttons">
+    <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="savetree()">保存</a>
+    <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlgtree').dialog('close')">取消</a>
+</div>
+
 
 

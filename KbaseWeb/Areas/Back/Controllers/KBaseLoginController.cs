@@ -48,6 +48,12 @@ namespace KbaseWeb.Areas.Back.Controllers
             }
             
         }
+
+        public ActionResult AutoLogin(string Rid)
+        {
+            return new EmptyResult();
+        }
+
         /// <summary>
         /// 登陆退出
         /// </summary>
