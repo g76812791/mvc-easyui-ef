@@ -79,7 +79,7 @@ namespace KbaseWeb.Areas.Back.Controllers
 
         public ActionResult GetMenueByRid(long Rid)
         {
-            BaseDal<rolemenue> rmDal = new BaseDal<rolemenue>();
+            BaseDal<view_rolemenue> rmDal = new BaseDal<view_rolemenue>();
             try
             {
                 var list= rmDal.GetListTopN(q => q.Rid == Rid, "Id", true, 0);

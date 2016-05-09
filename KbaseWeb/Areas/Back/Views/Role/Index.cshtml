@@ -99,6 +99,7 @@
 
 
         var selectTree = function (Rid) {
+            debugger 
             clearTree();
             $.ajax({
                 url: "/Back/Role/GetMenueByRid",
@@ -107,11 +108,14 @@
                 async: true,
                 data: {Rid:Rid},
                 success: function (data) {
-                    debugger 
-                    $(data).each(function(i, obj) {
+                   
+                    $(data).each(function (i, obj) {
+                        debugger
                         var n = $("#menue").tree('find', obj.Mid);
                         if (n) {
-                            $("#menue").tree('check', n.target);
+                            if (obj.Level == 2) {
+                                $("#menue").tree('check', n.target);
+                            }
                         }
                     });
                 },
@@ -253,10 +257,11 @@
             fencaidan: function(id) {
                 debugger
                 $('#hidid').val(id);
+                $('#dlgtree').dialog('open');
                 selectTree(id);
 
 
-                $('#dlgtree').dialog('open');
+              
                 event.stopPropagation();
             },
             fenquanxian: function(id) {
@@ -301,6 +306,7 @@
         function savetree() {
             var Rid = $('#hidid').val();
             var Mids = getChecked();
+            debugger;
             ajaxOp.url = "/Back/Role/SaveRoleMenue";
             ajaxOp.data = { Rid: Rid, Mids: Mids };
             ajaxOp.su = function(result) {

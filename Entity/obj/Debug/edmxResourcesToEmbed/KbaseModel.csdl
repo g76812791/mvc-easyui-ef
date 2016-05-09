@@ -77,6 +77,7 @@
     <EntitySet Name="view_user" EntityType="kbase_adminModel.view_user" />
     <EntitySet Name="rolemenue" EntityType="kbase_adminModel.rolemenue" />
     <EntitySet Name="view_userrole" EntityType="kbase_adminModel.view_userrole" />
+    <EntitySet Name="view_rolemenue" EntityType="kbase_adminModel.view_rolemenue" />
   </EntityContainer>
   <EntityType Name="view_anlidetails">
     <Key>
@@ -200,5 +201,14 @@
     <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
     <Property Name="Rid" Type="Int64" />
     <Property Name="Id" Type="Int64" Nullable="false" />
+  </EntityType>
+  <EntityType Name="view_rolemenue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" />
+    <Property Name="Rid" Type="Int64" />
+    <Property Name="Mid" Type="Int64" />
+    <Property Name="Level" Type="Int16" />
   </EntityType>
 </Schema>

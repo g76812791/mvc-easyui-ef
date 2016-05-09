@@ -200,5 +200,15 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="view_rolemenue">
+      <EntityTypeMapping TypeName="kbase_adminModel.view_rolemenue">
+        <MappingFragment StoreEntitySet="view_rolemenue">
+          <ScalarProperty Name="Level" ColumnName="Level" />
+          <ScalarProperty Name="Mid" ColumnName="Mid" />
+          <ScalarProperty Name="Rid" ColumnName="Rid" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

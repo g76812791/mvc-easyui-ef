@@ -15,10 +15,10 @@ namespace Entity
 using System;
     using System.Collections.Generic;
     
-public partial class view_userrole:Pager
+public partial class view_rolemenue:Pager
 {
 
-    public view_userrole()
+    public view_rolemenue()
     {
 
         
@@ -32,13 +32,13 @@ public partial class view_userrole:Pager
 
     }
 
-    public Nullable<long> Uid { get; set; }
-
-    public string Name { get; set; }
+    public long Id { get; set; }
 
     public Nullable<long> Rid { get; set; }
 
-    public long Id { get; set; }
+    public Nullable<long> Mid { get; set; }
+
+    public Nullable<short> Level { get; set; }
 
 }
 
