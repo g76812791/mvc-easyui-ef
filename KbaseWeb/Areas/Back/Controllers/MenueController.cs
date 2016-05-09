@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common;
 using System.Data.SqlClient;
+using KbaseData;
 using MySql.Data.MySqlClient;
 using System.Linq;
 using System.Net.Mail;
@@ -44,22 +45,23 @@ namespace KbaseWeb.Areas.Back.Controllers
         public ActionResult GetTreeByRid(long Rid)
         {
 
-//            BaseDal<rolemenue> rmDal = new BaseDal<rolemenue>();
-//            try
-//            {
-//                var list= rmDal.GetListTopN(q => q.Rid == Rid, "Id", true, 0);
-//                return DateJson(list);
-//            }
-
+            BaseDal<rolemenue> rmDal = new BaseDal<rolemenue>();
+          
+            var list = rmDal.GetListTopN(q => q.Rid == Rid, "Id", true, 0).Select(q=>q.Mid);
+                
             List<Tree> trees = new List<Tree>();
             List<menue> all = dal.GetListTopN(q => true, "Id", true, 0).ToList();
+            all = all.Where(q => list.Contains(q.Id)).ToList();
             List<menue> roots = all.Where(q => q.ParentId == 0).ToList();
             //菜单表转成easyui tree格式
             foreach (var root in roots)
             {
                 trees.Add(GetDiGuiTree(root, all));
             }
+
             return Json(trees);
+                 
+           
         }
         
         /// <summary>

@@ -61,10 +61,10 @@
             $.extend($.fn.tree.methods, {
                 getCheckedExt: function(jq) {
                     var checked = $(jq).tree("getChecked"); //获取选中的选项 也就是打钩的 
-//                    var checkbox2 = $(jq).tree("getChecked", 'indeterminate'); //获取实心的选项 也就是实心方块的 
-//                    $.each(checkbox2, function(i, e) {
-//                        checked.push(e);
-//                    });
+                    var checkbox2 = $(jq).tree("getChecked", 'indeterminate'); //获取实心的选项 也就是实心方块的 
+                    $.each(checkbox2, function(i, e) {
+                        checked.push(e);
+                    });
                     return checked;
                 }
             });

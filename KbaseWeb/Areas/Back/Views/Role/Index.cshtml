@@ -306,17 +306,20 @@
         function savetree() {
             var Rid = $('#hidid').val();
             var Mids = getChecked();
-            debugger;
-            ajaxOp.url = "/Back/Role/SaveRoleMenue";
-            ajaxOp.data = { Rid: Rid, Mids: Mids };
-            ajaxOp.su = function(result) {
-                if (result != null && result.Message == "Success") {
-                    $('#dlgtree').dialog('close');
-                } else {
-                    $.messager.alert('提示信息', '删除异常！', 'warning');
-                }
-            };
-            ajaxOp.Exec();
+            if (Mids.length == 0) {
+                alert('至少选择一项');
+            } else {
+                ajaxOp.url = "/Back/Role/SaveRoleMenue";
+                ajaxOp.data = { Rid: Rid, Mids: Mids };
+                ajaxOp.su = function (result) {
+                    if (result != null && result.Message == "Success") {
+                        $('#dlgtree').dialog('close');
+                    } else {
+                        $.messager.alert('提示信息', '删除异常！', 'warning');
+                    }
+                };
+                ajaxOp.Exec();
+            }
         }
     </script>
 }
@@ -373,7 +376,7 @@
     </div>
 <div id="dlgsplit-buttons">
     <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="savetree()">保存</a>
-    <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlgtree').dialog('close')">取消</a>
+    <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlgsplit').dialog('close')">取消</a>
 </div>
 
 
