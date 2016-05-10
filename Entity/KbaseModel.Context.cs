@@ -70,6 +70,8 @@ public partial class kbase_adminEntities : DbContext
 
     public DbSet<view_rolemenue> view_rolemenue { get; set; }
 
+    public DbSet<rolepermission> rolepermission { get; set; }
+
 }
 
 }

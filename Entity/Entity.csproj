@@ -115,6 +115,9 @@
     <Compile Include="rolemenue.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="rolepermission.cs">
+      <DependentUpon>KbaseModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Tree.cs" />
     <Compile Include="user.cs">
       <DependentUpon>KbaseModel.tt</DependentUpon>

@@ -122,6 +122,14 @@
     <Property Name="Rid" Type="bigint" />
     <Property Name="Mid" Type="bigint" />
   </EntityType>
+  <EntityType Name="rolepermission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rid" Type="bigint" />
+    <Property Name="Pid" Type="bigint" />
+  </EntityType>
   <EntityType Name="user">
     <Key>
       <PropertyRef Name="Id" />
@@ -213,6 +221,7 @@
     <EntitySet Name="permission" EntityType="Self.permission" Schema="kbase_admin" store:Type="Tables" />
     <EntitySet Name="role" EntityType="Self.role" Schema="kbase_admin" store:Type="Tables" />
     <EntitySet Name="rolemenue" EntityType="Self.rolemenue" Schema="kbase_admin" store:Type="Tables" />
+    <EntitySet Name="rolepermission" EntityType="Self.rolepermission" Schema="kbase_admin" store:Type="Tables" />
     <EntitySet Name="user" EntityType="Self.user" Schema="kbase_admin" store:Type="Tables" />
     <EntitySet Name="userrole" EntityType="Self.userrole" Schema="kbase_admin" store:Type="Tables" />
     <EntitySet Name="view_anlidetails" EntityType="Self.view_anlidetails" store:Type="Views" store:Schema="kbase_admin">

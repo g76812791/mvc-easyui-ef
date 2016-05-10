@@ -65,24 +65,7 @@
             $('#menue').tree({
                 checkbox: true, //是否勾选
                 cascadeCheck: true, //是否自动关联父节点
-                onlyLeafCheck: false, //是否最后层级显示checkbox
-
                 url: '/Back/menue/GetTree',
-                formatter: function(node) {
-                    return '' + node.text + '';
-                },
-
-                onClick: function(node) {
-                    // $("#box").datagrid('setTitle', node.text + 'node.text');
-                    if (node.attributes.Level < 2) {
-                        $("#mainPanle").hide();
-                    } else {
-                        $("#mainPanle").show();
-                        var fu = $('#menue').tree('getParent', node.target);
-                        drawtable(fu.text + "->" + node.text + "->" + '权限列表');
-
-                    }
-                },
                 onLoadSuccess: function(node, data) {
                     if (data) {
                         $(data).each(function(index, value) {
@@ -135,7 +118,9 @@
 
             $('#innertree').tree({
                 url: '/Back/menue/GetTreeByRid?Rid='+Rid,
-                onClick: function(node) {
+                onClick: function (node) {
+                    debugger;
+
                     // $("#box").datagrid('setTitle', node.text + 'node.text');
                     if (node.attributes.Level < 2) {
                         $("#mainPanle").hide();
@@ -161,12 +146,18 @@
 
 
         var drawtable = function(title) {
-            var selectnode = $('#innertree').tree('getSelected');
+            var selectnode = $('#innertree').tree('getSelected');//mid selectnode.id
+            $("#innerbox").datagrid("getPanel").panel("setTitle", title);
+            // $("#innerbox").datagrid('setTitle', title);
+        }
+
+
+        var drawinnerbox= function() {
             $('#innerbox').datagrid({
                 width: 700,
-                url: '@Url.Action("GetListByMid", "Permission")',
-                queryParams: { Mid: selectnode.id },
-                title: title,
+                url: '@Url.Action("GetPermissionByRid", "Permission")',
+                queryParams: { Rid: $('#hidid').val() },
+                title: '所有权限',
                 iconCls: 'icon-table',
                 height: '400',
                 nowrap: true,
@@ -264,8 +255,10 @@
               
                 event.stopPropagation();
             },
-            fenquanxian: function(id) {
+            fenquanxian: function (id) {
+                $('#hidid').val(id);
                 innertree(id);
+                drawinnerbox();
                 $('#dlgsplit').dialog('open');
                 event.stopPropagation();
             }
@@ -321,6 +314,40 @@
                 ajaxOp.Exec();
             }
         }
+
+        function saveper() {
+            debugger 
+            var Rid = $('#hidid').val();
+            var Pids = [];
+            var rows = $('#innerbox').datagrid('getSelections');
+            if (rows.length > 0) {
+                for (var i = 0; i < rows.length; i++) {
+                    Pids.push(rows[i].Id);
+                }
+            }
+            if (Pids.length == 0) {
+                alert('至少选择一项');
+                return;
+            } else {
+                ajaxOp.url = "/Back/Role/SaveRolePer";
+                ajaxOp.data = { Rid: Rid, Pids: Pids.join(',') };
+                ajaxOp.su = function (result) {
+                    if (result != null && result.Message == "Success") {
+                        $('#dlgsplit').dialog('close');
+                    } else {
+                        $.messager.alert('提示信息', '删除异常！', 'warning');
+                    }
+                };
+                ajaxOp.Exec();
+            }
+        }
+
+        function quanxuan() {
+            alert('全选')
+        }
+
+
+
     </script>
 }
 
@@ -367,15 +394,16 @@
             <ul id="innertree">
             </ul>
         </div>
-        <div region="center" border="false" border="false">
-            <table id="innerbox" ></table>
+        <div region="center" id="mainPanle" border="false" border="false">
+            <table id="innerbox"></table>
         </div>
         </div>
 
       
     </div>
 <div id="dlgsplit-buttons">
-    <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="savetree()">保存</a>
+    <span class="l-btn-text " style="float: left; margin-left:189px;"><input type="checkbox" name="qx" value="1" />全选/反选</span>
+    <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="saveper()">保存</a>
     <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlgsplit').dialog('close')">取消</a>
 </div>
 

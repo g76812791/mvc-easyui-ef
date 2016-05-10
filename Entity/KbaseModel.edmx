@@ -127,6 +127,14 @@
           <Property Name="Rid" Type="bigint" />
           <Property Name="Mid" Type="bigint" />
         </EntityType>
+        <EntityType Name="rolepermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Rid" Type="bigint" />
+          <Property Name="Pid" Type="bigint" />
+        </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="Id" />
@@ -218,6 +226,7 @@
           <EntitySet Name="permission" EntityType="Self.permission" Schema="kbase_admin" store:Type="Tables" />
           <EntitySet Name="role" EntityType="Self.role" Schema="kbase_admin" store:Type="Tables" />
           <EntitySet Name="rolemenue" EntityType="Self.rolemenue" Schema="kbase_admin" store:Type="Tables" />
+          <EntitySet Name="rolepermission" EntityType="Self.rolepermission" Schema="kbase_admin" store:Type="Tables" />
           <EntitySet Name="user" EntityType="Self.user" Schema="kbase_admin" store:Type="Tables" />
           <EntitySet Name="userrole" EntityType="Self.userrole" Schema="kbase_admin" store:Type="Tables" />
           <EntitySet Name="view_anlidetails" EntityType="Self.view_anlidetails" store:Type="Views" store:Schema="kbase_admin">
@@ -349,6 +358,7 @@ FROM `view_userrole` AS `view_userrole`</DefiningQuery>
           <EntitySet Name="rolemenue" EntityType="kbase_adminModel.rolemenue" />
           <EntitySet Name="view_userrole" EntityType="kbase_adminModel.view_userrole" />
           <EntitySet Name="view_rolemenue" EntityType="kbase_adminModel.view_rolemenue" />
+          <EntitySet Name="rolepermission" EntityType="kbase_adminModel.rolepermission" />
         </EntityContainer>
         <EntityType Name="view_anlidetails">
           <Key>
@@ -481,6 +491,14 @@ FROM `view_userrole` AS `view_userrole`</DefiningQuery>
           <Property Name="Rid" Type="Int64" />
           <Property Name="Mid" Type="Int64" />
           <Property Name="Level" Type="Int16" />
+        </EntityType>
+        <EntityType Name="rolepermission">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Rid" Type="Int64" />
+          <Property Name="Pid" Type="Int64" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -692,6 +710,15 @@ FROM `view_userrole` AS `view_userrole`</DefiningQuery>
               <MappingFragment StoreEntitySet="view_rolemenue">
                 <ScalarProperty Name="Level" ColumnName="Level" />
                 <ScalarProperty Name="Mid" ColumnName="Mid" />
+                <ScalarProperty Name="Rid" ColumnName="Rid" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rolepermission">
+            <EntityTypeMapping TypeName="kbase_adminModel.rolepermission">
+              <MappingFragment StoreEntitySet="rolepermission">
+                <ScalarProperty Name="Pid" ColumnName="Pid" />
                 <ScalarProperty Name="Rid" ColumnName="Rid" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>

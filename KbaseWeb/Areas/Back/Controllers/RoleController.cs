@@ -57,6 +57,28 @@ namespace KbaseWeb.Areas.Back.Controllers
 
         }
 
+        public ActionResult SaveRolePer(long Rid, string Pids)
+        {
+            BaseDal<rolepermission> rmDal = new BaseDal<rolepermission>();
+            rolepermission rmModel = new rolepermission();
+            try
+            {
+                rmDal.ExecSqlCommand(string.Format("delete from {0}  WHERE rid = {1}", "rolepermission", Rid));
+                Pids.Split(',').ToList().ForEach(
+                q =>
+                {
+                    rmModel = new rolepermission() { Rid = Rid, Pid = Convert.ToInt64(q) };
+                    rmDal.Add(rmModel);
+                }
+                );
+                return Success();
+            }
+            catch (Exception e)
+            {
+                return Error(e);
+            }
+        }
+        
         public ActionResult GetRole()
         {
           //  base.UserId;

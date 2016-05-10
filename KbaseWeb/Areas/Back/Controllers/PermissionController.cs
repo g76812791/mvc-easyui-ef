@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Entity;
+using KbaseData;
 
 namespace KbaseWeb.Areas.Back.Controllers
 {
@@ -23,6 +24,24 @@ namespace KbaseWeb.Areas.Back.Controllers
             return base.GetListTop();
         }
 
+        public ActionResult GetPermissionByRid(long Rid)
+        {
+            BaseDal<view_rolemenue> rmDal = new BaseDal<view_rolemenue>();
+            try
+            {
+                var list = rmDal.GetListTopN(q => q.Rid == Rid, "Id", true, 0).Select(q=>q.Mid).ToList();
+
+                var listpermission= dal.GetListTopN(q=>true, "Id", true, 0).ToList();
+
+                listpermission = listpermission.Where(q => list.Contains(q.Mid)).ToList();
+
+                return DateJson(listpermission);
+            }
+            catch (Exception e)
+            {
+                return Error(e);
+            }
+        }
 
         public ActionResult AddMuBan(long Mid,string SmallName)
         {
