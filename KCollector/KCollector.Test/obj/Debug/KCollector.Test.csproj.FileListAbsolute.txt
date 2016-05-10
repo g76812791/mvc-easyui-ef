@@ -1,9 +1,0 @@
-D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\bin\Debug\KCollector.Test.exe.config
-D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\bin\Debug\KCollector.Test.exe
-D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\bin\Debug\KCollector.Test.pdb
-D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\obj\Debug\KCollector.Test.Properties.Resources.resources
-D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\obj\Debug\KCollector.Test.csproj.GenerateResource.Cache
-D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\obj\Debug\KCollector.Test.exe
-D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\obj\Debug\KCollector.Test.pdb
-D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\obj\Debug\KCollector.Test.Form1.resources
-D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\obj\Debug\KCollector.Test.csprojResolveAssemblyReference.cache
