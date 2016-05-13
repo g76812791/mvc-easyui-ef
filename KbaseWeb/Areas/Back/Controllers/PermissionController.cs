@@ -43,6 +43,23 @@ namespace KbaseWeb.Areas.Back.Controllers
             }
         }
 
+
+        public ActionResult GetPidByRid(long Rid)
+        {
+            BaseDal<rolepermission> rmDal = new BaseDal<rolepermission>();
+            try
+            {
+                var list = rmDal.GetListTopN(q => q.Rid == Rid, "Id", true, 0);
+                return DateJson(list);
+            }
+            catch (Exception e)
+            {
+                return Error(e);
+            }
+        }
+
+
+
         public ActionResult AddMuBan(long Mid,string SmallName)
         {
             List<permission> list= new List<permission>

@@ -148,7 +148,6 @@
         var drawtable = function(title) {
             var selectnode = $('#innertree').tree('getSelected');//mid selectnode.id
             $("#innerbox").datagrid("getPanel").panel("setTitle", title);
-            // $("#innerbox").datagrid('setTitle', title);
         }
 
 
@@ -189,6 +188,34 @@
                         { field: 'ck', checkbox: true }
                     ]
                 ],
+
+                onLoadSuccess: function (data) {
+
+                    $("#dlgsplit .datagrid-header-check input").hide();
+                    /* if (data) {
+
+                        ajaxOp.url = "/Back/Permission/GetPidByRid";
+                        ajaxOp.data = { Rid: $('#hidid').val()};
+                        ajaxOp.su = function (result) {
+                            if (result != null) {
+                                $(data).each(function (i, e) {
+
+
+                                });
+                            } 
+                        };
+                        ajaxOp.Exec();
+
+                       
+
+
+
+
+                    }*/
+                }
+                
+
+
 
             });
         }
@@ -343,7 +370,11 @@
         }
 
         function quanxuan() {
-            alert('全选')
+            if (document.getElementById("qx").checked) {
+                $("#innerbox").datagrid("checkAll");
+            } else {
+                $("#innerbox").datagrid("uncheckAll");
+            }
         }
 
 
@@ -402,7 +433,7 @@
       
     </div>
 <div id="dlgsplit-buttons">
-    <span class="l-btn-text " style="float: left; margin-left:189px;"><input type="checkbox" name="qx" value="1" />全选/反选</span>
+    <span class="l-btn-text " style="float: left; margin-left:189px;"><input type="checkbox" name="qx" id="qx" onchange="quanxuan()" value="1" />全选/反选</span>
     <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="saveper()">保存</a>
     <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlgsplit').dialog('close')">取消</a>
 </div>
