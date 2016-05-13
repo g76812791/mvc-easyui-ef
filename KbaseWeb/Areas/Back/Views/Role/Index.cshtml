@@ -121,13 +121,14 @@
                 onClick: function (node) {
                     debugger;
 
-                    // $("#box").datagrid('setTitle', node.text + 'node.text');
                     if (node.attributes.Level < 2) {
                         $("#mainPanle").hide();
                     } else {
                         $("#mainPanle").show();
                         var fu = $('#innertree').tree('getParent', node.target);
                         drawtable(fu.text + "->" + node.text + "->" + '权限列表');
+
+
 
                     }
                 },
@@ -190,32 +191,31 @@
                 ],
 
                 onLoadSuccess: function (data) {
-
                     $("#dlgsplit .datagrid-header-check input").hide();
-                    /* if (data) {
+                    debugger 
+                     if (data) {
 
                         ajaxOp.url = "/Back/Permission/GetPidByRid";
                         ajaxOp.data = { Rid: $('#hidid').val()};
                         ajaxOp.su = function (result) {
                             if (result != null) {
-                                $(data).each(function (i, e) {
-
-
+                                $(data.rows).each(function (i, e) {
+                                    for (var i = 0; i < result.length; i++) {
+                                        var row = result[i];
+                                        if (e.Id == row.Pid) {
+                                            $("#innerbox").datagrid("selectRow", i);
+                                        }
+                                    }
                                 });
                             } 
                         };
                         ajaxOp.Exec();
 
-                       
-
-
-
-
-                    }*/
+                    }
+                },
+                rowStyler: function (index, row) {
+                        return 'color:red;';
                 }
-                
-
-
 
             });
         }
@@ -278,8 +278,6 @@
                 $('#dlgtree').dialog('open');
                 selectTree(id);
 
-
-              
                 event.stopPropagation();
             },
             fenquanxian: function (id) {
@@ -433,7 +431,7 @@
       
     </div>
 <div id="dlgsplit-buttons">
-    <span class="l-btn-text " style="float: left; margin-left:189px;"><input type="checkbox" name="qx" id="qx" onchange="quanxuan()" value="1" />全选/反选</span>
+    <span class="l-btn-text " style="float: left; margin-left:189px;"><input type="checkbox" name="qx" id="qx" checked="checked" onchange="quanxuan()" value="1" />全选/反选</span>
     <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="saveper()">保存</a>
     <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlgsplit').dialog('close')">取消</a>
 </div>

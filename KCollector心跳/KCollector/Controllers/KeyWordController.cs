@@ -1,23 +1,37 @@
 ﻿
 using System;
+using System.Configuration;
 using System.Web.Http;
 using System.Web.UI.WebControls;
 using Newtonsoft.Json;
 using System.Threading.Tasks;
-
+using ServiceStack.Redis;
+using KCollector.Common;
 namespace KCollector
 {
     public class KeyWordController : ApiController
     {
-     
-        [HttpGet]
-        public int Get(string word)
-        {
-            Random random = new Random();
-            return  random.Next(1, 1000);
+        public static PooledRedisClientManager RedisPool = new PooledRedisClientManager(4000, 20, ConfigurationManager.AppSettings["redisServerIP"] + ":" +
+         ConfigurationManager.AppSettings["redisServerPort"]);//
+        public static string RedisListKey = ConfigurationManager.AppSettings["RedisListKey"].ToString();
 
+        public static long firstcount=0;
+
+        [HttpGet]
+        public long  Get(string word)
+        {
+            long tempcount = 0;
+            using (IRedisClient redisCli = RedisPool.GetClient())
+            {
+                 long count=redisCli.GetListCount(RedisListKey);//获取总数
+                 tempcount= count - firstcount;
+                 firstcount = count;
+            }
+
+            return tempcount;
         }
 
+       
     }
 }
 

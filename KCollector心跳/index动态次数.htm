@@ -22,28 +22,12 @@ $(function () {
             chart:{ 
                 //将报表对象渲染到层上 
                 renderTo:'container' ,
-        
                 type: 'spline',
                 animation: Highcharts.svg, // don't animate in old IE
                 marginRight: 10,
-//                events: {
-//                    load: function () {
-//
-//                        // set up the updating of the chart each second
-//                        var series = this.series[0];
-//                        setInterval(function () {
-//                            var x = (new Date()).getTime(); // current time
-//
-//                               
-//
-//                               // y = Math.random()*1000;
-//                            series.addPoint([x, y], true, true);
-//                        }, 1000);
-//                    }
-//                }
             },
             title: {
-                text: '过去一秒的检索次数'
+                text: ' '
             },
             xAxis: {
                 type: 'datetime',
@@ -63,7 +47,7 @@ $(function () {
                 formatter: function () {
                     return '<b>' + this.series.name + '</b><br/>' +
                         Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
-                        Highcharts.numberFormat(this.y, 2);
+                        Highcharts.numberFormat(this.y, 0);
                 }
             },
             legend: {
@@ -131,7 +115,7 @@ $(function () {
 <script src="http://cdn.hcharts.cn/highcharts/highcharts.js"></script>
 <script src="http://cdn.hcharts.cn/highcharts/modules/exporting.js"></script>
 
-<div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+<div id="container" style="min-width: 310px; height: 100px; margin: 0 auto"></div>
 
 	</body>
 </html>

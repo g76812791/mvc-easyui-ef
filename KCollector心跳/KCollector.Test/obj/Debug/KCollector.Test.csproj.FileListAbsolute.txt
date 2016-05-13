@@ -7,3 +7,12 @@ D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\obj\Debug\KCollector.Test.e
 D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\obj\Debug\KCollector.Test.pdb
 D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\obj\Debug\KCollector.Test.Form1.resources
 D:\tfs\admin2\KBaseQA\Web\KCollector\KCollector.Test\obj\Debug\KCollector.Test.csprojResolveAssemblyReference.cache
+C:\git\KBaseAdmin\KCollector心跳\KCollector.Test\bin\Debug\KCollector.Test.exe.config
+C:\git\KBaseAdmin\KCollector心跳\KCollector.Test\bin\Debug\KCollector.Test.exe
+C:\git\KBaseAdmin\KCollector心跳\KCollector.Test\bin\Debug\KCollector.Test.pdb
+C:\git\KBaseAdmin\KCollector心跳\KCollector.Test\obj\Debug\KCollector.Test.csprojResolveAssemblyReference.cache
+C:\git\KBaseAdmin\KCollector心跳\KCollector.Test\obj\Debug\KCollector.Test.Form1.resources
+C:\git\KBaseAdmin\KCollector心跳\KCollector.Test\obj\Debug\KCollector.Test.Properties.Resources.resources
+C:\git\KBaseAdmin\KCollector心跳\KCollector.Test\obj\Debug\KCollector.Test.csproj.GenerateResource.Cache
+C:\git\KBaseAdmin\KCollector心跳\KCollector.Test\obj\Debug\KCollector.Test.exe
+C:\git\KBaseAdmin\KCollector心跳\KCollector.Test\obj\Debug\KCollector.Test.pdb
