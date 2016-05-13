@@ -145,7 +145,6 @@
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\KbaseController.cs" />
     <Compile Include="Controllers\navigationController.cs" />
-    <Compile Include="Filters\ImageFilter.cs" />
     <Compile Include="Filters\IsLoginAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
