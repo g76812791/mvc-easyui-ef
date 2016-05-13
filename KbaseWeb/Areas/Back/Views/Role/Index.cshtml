@@ -60,7 +60,7 @@
                 pageNumber: 1,
                 pagePosition: 'bottom',
             });
-
+            
 
             $('#menue').tree({
                 checkbox: true, //是否勾选
@@ -120,16 +120,20 @@
                 url: '/Back/menue/GetTreeByRid?Rid='+Rid,
                 onClick: function (node) {
                     debugger;
-
                     if (node.attributes.Level < 2) {
                         $("#mainPanle").hide();
                     } else {
                         $("#mainPanle").show();
                         var fu = $('#innertree').tree('getParent', node.target);
                         drawtable(fu.text + "->" + node.text + "->" + '权限列表');
-
-
-
+                        var innerdata = $("#innerbox").datagrid("getData");
+                        $.each(innerdata.rows, function (i, e) {
+                            if (node.id == e.Mid) {
+                                $("#dlgsplit [datagrid-row-index='" + i + "']").show();
+                            } else {
+                                $("#dlgsplit [datagrid-row-index='" + i + "']").hide();
+                            }
+                        });
                     }
                 },
                 onLoadSuccess: function(node, data) {
@@ -192,9 +196,7 @@
 
                 onLoadSuccess: function (data) {
                     $("#dlgsplit .datagrid-header-check input").hide();
-                    debugger 
                      if (data) {
-
                         ajaxOp.url = "/Back/Permission/GetPidByRid";
                         ajaxOp.data = { Rid: $('#hidid').val()};
                         ajaxOp.su = function (result) {
@@ -210,11 +212,10 @@
                             } 
                         };
                         ajaxOp.Exec();
-
                     }
                 },
                 rowStyler: function (index, row) {
-                        return 'color:red;';
+                        return 'display:none;';
                 }
 
             });
@@ -284,6 +285,7 @@
                 $('#hidid').val(id);
                 innertree(id);
                 drawinnerbox();
+                document.getElementById("qx").checked = true;
                 $('#dlgsplit').dialog('open');
                 event.stopPropagation();
             }
