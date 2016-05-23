@@ -43,6 +43,8 @@
                  },
             ]
         };*/
+
+        var iszairufirst = 0;
         $(function() {
             $('#Role').combobox({
                 valueField: 'Rid',
@@ -55,15 +57,24 @@
                 required: true,
                 editable: false,
                 panelHeight: 'auto',
-//                onChange: function (newValue, oldValue) {
-//                    //                alert(newValue);
-//
-//
-//                window.location.href = "/Back/Home/Index";
-////                      $('#mm-tabcloseall').click();
-////
-////                    InitLeftMenu();
-//                }
+                onChange: function (newValue, oldValue) {
+                    debugger
+                    if (iszairufirst==0) {
+                    } else {
+                        $("#menu").empty();
+                         
+                       // $('#menu').accordion('remove', $('#menu').accordion('getSelected'));
+                            
+                        $('#mm-tabcloseall').click();
+                        InitLeftMenu(newValue);
+                    }
+
+                    iszairufirst++;
+
+
+                    //window.location.href = "/Back/Home/Index"; 重新登陆
+
+                }
 
             });
         })

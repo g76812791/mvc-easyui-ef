@@ -45,13 +45,13 @@
 
 //初始化左侧
 function InitLeftMenu(Rid) {
-    $(".easyui-accordion").empty();
-    var menulist = "";
+    // $(".easyui-accordion").empty();
+        var menulist = "";
     //_menus.menus = _menus.menus.sort(by('menuid'));
 
     ajaxOp.url = "/Back/Home/GetTree?Rid="+Rid;
     ajaxOp.su = function (result) {
-        debugger
+        
         if (result != null) {
             $.each(result, function (i, n) {
                 menulist += '<ul>';
@@ -60,7 +60,7 @@ function InitLeftMenu(Rid) {
                         menulist += '<li><div><a target="mainFrame" ghref="' + o.url + '" ><span class="icon ' + o.icon + '" >&nbsp;</span>' + o.menuname + '</a></div></li> ';
                     });
                 }
-
+                debugger 
                 menulist += '</ul>';
                 $('#menu').accordion('add', {
                     animate: true,
@@ -74,7 +74,7 @@ function InitLeftMenu(Rid) {
 
 
             $('.easyui-accordion li a').click(function () {
-                debugger
+                
                 var tabTitle = $(this).text();
                 var url = $(this).attr("ghref");
                 addTab(tabTitle, url);
