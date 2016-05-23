@@ -60,7 +60,7 @@ function InitLeftMenu(Rid) {
                         menulist += '<li><div><a target="mainFrame" ghref="' + o.url + '" ><span class="icon ' + o.icon + '" >&nbsp;</span>' + o.menuname + '</a></div></li> ';
                     });
                 }
-                debugger 
+
                 menulist += '</ul>';
                 $('#menu').accordion('add', {
                     animate: true,
