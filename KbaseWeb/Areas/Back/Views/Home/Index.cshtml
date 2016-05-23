@@ -43,22 +43,32 @@
                  },
             ]
         };*/
+        $(function() {
+            $('#Role').combobox({
+                valueField: 'Rid',
+                textField: 'Name',
+                url: '/Back/Role/GetRole',
+                onLoadSuccess: function (data) {
+                    $('#Role').combobox('setValue', data[0].Rid);
+                    InitLeftMenu(data[0].Rid);
+                },
+                required: true,
+                editable: false,
+                panelHeight: 'auto',
+//                onChange: function (newValue, oldValue) {
+//                    //                alert(newValue);
+//
+//
+//                window.location.href = "/Back/Home/Index";
+////                      $('#mm-tabcloseall').click();
+////
+////                    InitLeftMenu();
+//                }
 
-        $('#Role').combobox({
-            valueField: 'Rid',
-            textField: 'Name',
-            url: '/Back/Role/GetRole',
-            onLoadSuccess: function (data) {
-                $('#Role').combobox('setValue', data[0].Rid);
-            },
-            required: true,
-            editable: false,
-            panelHeight: 'auto',
-            onChange: function (newValue, oldValue) {
-               // alert(newValue);
-            }  
-          
-        });
+            });
+        })
+        
+       
 
 
         //设置登录窗口

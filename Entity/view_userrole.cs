@@ -21,13 +21,6 @@ public partial class view_userrole:Pager
     public view_userrole()
     {
 
-        
-
-        
-
-        
-
-        
 
 
     }

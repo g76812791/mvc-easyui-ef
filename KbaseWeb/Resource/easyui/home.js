@@ -1,5 +1,5 @@
 ﻿$(function() {
-    InitLeftMenu();
+   // InitLeftMenu();
     tabClose();
     tabCloseEven();
 });
@@ -44,12 +44,12 @@
 
 
 //初始化左侧
-function InitLeftMenu() {
+function InitLeftMenu(Rid) {
     $(".easyui-accordion").empty();
     var menulist = "";
     //_menus.menus = _menus.menus.sort(by('menuid'));
 
-    ajaxOp.url = "/Back/Home/GetTree";
+    ajaxOp.url = "/Back/Home/GetTree?Rid="+Rid;
     ajaxOp.su = function (result) {
         debugger
         if (result != null) {
