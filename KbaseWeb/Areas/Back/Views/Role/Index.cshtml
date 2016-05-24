@@ -201,11 +201,12 @@
                         ajaxOp.data = { Rid: $('#hidid').val()};
                         ajaxOp.su = function (result) {
                             if (result != null) {
-                                $(data.rows).each(function (i, e) {
+                                $(data.rows).each(function (k, e) {
+                                    debugger 
                                     for (var i = 0; i < result.length; i++) {
                                         var row = result[i];
                                         if (e.Id == row.Pid) {
-                                            $("#innerbox").datagrid("selectRow", i);
+                                            $("#innerbox").datagrid("selectRow", k);
                                         }
                                     }
                                 });
