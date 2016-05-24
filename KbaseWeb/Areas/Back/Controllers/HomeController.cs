@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Comm;
 using Entity;
 using KbaseData;
 
@@ -56,10 +58,10 @@ namespace KbaseWeb.Areas.Back.Controllers
                 };*/
 
 
-        public ActionResult GetTree(long Rid)
+        public  ActionResult GetTree(long Rid)
         {
+            //取得角色下的所有菜单
             BaseDal<rolemenue> rmDal = new BaseDal<rolemenue>();
-
             var list = rmDal.GetListTopN(q => q.Rid == Rid, "Id", true, 0).Select(q => q.Mid);
             BaseDal<menue> mdal = new BaseDal<menue>();
             List<HomeTree> trees = new List<HomeTree>();
@@ -75,6 +77,15 @@ namespace KbaseWeb.Areas.Back.Controllers
             {
                 trees.Add(GetDiGuiTree(menue, all));
             }
+
+
+            //权限加载设置
+            List<string> permision = new List<string>() { "1", "2" };
+            CacheHelper.SetCache(base.UserId, permision, 60);
+            Func<List<string>> cc = () => new List<string>();
+            List<string> m = CacheHelper.GetCache(base.UserId, cc);
+
+
             return Json(trees);
         }
 

@@ -34,11 +34,6 @@ namespace KbaseWeb.Areas.Back.Controllers
                 CookieHelp.SetCookies("UserId", u.Id.ToString(), DateTime.Now.AddDays(1));
                 CookieHelp.SetCookies("LoginName", u.LoginName, DateTime.Now.AddDays(1));
                 CookieHelp.SetCookies("long", u.Id.ToString() + u.LoginName, DateTime.Now.AddDays(1));
-                List<string> permision= new List<string>(){"1","2"};
-                CacheHelper.SetCache(base.UserId,permision,30);
-                Func<List<string>> cc = () => new List<string>();
-                List<string> m = CacheHelper.GetCache(base.UserId, cc);
-
                 logDal.Add(u);
                 return Success();
             }
