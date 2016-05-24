@@ -59,7 +59,6 @@
     <Compile Include="DateExtens.cs" />
     <Compile Include="ExpressExtens.cs" />
     <Compile Include="JsonHelp.cs" />
-    <Compile Include="Permission.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

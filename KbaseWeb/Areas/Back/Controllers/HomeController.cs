@@ -78,20 +78,19 @@ namespace KbaseWeb.Areas.Back.Controllers
                 trees.Add(GetDiGuiTree(menue, all));
             }
 
-            //权限设置
-            BaseDal<view_rolemenue> vrmDal = new BaseDal<view_rolemenue>();
+            //  权限设置
+
+            BaseDal<rolepermission> rpDal = new BaseDal<rolepermission>();
+            var vrlist = rpDal.GetListTopN(q => q.Rid == Rid, "Id", true, 0).Select(q => q.Pid).ToList();
             BaseDal<permission> pDal = new BaseDal<permission>();
-            var vrlist = vrmDal.GetListTopN(q => q.Rid == Rid, "Id", true, 0).Select(q => q.Mid).ToList();
-
             var listpermission = pDal.GetListTopN(q => true, "Id", true, 0).ToList();
+            var btnquanxian = listpermission.Where(q => vrlist.Contains(q.Mid)).Select(q => q.SmallName).ToList();
 
-            var btnquanxian = listpermission.Where(q => vrlist.Contains(q.Mid)).Select(q=>q.SmallName).ToList();
+            CacheHelper.SetCache(base.UserId, btnquanxian, 0);
 
-            CacheHelper.SetCache(base.UserId, btnquanxian, 1);
 
-        
 
-           
+
             return Json(trees);
         }
 

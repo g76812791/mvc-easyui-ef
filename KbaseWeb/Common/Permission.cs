@@ -2,8 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Comm;
+using Entity;
+using KbaseData;
 
-namespace Comm
+namespace KbaseWeb.Common
 {
     public static class Permission
     {
@@ -15,7 +18,6 @@ namespace Comm
 
             Func<List<string>> per = () => new List<string>();
             List<string> btnquanxian = CacheHelper.GetCache(UserId, per);
-
 
             if (btnquanxian.Contains(action))
             {
