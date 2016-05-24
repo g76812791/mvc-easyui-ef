@@ -58,7 +58,7 @@ namespace KbaseWeb.Areas.Back.Controllers
                 };*/
 
 
-        public  ActionResult GetTree(long Rid)
+        public ActionResult GetTree(long Rid)
         {
             //取得角色下的所有菜单
             BaseDal<rolemenue> rmDal = new BaseDal<rolemenue>();
@@ -78,14 +78,20 @@ namespace KbaseWeb.Areas.Back.Controllers
                 trees.Add(GetDiGuiTree(menue, all));
             }
 
+            //权限设置
+            BaseDal<view_rolemenue> vrmDal = new BaseDal<view_rolemenue>();
+            BaseDal<permission> pDal = new BaseDal<permission>();
+            var vrlist = vrmDal.GetListTopN(q => q.Rid == Rid, "Id", true, 0).Select(q => q.Mid).ToList();
 
-            //权限加载设置
-            List<string> permision = new List<string>() { "1", "2" };
-            CacheHelper.SetCache(base.UserId, permision, 60);
-            Func<List<string>> cc = () => new List<string>();
-            List<string> m = CacheHelper.GetCache(base.UserId, cc);
+            var listpermission = pDal.GetListTopN(q => true, "Id", true, 0).ToList();
 
+            var btnquanxian = listpermission.Where(q => vrlist.Contains(q.Mid)).Select(q=>q.SmallName).ToList();
 
+            CacheHelper.SetCache(base.UserId, btnquanxian, 1);
+
+        
+
+           
             return Json(trees);
         }
 
@@ -129,5 +135,6 @@ namespace KbaseWeb.Areas.Back.Controllers
             };
             return Node;
         }
+
     }
 }
