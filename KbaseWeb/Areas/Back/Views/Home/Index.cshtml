@@ -58,28 +58,17 @@
                 editable: false,
                 panelHeight: 'auto',
                 onChange: function (newValue, oldValue) {
-
                     if (iszairufirst == 0) {
                     } else {
-
-                        var pnl = $("#menu").accordion("getSelected");
-
-                        if (pnl) {
-                            var title = pnl.panel("options").title;
-                            $('#menu').accordion("remove", title);
+                        var allac = $("#menu .panel").length;
+                        for (var i = 0; i < allac; i++) {
+                             $('#menu').accordion("remove", 0);
                         }
-
-
-
                         $('#mm-tabcloseall').click();
                         InitLeftMenu(newValue);
                     }
-
                     iszairufirst++;
-
-
                     //window.location.href = "/Back/Home/Index"; 重新登陆
-
                 }
 
             });
