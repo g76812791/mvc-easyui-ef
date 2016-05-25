@@ -349,7 +349,7 @@
 
     <div id="tb" style="padding:5px; display: none;">
         <div style="margin-bottom:5px;">
-            @if (Permission.isHasQuanXian(Page.area + "." + Page.contr + ".Add"))
+            @if (Permission.isHasQuanXian(Page.head+"Add"))
             {
                 <a href="#" class="easyui-linkbutton" iconcls="icon-add" onclick=" op.add() " plain="true">添加</a>
             }
