@@ -62,12 +62,20 @@ namespace KbaseWeb.Filters
 
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
-            string a = filterContext.ActionDescriptor.ActionName;
-            string b = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
-            var temp = filterContext.ActionParameters;
-            //cacheHelp list dict
+            //string a = filterContext.ActionDescriptor.ActionName;
+            //string b = filterContext.ActionDescriptor.ControllerDescriptor.ControllerName;
+            //var temp = filterContext.ActionParameters;
+            var controllerName = (filterContext.RouteData.Values["controller"]).ToString().ToLower();
+            var actionName = (filterContext.RouteData.Values["action"]).ToString().ToLower();
+            var areaName = (filterContext.RouteData.DataTokens["area"] == null ? "" : filterContext.RouteData.DataTokens["area"]).ToString();
+            if (Permission.isHasQuanXian(areaName + "." + controllerName + "."+actionName))
+            {
+                HttpContext.Current.Response.Write("<script>alert('没有相关权限')</script>");
+                HttpContext.Current.Response.End();
+            }
+            
         }
-         
+
     }
 
 }
