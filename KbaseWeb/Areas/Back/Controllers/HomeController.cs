@@ -84,13 +84,8 @@ namespace KbaseWeb.Areas.Back.Controllers
             var vrlist = rpDal.GetListTopN(q => q.Rid == Rid, "Id", true, 0).Select(q => q.Pid).ToList();
             BaseDal<permission> pDal = new BaseDal<permission>();
             var listpermission = pDal.GetListTopN(q => true, "Id", true, 0).ToList();
-            var btnquanxian = listpermission.Where(q => vrlist.Contains(q.Mid)).Select(q => q.SmallName).ToList();
-
-            CacheHelper.SetCache(base.UserId, btnquanxian, 0);
-
-
-
-
+            var btnquanxian = listpermission.Where(q => vrlist.Contains(q.Id)).Select(q => q.SmallName).ToList();
+            CacheHelper.SetCache(base.UserId, btnquanxian, 60*24);
             return Json(trees);
         }
 
