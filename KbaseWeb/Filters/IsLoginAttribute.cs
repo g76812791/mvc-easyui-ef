@@ -68,10 +68,12 @@ namespace KbaseWeb.Filters
             var controllerName = (filterContext.RouteData.Values["controller"]).ToString().ToLower();
             var actionName = (filterContext.RouteData.Values["action"]).ToString().ToLower();
             var areaName = (filterContext.RouteData.DataTokens["area"] == null ? "" : filterContext.RouteData.DataTokens["area"]).ToString();
-            if (Permission.isHasQuanXian(areaName + "." + controllerName + "."+actionName))
+            if (!Permission.isHasQuanXian(areaName + "." + controllerName + "."+actionName))
             {
                 HttpContext.Current.Response.Write("<script>alert('没有相关权限')</script>");
                 HttpContext.Current.Response.End();
+                filterContext.Result = new EmptyResult();
+           
             }
             
         }

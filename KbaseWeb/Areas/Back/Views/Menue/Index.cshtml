@@ -1,8 +1,5 @@
 ﻿@{
     ViewBag.Title = "菜单/权限管理页";
-    // var action = ViewContext.RouteData.Values["Action"].ToString().ToLower();
-    var controllerName = ViewContext.RouteData.Values["controller"].ToString();
-    var areaName = ViewContext.RouteData.DataTokens["area"].ToString();
 }
 @section js {
     <script type="text/javascript">
@@ -352,7 +349,7 @@
 
     <div id="tb" style="padding:5px; display: none;">
         <div style="margin-bottom:5px;">
-            @if (Permission.isHasQuanXian(areaName + "." + controllerName + ".Add"))
+            @if (Permission.isHasQuanXian(Page.area + "." + Page.contr + ".Add"))
             {
                 <a href="#" class="easyui-linkbutton" iconcls="icon-add" onclick=" op.add() " plain="true">添加</a>
             }
