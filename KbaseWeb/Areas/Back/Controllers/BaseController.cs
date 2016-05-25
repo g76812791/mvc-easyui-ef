@@ -143,7 +143,7 @@ namespace KbaseWeb.Areas.Back.Controllers
         /// <param name="en"></param>
         /// <param name="where"></param>
         /// <returns></returns>
- //       [CheckAc]
+        //[CheckAc]
         public virtual ActionResult Add(T en)
         {
             try

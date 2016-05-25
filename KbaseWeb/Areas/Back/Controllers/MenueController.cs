@@ -23,7 +23,7 @@ namespace KbaseWeb.Areas.Back.Controllers
         {
             base.fileds = new[] { "Icon", "MenueName", "Url", "OrderNum" };
         }
-       // [CheckAc(OpName = "Add")]
+        //[CheckAc(OpName = "Add")]
         public ActionResult Index()
         {
 
