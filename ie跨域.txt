@@ -1,0 +1,398 @@
+$(document).ready(function () {
+    if ($("#txt_1_value1").val() != "") {
+        NameSpace.keyword.exec(this);
+    }
+    $("#dbTag li,#btnSearch,#divresult,#XuekeNavi_Div a,#newsh_right_histroy li a,#relevanttbl1 a,.listSpan a,#group li a,#rehidenavlist li a").live("click",
+    function () {
+        NameSpace.keyword.exec(this);
+    });
+    $("#searchdiv").keydown(function (event) {
+        if (event.keyCode == 13) {
+            if ($("#searchdiv").html()) {
+                if ($("#searchdiv").html().indexOf("SubmitForm()") > 0) {
+                    NameSpace.keyword.exec();
+                }
+            }
+        }
+    });
+    NameSpace.keyword.UserId.SetKey();
+});
+var NameSpace = window.NameSpace || {};
+NameSpace.keyword = {
+    exec: function (obj) {
+        //        $.ajax({
+        //            type: "post",
+        //            url: "http://localhost:22479/api/KeyWord?appid=kns&UserID=" + NameSpace.keyword.UserId.GetCookie("kc_cnki_net_uid") + "&word=" + NameSpace.keyword.urls(obj)
+        //        });
+        doPost("http://localhost:22479/api/KeyWord?appid=kns&UserID=" + NameSpace.keyword.UserId.GetCookie("kc_cnki_net_uid") + "&word=" + NameSpace.keyword.urls(obj), {});
+        //http://kc.cnki.net/
+        //        $.ajax({
+        //            type: "get",
+        //            dataType: "jsonp",
+        //            url: "http://192.168.100.75/kc/api/KeyWord?appid=kns&UserID=" + NameSpace.keyword.UserId.GetCookie("kc_cnki_net_uid") + "&word=" + NameSpace.keyword.urls(obj)
+        //        })
+    },
+    urls: function (obj) {
+        debugger
+        var model = {};
+        model.sw = NameSpace.keyword.SerchModel();
+        if (obj.tagName) {
+            if (obj.tagName == "A") {
+                if (obj.innerText && obj.innerText != "") {
+                    obj.innerText = obj.innerText.replace("‘", "").replace("的分组结果", "").replace("结果中检索", "");
+                    if (obj.innerText.indexOf("点击显示") > 0) {
+                        obj.innerText = obj.innerText.substr(0, obj.innerText.indexOf("点击显示"));
+                        model.group = { group: obj.innerText }
+                    } else if ($(obj).parent().attr("title1") && $(obj).parent().attr("title1").indexOf("分组") > 0) {
+                        model.group = { group: obj.innerText }
+                    } else {
+                        model.cls = { cls: obj.innerText };
+                    }
+                }
+            }
+        }
+        var parm = {};
+        if (model.sw) {
+            parm.sw = NameSpace.keyword.SerchModelToText(model.sw);
+        }
+        if (model.group) {
+            parm.group = NameSpace.keyword.SerchModelToText(model.group);
+        }
+        if (model.cls) {
+            parm.cls = NameSpace.keyword.SerchModelToText(model.cls);
+        }
+        return encodeURIComponent(JSON.stringify(parm));
+    },
+    isEmpty: function (val) {
+        if (val == "" || val == null) {
+            return true
+        } else {
+            return false
+        }
+    },
+    SerchModel: function () {
+        var obj = {};
+        if (!document.getElementById("DBSwitchDiv")) {
+            obj["txt_1_value1"] = $("#txt_1_value1").val();
+        } else {
+            if (!NameSpace.keyword.isEmpty($("#expertvalue").val())) {
+                obj["expertvalue"] = $("#expertvalue").val();
+            }
+            var alltext = $("#searchdiv input[type='text']");
+            $.each(alltext,
+                function (i, e) {
+                    if (!NameSpace.keyword.isEmpty(e.value)) {
+                        if (e.style.color == "rgb(0, 0, 0)") {
+                            obj[e.id] = e.value;
+                        } else {
+                            if (e.id == "txt_1_value1" && e.value != "") {
+                                obj[e.id] = e.value;
+                            } else {
+                                if ((e.id == "publishdate_from" || e.id == "publishdate_to") && e.value != "点击输入日期") {
+                                    obj[e.id] = e.value;
+                                }
+                            }
+                        }
+                    }
+                });
+        }
+        return obj;
+    },
+    SerchModelToText: function (json) {
+        var data = "";
+        for (var key in json) {
+            data += json[key] + "#";
+        }
+        if (data != "") {
+            data = data.substring(0, data.length - 1);
+        }
+        return data;
+    },
+    UserId: (function () {
+        return {
+            SetNewGuid: function () {
+                var guid = "";
+                for (var i = 1; i <= 32; i++) {
+                    var n = Math.floor(Math.random() * 16).toString(16);
+                    guid += n;
+                    if ((i == 8) || (i == 12) || (i == 16) || (i == 20)) {
+                        guid += "-";
+                    }
+                }
+                return guid;
+            },
+            SetCookie: function (name, value, expiredays) {
+                if (this.GetCookie(name) == "" || this.GetCookie(name) == null) {
+                    var exdate = new Date();
+                    exdate.setDate(exdate.getDate() + expiredays);
+                    document.cookie = name + "=" + escape(value) + ((expiredays == null) ? "" : ";expires=" + exdate.toGMTString()) + (";path=/;domain=cnki.net");
+                }
+            },
+            GetCookie: function (name) {
+                if (document.cookie.length > 0) {
+                    var c_start = document.cookie.indexOf(name + "=");
+                    var c_end;
+                    if (c_start != -1) {
+                        c_start = c_start + name.length + 1;
+                        c_end = document.cookie.indexOf(";", c_start);
+                        if (c_end == -1) {
+                            c_end = document.cookie.length;
+                        }
+                        return unescape(document.cookie.substring(c_start, c_end));
+                    }
+                }
+                return "";
+            },
+            SetKey: function () {
+                var key = NameSpace.keyword.UserId.GetCookie("kc_cnki_net_uid");
+                if (key == "") {
+                    key = NameSpace.keyword.UserId.SetNewGuid();
+                    NameSpace.keyword.UserId.SetCookie("kc_cnki_net_uid", key, 3650);
+                }
+            }
+        }
+    })()
+};
+
+if (typeof JSON !== 'object') {
+    JSON = {};
+}
+
+(function () {
+    'use strict';
+
+    function f(n) {
+        return n < 10 ? '0' + n : n;
+    }
+
+    if (typeof Date.prototype.toJSON !== 'function') {
+
+        Date.prototype.toJSON = function () {
+
+            return isFinite(this.valueOf())
+                ? this.getUTCFullYear() + '-' +
+                    f(this.getUTCMonth() + 1) + '-' +
+                    f(this.getUTCDate()) + 'T' +
+                    f(this.getUTCHours()) + ':' +
+                    f(this.getUTCMinutes()) + ':' +
+                    f(this.getUTCSeconds()) + 'Z'
+                : null;
+        };
+
+        String.prototype.toJSON =
+            Number.prototype.toJSON =
+            Boolean.prototype.toJSON = function () {
+                return this.valueOf();
+            };
+    }
+
+    var cx = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+        escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g,
+        gap,
+        indent,
+        meta = {    // table of character substitutions
+            '\b': '\\b',
+            '\t': '\\t',
+            '\n': '\\n',
+            '\f': '\\f',
+            '\r': '\\r',
+            '"': '\\"',
+            '\\': '\\\\'
+        },
+        rep;
+
+
+    function quote(string) {
+        escapable.lastIndex = 0;
+        return escapable.test(string) ? '"' + string.replace(escapable, function (a) {
+            var c = meta[a];
+            return typeof c === 'string'
+                ? c
+                : '\\u' + ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+        }) + '"' : '"' + string + '"';
+    }
+    function str(key, holder) {
+        var i,          // The loop counter.
+            k,          // The member key.
+            v,          // The member value.
+            length,
+            mind = gap,
+            partial,
+            value = holder[key];
+
+        if (value && typeof value === 'object' &&
+                typeof value.toJSON === 'function') {
+            value = value.toJSON(key);
+        }
+
+
+        if (typeof rep === 'function') {
+            value = rep.call(holder, key, value);
+        }
+
+
+        switch (typeof value) {
+            case 'string':
+                return quote(value);
+
+            case 'number':
+
+
+                return isFinite(value) ? String(value) : 'null';
+
+            case 'boolean':
+            case 'null':
+
+                return String(value);
+            case 'object':
+                if (!value) {
+                    return 'null';
+                }
+                gap += indent;
+                partial = [];
+                if (Object.prototype.toString.apply(value) === '[object Array]') {
+                    length = value.length;
+                    for (i = 0; i < length; i += 1) {
+                        partial[i] = str(i, value) || 'null';
+                    }
+                    v = partial.length === 0
+                        ? '[]'
+                        : gap
+                        ? '[\n' + gap + partial.join(',\n' + gap) + '\n' + mind + ']'
+                        : '[' + partial.join(',') + ']';
+                    gap = mind;
+                    return v;
+                }
+
+                if (rep && typeof rep === 'object') {
+                    length = rep.length;
+                    for (i = 0; i < length; i += 1) {
+                        if (typeof rep[i] === 'string') {
+                            k = rep[i];
+                            v = str(k, value);
+                            if (v) {
+                                partial.push(quote(k) + (gap ? ': ' : ':') + v);
+                            }
+                        }
+                    }
+                } else {
+                    for (k in value) {
+                        if (Object.prototype.hasOwnProperty.call(value, k)) {
+                            v = str(k, value);
+                            if (v) {
+                                partial.push(quote(k) + (gap ? ': ' : ':') + v);
+                            }
+                        }
+                    }
+                }
+
+
+                v = partial.length === 0
+                    ? '{}'
+                    : gap
+                    ? '{\n' + gap + partial.join(',\n' + gap) + '\n' + mind + '}'
+                    : '{' + partial.join(',') + '}';
+                gap = mind;
+                return v;
+        }
+    }
+
+    if (typeof JSON.stringify !== 'function') {
+        JSON.stringify = function (value, replacer, space) {
+            var i;
+            gap = '';
+            indent = '';
+            if (typeof space === 'number') {
+                for (i = 0; i < space; i += 1) {
+                    indent += ' ';
+                }
+
+            } else if (typeof space === 'string') {
+                indent = space;
+            }
+
+            rep = replacer;
+            if (replacer && typeof replacer !== 'function' &&
+                    (typeof replacer !== 'object' ||
+                    typeof replacer.length !== 'number')) {
+                throw new Error('JSON.stringify');
+            }
+            return str('', { '': value });
+        };
+    }
+
+    if (typeof JSON.parse !== 'function') {
+        JSON.parse = function (text, reviver) {
+
+            var j;
+
+            function walk(holder, key) {
+                var k, v, value = holder[key];
+                if (value && typeof value === 'object') {
+                    for (k in value) {
+                        if (Object.prototype.hasOwnProperty.call(value, k)) {
+                            v = walk(value, k);
+                            if (v !== undefined) {
+                                value[k] = v;
+                            } else {
+                                delete value[k];
+                            }
+                        }
+                    }
+                }
+                return reviver.call(holder, key, value);
+            }
+            text = String(text);
+            cx.lastIndex = 0;
+            if (cx.test(text)) {
+                text = text.replace(cx, function (a) {
+                    return '\\u' +
+                        ('0000' + a.charCodeAt(0).toString(16)).slice(-4);
+                });
+            }
+            if (/^[\],:{}\s]*$/
+                    .test(text.replace(/\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, '@')
+                        .replace(/"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, ']')
+                        .replace(/(?:^|:|,)(?:\s*\[)+/g, ''))) {
+                j = eval('(' + text + ')');
+                return typeof reviver === 'function'
+                    ? walk({ '': j }, '')
+                    : j;
+            }
+            throw new SyntaxError('JSON.parse');
+        };
+    }
+}());
+
+
+
+var word_xhr = false;
+
+function createxmlHttpRequest() {
+//    if (window.ActiveXObject) {
+//        try { word_xhr = new ActiveXObject("Msxml2.XMLHTTP.4.0"); }
+//        catch (e1) {
+//            try { word_xhr = new ActiveXObject("Msxml2.XMLHTTP"); }
+//            catch (e2) { { word_xhr = new ActiveXObject("Msxml2.XMLHTTP"); } }
+//        }
+    //    }
+    if (window.XDomainRequest) {
+         word_xhr = new XDomainRequest();
+    } else if (window.XMLHttpRequest) {
+        word_xhr = new XMLHttpRequest();
+    }
+}
+
+
+function doPost(url, data) {
+    createxmlHttpRequest();
+    word_xhr.open("POST", url);
+//    word_xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+//    word_xhr.setRequestHeader("Origin", "http://localhost:22479");
+    word_xhr.send();//data
+//    word_xhr.onreadystatechange = function () {
+//        if ((word_xhr.readyState == 4) && (word_xhr.status == 200)) {
+//            alert('success');
+//        } 
+//    }
+}
