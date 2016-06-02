@@ -18,9 +18,15 @@ namespace Comm
         /// <returns>json字符串</returns>
         public static string SerializeObject(object o)
         {
-            IsoDateTimeConverter timeFormat = new IsoDateTimeConverter();
-            timeFormat.DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
-            string json = JsonConvert.SerializeObject(o, Newtonsoft.Json.Formatting.Indented, timeFormat);
+            JsonSerializerSettings jsSettings = new JsonSerializerSettings();
+            jsSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+            jsSettings.Converters.Add(new IsoDateTimeConverter
+            {
+                DateTimeFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss"
+            });
+            //IsoDateTimeConverter timeFormat = new IsoDateTimeConverter();
+            //timeFormat.DateTimeFormat = "yyyy-MM-dd HH:mm:ss";
+            string json = JsonConvert.SerializeObject(o);//, Newtonsoft.Json.Formatting.Indented, timeFormat
             return json;
         }
 
