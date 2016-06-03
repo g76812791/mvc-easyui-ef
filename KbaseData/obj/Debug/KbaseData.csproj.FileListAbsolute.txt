@@ -49,3 +49,4 @@ C:\git\KBaseAdmin\KbaseData\bin\Debug\Entity.pdb
 C:\git\KBaseAdmin\KbaseData\obj\Debug\KbaseData.csprojResolveAssemblyReference.cache
 C:\git\KBaseAdmin\KbaseData\obj\Debug\KbaseData.dll
 C:\git\KBaseAdmin\KbaseData\obj\Debug\KbaseData.pdb
+C:\git\KBaseAdmin\KbaseData\bin\Debug\QQWry.NET.dll

@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using Comm;
 using Entity;
-
+using System.Web;
 namespace KbaseData
 {
     public class LoginLogDal 
@@ -17,11 +17,13 @@ namespace KbaseData
        /// <param name="u"></param>
         public void Add(user u)
         {
+            QQWry.NET.QQWryLocator qqWry = new QQWry.NET.QQWryLocator(System.Web.HttpContext.Current.Server.MapPath(Config.GetValue<string>("qqwry")));
             BaseRepository<loginlog> dal= new BaseRepository<loginlog>();
             loginlog log = new loginlog();
             log.Uid = u.Id;
             log.Ip = ClientIp.GetClientIP();
             log.LogTime = DateTime.Now;
+            log.Address = qqWry.Query(log.Ip).Country;
             dal.AddEntities(log);
         }
         /// <summary>

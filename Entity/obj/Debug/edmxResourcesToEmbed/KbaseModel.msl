@@ -37,6 +37,7 @@
     <EntitySetMapping Name="loginlog">
       <EntityTypeMapping TypeName="kbase_adminModel.loginlog">
         <MappingFragment StoreEntitySet="loginlog">
+          <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Uid" ColumnName="Uid" />
           <ScalarProperty Name="LogTime" ColumnName="LogTime" />
@@ -57,6 +58,7 @@
     <EntitySetMapping Name="view_loginlog">
       <EntityTypeMapping TypeName="kbase_adminModel.view_loginlog">
         <MappingFragment StoreEntitySet="view_loginlog">
+          <ScalarProperty Name="Address" ColumnName="Address" />
           <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="Uid" ColumnName="Uid" />
           <ScalarProperty Name="LogTime" ColumnName="LogTime" />

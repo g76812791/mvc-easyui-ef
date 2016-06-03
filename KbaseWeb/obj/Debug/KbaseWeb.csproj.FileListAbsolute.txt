@@ -200,3 +200,4 @@ C:\git\KBaseAdmin\KbaseWeb\bin\zh-Hans\System.Web.WebPages.Razor.resources.dll
 C:\git\KBaseAdmin\KbaseWeb\obj\Debug\KbaseWeb.csprojResolveAssemblyReference.cache
 C:\git\KBaseAdmin\KbaseWeb\obj\Debug\KbaseWeb.dll
 C:\git\KBaseAdmin\KbaseWeb\obj\Debug\KbaseWeb.pdb
+C:\git\KBaseAdmin\KbaseWeb\bin\QQWry.NET.dll

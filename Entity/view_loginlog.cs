@@ -31,6 +31,8 @@ public partial class view_loginlog:Pager
 
         
 
+        
+
 
     }
 
@@ -43,6 +45,8 @@ public partial class view_loginlog:Pager
     public string Ip { get; set; }
 
     public string LoginName { get; set; }
+
+    public string Address { get; set; }
 
 }
 

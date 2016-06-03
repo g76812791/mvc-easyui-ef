@@ -544,6 +544,7 @@
     <Content Include="Resource\ckeditor\plugins\wsc\LICENSE.md" />
     <Content Include="Resource\ckeditor\plugins\wsc\README.md" />
     <Content Include="Resource\ckeditor\skins\moono\readme.md" />
+    <Content Include="bin\QQWry.dat" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Resource\images\aboutus-bj.png" />
     <Content Include="Resource\images\an.jpg" />

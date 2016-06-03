@@ -39,8 +39,12 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dll\MySql.Data.dll</HintPath>
     </Reference>
+    <Reference Include="QQWry.NET">
+      <HintPath>..\Dll\QQWry.NET.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />

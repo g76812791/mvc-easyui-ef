@@ -38,6 +38,7 @@
     <Property Name="Uid" Type="Int64" />
     <Property Name="LogTime" Type="DateTime" />
     <Property Name="Ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="user">
     <Key>
@@ -57,6 +58,7 @@
     <Property Name="LogTime" Type="DateTime" />
     <Property Name="Ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityContainer Name="kbase_adminEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="anlidetails" EntityType="Self.anlidetails" />

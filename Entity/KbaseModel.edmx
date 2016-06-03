@@ -88,6 +88,7 @@
           <Property Name="Uid" Type="bigint" />
           <Property Name="LogTime" Type="datetime" Precision="0" />
           <Property Name="Ip" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="menue">
           <Key>
@@ -177,6 +178,7 @@
           <Property Name="LogTime" Type="datetime" Precision="0" />
           <Property Name="Ip" Type="varchar" MaxLength="50" />
           <Property Name="LoginName" Type="varchar" MaxLength="50" />
+          <Property Name="Address" Type="varchar" MaxLength="500" />
         </EntityType>
         <!--生成过程中发现错误:
 警告 6002: 表/视图“def.kbase_admin.view_rolemenue”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -246,7 +248,8 @@ FROM `view_anlidetails` AS `view_anlidetails`</DefiningQuery>
 `view_loginlog`.`Uid`, 
 `view_loginlog`.`LogTime`, 
 `view_loginlog`.`Ip`, 
-`view_loginlog`.`LoginName`
+`view_loginlog`.`LoginName`, 
+`view_loginlog`.`Address`
 FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
           </EntitySet>
           <EntitySet Name="view_rolemenue" EntityType="Self.view_rolemenue" store:Type="Views" store:Schema="kbase_admin">
@@ -318,6 +321,7 @@ FROM `view_userrole` AS `view_userrole`</DefiningQuery>
           <Property Name="Uid" Type="Int64" />
           <Property Name="LogTime" Type="DateTime" />
           <Property Name="Ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
@@ -337,6 +341,7 @@ FROM `view_userrole` AS `view_userrole`</DefiningQuery>
           <Property Name="LogTime" Type="DateTime" />
           <Property Name="Ip" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="LoginName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="kbase_adminEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="anlidetails" EntityType="Self.anlidetails" />
@@ -542,6 +547,7 @@ FROM `view_userrole` AS `view_userrole`</DefiningQuery>
           <EntitySetMapping Name="loginlog">
             <EntityTypeMapping TypeName="kbase_adminModel.loginlog">
               <MappingFragment StoreEntitySet="loginlog">
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Uid" ColumnName="Uid" />
                 <ScalarProperty Name="LogTime" ColumnName="LogTime" />
@@ -562,6 +568,7 @@ FROM `view_userrole` AS `view_userrole`</DefiningQuery>
           <EntitySetMapping Name="view_loginlog">
             <EntityTypeMapping TypeName="kbase_adminModel.view_loginlog">
               <MappingFragment StoreEntitySet="view_loginlog">
+                <ScalarProperty Name="Address" ColumnName="Address" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Uid" ColumnName="Uid" />
                 <ScalarProperty Name="LogTime" ColumnName="LogTime" />

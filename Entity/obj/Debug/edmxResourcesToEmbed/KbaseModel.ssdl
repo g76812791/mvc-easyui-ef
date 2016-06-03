@@ -83,6 +83,7 @@
     <Property Name="Uid" Type="bigint" />
     <Property Name="LogTime" Type="datetime" Precision="0" />
     <Property Name="Ip" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="menue">
     <Key>
@@ -172,6 +173,7 @@
     <Property Name="LogTime" Type="datetime" Precision="0" />
     <Property Name="Ip" Type="varchar" MaxLength="50" />
     <Property Name="LoginName" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="500" />
   </EntityType>
   <!--生成过程中发现错误:
 警告 6002: 表/视图“def.kbase_admin.view_rolemenue”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -241,7 +243,8 @@ FROM `view_anlidetails` AS `view_anlidetails`</DefiningQuery>
 `view_loginlog`.`Uid`, 
 `view_loginlog`.`LogTime`, 
 `view_loginlog`.`Ip`, 
-`view_loginlog`.`LoginName`
+`view_loginlog`.`LoginName`, 
+`view_loginlog`.`Address`
 FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
     </EntitySet>
     <EntitySet Name="view_rolemenue" EntityType="Self.view_rolemenue" store:Type="Views" store:Schema="kbase_admin">

@@ -29,6 +29,8 @@ public partial class loginlog:Pager
 
         
 
+        
+
 
     }
 
@@ -39,6 +41,8 @@ public partial class loginlog:Pager
     public Nullable<System.DateTime> LogTime { get; set; }
 
     public string Ip { get; set; }
+
+    public string Address { get; set; }
 
 }
 

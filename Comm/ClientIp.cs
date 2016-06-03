@@ -40,6 +40,10 @@ namespace Comm
                 clientIP = "127.127.0.1";
             }
 
+            if (clientIP=="::1")
+            {
+                clientIP = "127.0.0.1";
+            }
             return clientIP;
         }
     }
