@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2016-06-03 09:29:58
+Date: 2016-06-03 10:12:53
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -163,11 +163,16 @@ CREATE TABLE `loginlog` (
   `Address` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`Id`),
   KEY `waijian` (`Uid`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COMMENT='登陆日志表';
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8 COMMENT='登陆日志表';
 
 -- ----------------------------
 -- Records of loginlog
 -- ----------------------------
+INSERT INTO `loginlog` VALUES ('12', '3', '2016-06-03 10:02:47', '127.0.0.1', '本机地址');
+INSERT INTO `loginlog` VALUES ('13', '3', '2016-06-03 10:03:17', '127.0.0.1', '本机地址');
+INSERT INTO `loginlog` VALUES ('14', '3', '2016-06-03 10:03:35', '127.0.0.1', '本机地址');
+INSERT INTO `loginlog` VALUES ('15', '3', '2016-06-03 10:07:22', '127.0.0.1', '本机地址');
+INSERT INTO `loginlog` VALUES ('16', '3', '2016-06-03 10:11:22', '127.0.0.1', '本机地址');
 
 -- ----------------------------
 -- Table structure for `menue`
@@ -425,7 +430,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW 
 -- View structure for `view_loginlog`
 -- ----------------------------
 DROP VIEW IF EXISTS `view_loginlog`;
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_loginlog` AS select `a`.`Id` AS `Id`,`a`.`Uid` AS `Uid`,`a`.`LogTime` AS `LogTime`,`a`.`Ip` AS `Ip`,`b`.`LoginName` AS `LoginName` from (`loginlog` `a` left join `user` `b` on((`a`.`Uid` = `b`.`Id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `view_loginlog` AS select `a`.`Id` AS `Id`,`a`.`Uid` AS `Uid`,`a`.`LogTime` AS `LogTime`,`a`.`Ip` AS `Ip`,`b`.`LoginName` AS `LoginName`,`a`.`Address` AS `Address` from (`loginlog` `a` left join `user` `b` on((`a`.`Uid` = `b`.`Id`))) ;
 
 -- ----------------------------
 -- View structure for `view_roleconcat`
