@@ -1,11 +1,29 @@
-﻿@{
+﻿@using Entity;
+@model List<homeinfo>
+@{
     ViewBag.Title = "KBase首页";
 }
 @Html.Partial("~/Views/Sys/SlideShow.cshtml")
 
 <div class="centerinfo clearfix">
+    @foreach (var m in Model)
+    {
+        int i = Model.IndexOf(m);
+        string classname = "";
+        if (i == 0)
+        { classname = "lside"; }
+        if (i == Model.Count - 1)
+        { classname = "rside"; }
+        <div class="@classname">
+            <h2 class="@m.Class"><span class="disn">@m.Title</span></h2>
+            @*<p>@m.Content</p>*@
+            @Html.Raw(m.Content)
+            <a href="@m.Url" class="more"><span class="disn">more</span></a>
+        </div>
 
-    <div class="lside">
+
+    }
+    @*<div class="lside">
         <h2 class="aboutus"><span class="disn">KBase软件介绍（Soft Introduction）</span></h2>
         <p>KBase知识库管理系统是清华同方知网（北京）技术有限公司（“同方知网”）拥有完全自主知识产权的，也是国际上第一个直接支持网格应用的专用数据库系统，对异构数据源提供统一访问和统一管理手段。</p>
         <a href="~/Kbase/product.html#productinfo" class="more"><span class="disn">more</span></a>
@@ -24,14 +42,13 @@
         <h2 class="service"><span class="disn">服务对象</span></h2>
         <p>KBase知识库管理系统性能稳定、功能完善、检索准确高效，可以广泛应用于高校、公共图书馆、医院、科研院所、大型企业、党政机关、中小学图书馆等。</p>
         <a href="~/Kbase/product.html#severobj" class="more"><span class="disn">more</span></a>
-    </div>
+    </div>*@
 
 </div>
-
 <div class="relatedlink">
     <div class="slide">
-        <a href="#" class="prev">&lt;</a>
-        <a href="#" class="next">&gt;</a>
+        <a class="prev">&lt;</a>
+        <a class="next">&gt;</a>
         <div class="slideMask">
             <ul class="plist" style="width:auto;left:0px;">
                 <li><a href="http://www.cnki.net/" target="_blank"><img alt="中国知网" src="@(AppConfig.ImagesPicPath)cnki.png" /></a>
@@ -45,3 +62,34 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function() {
+        function DY_scroll(wraper, prev, next, img, speed, or) {
+            var wraper = $(wraper);
+            var prev = $(prev);
+            var next = $(next);
+            var img = $(img).find('ul');
+            var w = img.find('li').outerWidth(true);
+            var s = speed;
+            next.click(function () {
+                img.animate({ 'margin-left': -w },200, function () {
+                    img.find('li').eq(0).appendTo(img);
+                    img.css({ 'margin-left': 0 });
+                });
+            });
+            prev.click(function () {
+                img.find('li:last').prependTo(img);
+                img.css({ 'margin-left': -w });
+                img.animate({ 'margin-left': 0 },200);
+            });
+            if (or == true) {
+                ad = setInterval(function () { next.click(); }, s * 1000);
+                wraper.hover(function () { clearInterval(ad); }, function () { ad = setInterval(function () { next.click(); }, s * 1000); });
+
+            }
+        }
+        DY_scroll('.slide', '.prev', '.next', '.slideMask', 1, false);// true为自动播放，不加此参数或false就默认不自动
+    });
+   
+</script>

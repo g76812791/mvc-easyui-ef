@@ -20,6 +20,7 @@ using System.Data.Entity.Infrastructure;
 
 public partial class kbase_adminEntities : DbContext
 {
+    
     public kbase_adminEntities()
         : base("name=kbase_adminEntities")
     {

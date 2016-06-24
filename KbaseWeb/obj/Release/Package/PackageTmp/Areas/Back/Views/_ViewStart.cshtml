@@ -1,3 +1,6 @@
 ﻿@{
     Layout = "~/Areas/Back/Views/Shared/_Layout.cshtml";
+    Page.area = ViewContext.RouteData.DataTokens["area"].ToString();
+    Page.contr = ViewContext.RouteData.Values["controller"].ToString();
+    Page.head=Page.area + "." + Page.contr + ".";
 }

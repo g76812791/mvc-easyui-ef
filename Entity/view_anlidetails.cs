@@ -9,6 +9,8 @@
 //------------------------------------------------------------------------------
 
 
+using System.ComponentModel.DataAnnotations;
+
 namespace Entity
 {
 
@@ -41,7 +43,7 @@ public partial class view_anlidetails:Pager
     public long Id { get; set; }
 
     public Nullable<long> AId { get; set; }
-
+        [Required]
     public string Title { get; set; }
 
     public string Content { get; set; }

@@ -13,7 +13,7 @@
             <div class="jdcont01">@(Model.Title)</div>
             <div class="jdcon02">
                 <article>
-                    &nbsp;&nbsp;&nbsp;&nbsp;  @Model.Content
+                    @Html.Raw(Model.Content);
                 </article>
                 @*<p class="padlef">
                     为提高中国贫困人口健康状况，卫生部、英国国际发展署和世界卫生组织合作开展了卫生政策支持项目（HPSP）。

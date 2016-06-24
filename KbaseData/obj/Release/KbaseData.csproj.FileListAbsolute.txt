@@ -9,3 +9,16 @@ D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\bin\Release\Entity.pdb
 D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\obj\Release\KbaseData.csprojResolveAssemblyReference.cache
 D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\obj\Release\KbaseData.dll
 D:\tfs\KBaseQA\Web\KBaseAdmin\KbaseData\obj\Release\KbaseData.pdb
+C:\git\KBaseAdmin\KbaseData\bin\Release\KbaseData.dll
+C:\git\KBaseAdmin\KbaseData\bin\Release\KbaseData.pdb
+C:\git\KBaseAdmin\KbaseData\bin\Release\Comm.dll
+C:\git\KBaseAdmin\KbaseData\bin\Release\Entity.dll
+C:\git\KBaseAdmin\KbaseData\bin\Release\QQWry.NET.dll
+C:\git\KBaseAdmin\KbaseData\bin\Release\Newtonsoft.Json.dll
+C:\git\KBaseAdmin\KbaseData\bin\Release\EntityFramework.dll
+C:\git\KBaseAdmin\KbaseData\bin\Release\Comm.pdb
+C:\git\KBaseAdmin\KbaseData\bin\Release\Entity.pdb
+C:\git\KBaseAdmin\KbaseData\obj\Release\KbaseData.csprojResolveAssemblyReference.cache
+C:\git\KBaseAdmin\KbaseData\obj\Release\KbaseData.dll
+C:\git\KBaseAdmin\KbaseData\obj\Release\KbaseData.pdb
+C:\git\KBaseAdmin\KbaseData\bin\Release\MySql.Data.dll

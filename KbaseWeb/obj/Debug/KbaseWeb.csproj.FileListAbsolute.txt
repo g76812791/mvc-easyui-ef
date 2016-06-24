@@ -201,3 +201,4 @@ C:\git\KBaseAdmin\KbaseWeb\obj\Debug\KbaseWeb.csprojResolveAssemblyReference.cac
 C:\git\KBaseAdmin\KbaseWeb\obj\Debug\KbaseWeb.dll
 C:\git\KBaseAdmin\KbaseWeb\obj\Debug\KbaseWeb.pdb
 C:\git\KBaseAdmin\KbaseWeb\bin\QQWry.NET.dll
+C:\git\KBaseAdmin\KbaseWeb\bin\MySql.Data.dll

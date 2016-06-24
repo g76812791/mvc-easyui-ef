@@ -1,19 +1,32 @@
-﻿@{ ViewBag.Title = "KBase 产品介绍";}
+﻿@using Entity;
+@model List<product>
+@{ ViewBag.Title = "KBase 产品介绍";}
 <div class="productcenter">
     <div class="productbanner"></div>
     <div class="main">
         <div class="leftmenu">
             <div>
                 <ul>
-                    <li><a href="#productinfo">软件介绍</a></li>
+                    @foreach (var m in Model)
+                    {
+                        <li><a href="#@m.Anchor">@m.Title</a></li>
+                    }
+                    @*<li><a href="#productinfo">软件介绍</a></li>
                     <li><a href="#function">功能特性</a></li>
                     <li><a href="#severobj">服务对象</a></li>
-                    <li><a href="#screenshot">软件截图</a></li>
+                    <li><a href="#screenshot">软件截图</a></li>*@
                 </ul>
             </div>
         </div>
         <div class="rightcon">
-            <div id="productinfo" class="hd">软件介绍</div>
+            @foreach (var m in Model)
+            {
+                <div id="@m.Anchor" class="hd">@m.Title</div>
+                <div class="bd">
+                   @Html.Raw(m.Content)
+                </div>
+            }
+            @*<div id="productinfo" class="hd">软件介绍</div>
             <div class="bd">
                 <p>KBase知识库管理系统是清华同方知网（北京）技术有限公司（“同方知网”）拥有完全自主知识产权的，以管理海量非结构化数据对象为主，具备智能信息处理能力，以中文信息处理为特色的国产专用网格数据库管理系统，也是国际上第一个直接支持网格应用的专用数据库系统，对异构数据源提供统一访问和统一管理手段。</p>
                 <p>KBase是“同方知网”集10多年在数据库管理系统、智能信息处理、数字图书馆等领域的研发经验和几代“CNKI”人的智慧研制成功的。</p>
@@ -56,7 +69,7 @@
                 <div style="width:650px;margin:0 auto;">
                     <img src="@(AppConfig.ImagesPath)qbe.png" style="width:650px">
                 </div>
-            </div>
+            </div>*@
 
         </div>
 

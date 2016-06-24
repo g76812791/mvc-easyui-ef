@@ -164,9 +164,9 @@
     <script src="~/Resource/ckeditor/ckeditor.js"></script>
     <script type="text/javascript">
        $(function() {
-           CKEDITOR.replace('Content', { height: '290px' });
+           CKEDITOR.replace('Content', { height: '370px' });
        })
-       cke_1_contents
+       
     </script>
 }
 
@@ -189,7 +189,7 @@
 <!--弹出添加用户-->
 <div id="dlg" class="easyui-dialog" data-options="maximizable:'true',onMaximize:function(){}" draggable="false" modal="true" closed="true" style="width:800px;height:600px;padding:10px 20px" buttons="#dlg-buttons">
     <form id="fm" method="post">
-        <p>标题名称：<input name="Title" id="Title" style="width: 350px;" class="easyui-validatebox" data-options="required:true"></p>
+        <p>标题名称：<input name="Title" id="Title" style="width: 350px;" class="easyui-validatebox" data-options="required:true,validType:'isBlank'"></p>
         <p>案例类别：<input id="AId" style="width:200px;" name="AId"></p>
         <p>内容详情：<textarea id="Content" name="Content" style="width: 100%; height: 400px;"></textarea></p>
     </form>

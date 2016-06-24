@@ -19,6 +19,7 @@ namespace KbaseWeb.Areas.Back.Controllers
         /// <returns></returns>
         public override ActionResult GetList(view_anlidetails en)
         {
+            
             listWhere = ExpressExtens.True<view_anlidetails>();
             if (!string.IsNullOrEmpty(en.Title))
             {

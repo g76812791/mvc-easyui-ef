@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 
@@ -10,6 +11,7 @@ namespace Entity
         /// <summary>
         /// easyui list 大小
         /// </summary>
+    
         public virtual int rows { get; set; }
         /// <summary>
         /// easyui 第页

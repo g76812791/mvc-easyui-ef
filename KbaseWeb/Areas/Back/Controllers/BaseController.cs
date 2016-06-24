@@ -148,6 +148,12 @@ namespace KbaseWeb.Areas.Back.Controllers
         {
             try
             {
+                var errTip = en.ValidateEntity();
+                if (errTip.HasError)
+                {
+                    return Json(new { Message = "Error", Context = errTip.Errors[0].ErrorMessage });
+                }
+
                 dal.Add(en);
                 return Success(en);
             }
@@ -314,7 +320,7 @@ namespace KbaseWeb.Areas.Back.Controllers
         [HttpPost]
         public virtual ActionResult Upload()
         {
-            string[] type = {".bmp", ".jpg", ".jpeg", ".png", ".gif"};
+            string[] type = { ".bmp", ".jpg", ".jpeg", ".png", ".gif", ".exe" };
             List<long> list = new List<long>();
             try
             {
@@ -328,10 +334,10 @@ namespace KbaseWeb.Areas.Back.Controllers
                     singel.InputStream.Read(buff, 0, singel.ContentLength);
                     en.Name = singel.FileName;
                     en.Img = buff;
-                    en = idal.Add(en);
                     en.ContentType = Path.GetExtension(singel.FileName);
                     if (type.Any(h => h == en.ContentType.ToLower()))
                     {
+                        en = idal.Add(en);
                         list.Add(en.ID);
                     }
                     else
@@ -339,14 +345,13 @@ namespace KbaseWeb.Areas.Back.Controllers
                         return Error(new Exception("文件格式不支持"));
                     }
                 }
-                return Json(new {Message = Tip.Success, Ids = string.Join(",", list)});
+                return Json(new { Message = Tip.Success, Ids = string.Join(",", list) });
             }
             catch (Exception e)
             {
                 return Error(e);
             }
         }
-
         #endregion
 
         #region 处理状态执行sql

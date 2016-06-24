@@ -8,3 +8,14 @@ D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\bin\Release\Comm.pdb
 D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\obj\Release\Entity.csprojResolveAssemblyReference.cache
 D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\obj\Release\Entity.dll
 D:\tfs\KBaseQA\Web\KBaseAdmin\Entity\obj\Release\Entity.pdb
+C:\git\KBaseAdmin\Entity\bin\Release\Entity.dll.config
+C:\git\KBaseAdmin\Entity\bin\Release\Entity.dll
+C:\git\KBaseAdmin\Entity\bin\Release\Entity.pdb
+C:\git\KBaseAdmin\Entity\bin\Release\Comm.dll
+C:\git\KBaseAdmin\Entity\bin\Release\EntityFramework.dll
+C:\git\KBaseAdmin\Entity\bin\Release\Newtonsoft.Json.dll
+C:\git\KBaseAdmin\Entity\bin\Release\Comm.pdb
+C:\git\KBaseAdmin\Entity\obj\Release\Entity.csprojResolveAssemblyReference.cache
+C:\git\KBaseAdmin\Entity\obj\Release\Entity.dll
+C:\git\KBaseAdmin\Entity\obj\Release\Entity.pdb
+C:\git\KBaseAdmin\Entity\bin\Release\MySql.Data.dll

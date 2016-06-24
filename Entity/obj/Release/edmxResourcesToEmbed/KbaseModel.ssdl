@@ -19,6 +19,16 @@
     <Property Name="Name" Type="varchar" MaxLength="100" />
     <Property Name="OrderNum" Type="int" />
   </EntityType>
+  <EntityType Name="daohang">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Url" Type="varchar" MaxLength="200" />
+    <Property Name="OrderNum" Type="int" />
+    <Property Name="IsOut" Type="smallint" />
+  </EntityType>
   <EntityType Name="downfile">
     <Key>
       <PropertyRef Name="Id" />
@@ -30,6 +40,41 @@
     <Property Name="FilePath" Type="varchar" MaxLength="200" />
     <Property Name="UpDateTime" Type="datetime" Precision="0" />
   </EntityType>
+  <EntityType Name="fankui">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="QQ" Type="varchar" MaxLength="50" />
+    <Property Name="Email" Type="varchar" MaxLength="200" />
+    <Property Name="Context" Type="varchar" MaxLength="4000" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+    <Property Name="UpdateTime" Type="datetime" Precision="0" />
+    <Property Name="Flag" Type="smallint" />
+    <Property Name="Remark" Type="varchar" MaxLength="2000" />
+  </EntityType>
+  <EntityType Name="homeinfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Title" Type="varchar" MaxLength="200" />
+    <Property Name="Content" Type="varchar" MaxLength="4000" />
+    <Property Name="OrderNum" Type="int" />
+    <Property Name="Url" Type="varchar" MaxLength="200" />
+    <Property Name="Class" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="image">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="255" />
+    <Property Name="Img" Type="longblob" Nullable="false" />
+    <Property Name="ContentType" Type="varchar" MaxLength="255" />
+  </EntityType>
   <EntityType Name="loginlog">
     <Key>
       <PropertyRef Name="Id" />
@@ -38,15 +83,53 @@
     <Property Name="Uid" Type="bigint" />
     <Property Name="LogTime" Type="datetime" Precision="0" />
     <Property Name="Ip" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="500" />
   </EntityType>
-  <EntityType Name="question">
+  <EntityType Name="menue">
     <Key>
       <PropertyRef Name="Id" />
     </Key>
     <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="Title" Type="varchar" MaxLength="200" />
-    <Property Name="Content" Type="varchar" MaxLength="4000" />
-    <Property Name="CreatTime" Type="datetime" Precision="0" />
+    <Property Name="Icon" Type="varchar" MaxLength="200" />
+    <Property Name="MenueName" Type="varchar" MaxLength="200" />
+    <Property Name="Url" Type="varchar" MaxLength="200" />
+    <Property Name="ParentId" Type="bigint" />
+    <Property Name="Level" Type="smallint" />
+    <Property Name="OrderNum" Type="int" />
+  </EntityType>
+  <EntityType Name="permission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Mid" Type="bigint" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="SmallName" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Detail" Type="varchar" MaxLength="200" />
+    <Property Name="CreateTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="rolemenue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rid" Type="bigint" />
+    <Property Name="Mid" Type="bigint" />
+  </EntityType>
+  <EntityType Name="rolepermission">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rid" Type="bigint" />
+    <Property Name="Pid" Type="bigint" />
   </EntityType>
   <EntityType Name="user">
     <Key>
@@ -56,6 +139,14 @@
     <Property Name="LoginName" Type="varchar" MaxLength="50" />
     <Property Name="Pwd" Type="varchar" MaxLength="50" />
     <Property Name="CreatTime" Type="datetime" Precision="0" />
+  </EntityType>
+  <EntityType Name="userrole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Uid" Type="bigint" />
+    <Property Name="Rid" Type="bigint" />
   </EntityType>
   <!--生成过程中发现错误:
 警告 6002: 表/视图“def.kbase_admin.view_anlidetails”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
@@ -82,14 +173,59 @@
     <Property Name="LogTime" Type="datetime" Precision="0" />
     <Property Name="Ip" Type="varchar" MaxLength="50" />
     <Property Name="LoginName" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="500" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“def.kbase_admin.view_rolemenue”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="view_rolemenue">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="Rid" Type="bigint" />
+    <Property Name="Mid" Type="bigint" />
+    <Property Name="Level" Type="smallint" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“def.kbase_admin.view_user”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="view_user">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" Nullable="false" />
+    <Property Name="LoginName" Type="varchar" MaxLength="50" />
+    <Property Name="Pwd" Type="varchar" MaxLength="50" />
+    <Property Name="CreatTime" Type="datetime" Precision="0" />
+    <Property Name="Name" Type="text" />
+    <Property Name="Rid" Type="text" />
+  </EntityType>
+  <!--生成过程中发现错误:
+警告 6002: 表/视图“def.kbase_admin.view_userrole”未定义主键。已推断出该键，并将定义创建为只读的表/视图。-->
+  <EntityType Name="view_userrole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Uid" Type="bigint" />
+    <Property Name="Name" Type="varchar" MaxLength="200" />
+    <Property Name="Rid" Type="bigint" />
+    <Property Name="Id" Type="bigint" Nullable="false" />
   </EntityType>
   <EntityContainer Name="kbase_adminModelStoreContainer">
     <EntitySet Name="anlidetails" EntityType="Self.anlidetails" Schema="kbase_admin" store:Type="Tables" />
     <EntitySet Name="anlitype" EntityType="Self.anlitype" Schema="kbase_admin" store:Type="Tables" />
+    <EntitySet Name="daohang" EntityType="Self.daohang" Schema="kbase_admin" store:Type="Tables" />
     <EntitySet Name="downfile" EntityType="Self.downfile" Schema="kbase_admin" store:Type="Tables" />
+    <EntitySet Name="fankui" EntityType="Self.fankui" Schema="kbase_admin" store:Type="Tables" />
+    <EntitySet Name="homeinfo" EntityType="Self.homeinfo" Schema="kbase_admin" store:Type="Tables" />
+    <EntitySet Name="image" EntityType="Self.image" Schema="kbase_admin" store:Type="Tables" />
     <EntitySet Name="loginlog" EntityType="Self.loginlog" Schema="kbase_admin" store:Type="Tables" />
-    <EntitySet Name="question" EntityType="Self.question" Schema="kbase_admin" store:Type="Tables" />
+    <EntitySet Name="menue" EntityType="Self.menue" Schema="kbase_admin" store:Type="Tables" />
+    <EntitySet Name="permission" EntityType="Self.permission" Schema="kbase_admin" store:Type="Tables" />
+    <EntitySet Name="role" EntityType="Self.role" Schema="kbase_admin" store:Type="Tables" />
+    <EntitySet Name="rolemenue" EntityType="Self.rolemenue" Schema="kbase_admin" store:Type="Tables" />
+    <EntitySet Name="rolepermission" EntityType="Self.rolepermission" Schema="kbase_admin" store:Type="Tables" />
     <EntitySet Name="user" EntityType="Self.user" Schema="kbase_admin" store:Type="Tables" />
+    <EntitySet Name="userrole" EntityType="Self.userrole" Schema="kbase_admin" store:Type="Tables" />
     <EntitySet Name="view_anlidetails" EntityType="Self.view_anlidetails" store:Type="Views" store:Schema="kbase_admin">
       <DefiningQuery>SELECT
 `view_anlidetails`.`Id`, 
@@ -107,8 +243,35 @@ FROM `view_anlidetails` AS `view_anlidetails`</DefiningQuery>
 `view_loginlog`.`Uid`, 
 `view_loginlog`.`LogTime`, 
 `view_loginlog`.`Ip`, 
-`view_loginlog`.`LoginName`
+`view_loginlog`.`LoginName`, 
+`view_loginlog`.`Address`
 FROM `view_loginlog` AS `view_loginlog`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_rolemenue" EntityType="Self.view_rolemenue" store:Type="Views" store:Schema="kbase_admin">
+      <DefiningQuery>SELECT
+`view_rolemenue`.`Id`, 
+`view_rolemenue`.`Rid`, 
+`view_rolemenue`.`Mid`, 
+`view_rolemenue`.`Level`
+FROM `view_rolemenue` AS `view_rolemenue`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_user" EntityType="Self.view_user" store:Type="Views" store:Schema="kbase_admin">
+      <DefiningQuery>SELECT
+`view_user`.`Id`, 
+`view_user`.`LoginName`, 
+`view_user`.`Pwd`, 
+`view_user`.`CreatTime`, 
+`view_user`.`Name`, 
+`view_user`.`Rid`
+FROM `view_user` AS `view_user`</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="view_userrole" EntityType="Self.view_userrole" store:Type="Views" store:Schema="kbase_admin">
+      <DefiningQuery>SELECT
+`view_userrole`.`Uid`, 
+`view_userrole`.`Name`, 
+`view_userrole`.`Rid`, 
+`view_userrole`.`Id`
+FROM `view_userrole` AS `view_userrole`</DefiningQuery>
     </EntitySet>
   </EntityContainer>
 </Schema>
