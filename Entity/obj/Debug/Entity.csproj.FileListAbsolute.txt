@@ -43,3 +43,14 @@ C:\git\KBaseAdmin\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
 C:\git\KBaseAdmin\Entity\obj\Debug\Entity.dll
 C:\git\KBaseAdmin\Entity\obj\Debug\Entity.pdb
 C:\git\KBaseAdmin\Entity\bin\Debug\MySql.Data.dll
+C:\git\git\KBaseAdmin\Entity\bin\Debug\Entity.dll.config
+C:\git\git\KBaseAdmin\Entity\bin\Debug\Entity.dll
+C:\git\git\KBaseAdmin\Entity\bin\Debug\Entity.pdb
+C:\git\git\KBaseAdmin\Entity\bin\Debug\Comm.dll
+C:\git\git\KBaseAdmin\Entity\bin\Debug\EntityFramework.dll
+C:\git\git\KBaseAdmin\Entity\bin\Debug\MySql.Data.dll
+C:\git\git\KBaseAdmin\Entity\bin\Debug\Newtonsoft.Json.dll
+C:\git\git\KBaseAdmin\Entity\bin\Debug\Comm.pdb
+C:\git\git\KBaseAdmin\Entity\obj\Debug\Entity.csprojResolveAssemblyReference.cache
+C:\git\git\KBaseAdmin\Entity\obj\Debug\Entity.dll
+C:\git\git\KBaseAdmin\Entity\obj\Debug\Entity.pdb

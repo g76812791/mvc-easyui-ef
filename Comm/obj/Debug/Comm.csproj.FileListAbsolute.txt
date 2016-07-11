@@ -28,3 +28,9 @@ C:\git\KBaseAdmin\Comm\bin\Debug\Newtonsoft.Json.dll
 C:\git\KBaseAdmin\Comm\obj\Debug\Comm.csprojResolveAssemblyReference.cache
 C:\git\KBaseAdmin\Comm\obj\Debug\Comm.dll
 C:\git\KBaseAdmin\Comm\obj\Debug\Comm.pdb
+C:\git\git\KBaseAdmin\Comm\bin\Debug\Comm.dll
+C:\git\git\KBaseAdmin\Comm\bin\Debug\Comm.pdb
+C:\git\git\KBaseAdmin\Comm\bin\Debug\Newtonsoft.Json.dll
+C:\git\git\KBaseAdmin\Comm\obj\Debug\Comm.csprojResolveAssemblyReference.cache
+C:\git\git\KBaseAdmin\Comm\obj\Debug\Comm.dll
+C:\git\git\KBaseAdmin\Comm\obj\Debug\Comm.pdb

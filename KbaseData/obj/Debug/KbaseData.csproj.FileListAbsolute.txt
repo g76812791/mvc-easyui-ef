@@ -51,3 +51,16 @@ C:\git\KBaseAdmin\KbaseData\obj\Debug\KbaseData.dll
 C:\git\KBaseAdmin\KbaseData\obj\Debug\KbaseData.pdb
 C:\git\KBaseAdmin\KbaseData\bin\Debug\QQWry.NET.dll
 C:\git\KBaseAdmin\KbaseData\bin\Debug\MySql.Data.dll
+C:\git\git\KBaseAdmin\KbaseData\bin\Debug\KbaseData.dll
+C:\git\git\KBaseAdmin\KbaseData\bin\Debug\KbaseData.pdb
+C:\git\git\KBaseAdmin\KbaseData\bin\Debug\Comm.dll
+C:\git\git\KBaseAdmin\KbaseData\bin\Debug\Entity.dll
+C:\git\git\KBaseAdmin\KbaseData\bin\Debug\MySql.Data.dll
+C:\git\git\KBaseAdmin\KbaseData\bin\Debug\QQWry.NET.dll
+C:\git\git\KBaseAdmin\KbaseData\bin\Debug\Newtonsoft.Json.dll
+C:\git\git\KBaseAdmin\KbaseData\bin\Debug\EntityFramework.dll
+C:\git\git\KBaseAdmin\KbaseData\bin\Debug\Comm.pdb
+C:\git\git\KBaseAdmin\KbaseData\bin\Debug\Entity.pdb
+C:\git\git\KBaseAdmin\KbaseData\obj\Debug\KbaseData.csprojResolveAssemblyReference.cache
+C:\git\git\KBaseAdmin\KbaseData\obj\Debug\KbaseData.dll
+C:\git\git\KBaseAdmin\KbaseData\obj\Debug\KbaseData.pdb
