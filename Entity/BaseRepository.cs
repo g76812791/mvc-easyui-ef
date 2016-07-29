@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.Common;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
-using System.Data.EntityClient;
-using System.Data.Metadata.Edm;
-using System.Data.Objects;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
@@ -87,17 +85,17 @@ namespace Entity
             DbConnection con = db.Database.Connection;
             DbCommand cmd = con.CreateCommand();
             cmd.Parameters.AddRange(parameters);
-            cmd.CommandType=CommandType.StoredProcedure;
+            cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = commandText;
             con.Open();
-            int val=  cmd.ExecuteNonQuery();
+            int val = cmd.ExecuteNonQuery();
             con.Close();
             return val;
 
-//           MySqlHelper mysql= new MySqlHelper(db.Database.Connection.ConnectionString);
-//           return mysql.ExecuteNonQuery(CommandType.StoredProcedure, commandText,parameters);
+            //           MySqlHelper mysql= new MySqlHelper(db.Database.Connection.ConnectionString);
+            //           return mysql.ExecuteNonQuery(CommandType.StoredProcedure, commandText,parameters);
         }
-        public  int Add(object value)
+        public int Add(object value)
         {
             MySqlParameter mySqlParameter = value as MySqlParameter;
             if (mySqlParameter == null)
@@ -114,7 +112,7 @@ namespace Entity
         //查询
         public IQueryable<T> LoadEntities(Expression<Func<T, bool>> wherelambda)
         {
-            return db.Set<T>().Where<T>(wherelambda).AsQueryable();
+            return db.Set<T>().Where<T>(wherelambda).AsQueryable().AsNoTracking();
         }
 
         //查询top N topn==0 取得全部
@@ -122,12 +120,12 @@ namespace Entity
         {
             if (topn == 0)
             {
-                return db.Set<T>().Where<T>(wherelambda).OrderBy(order, isAsc).AsQueryable();
+                return db.Set<T>().Where<T>(wherelambda).OrderBy(order, isAsc).AsQueryable().AsNoTracking();
 
             }
             else
             {
-                return db.Set<T>().Where<T>(wherelambda).OrderBy(order, isAsc).Take(topn).AsQueryable();
+                return db.Set<T>().Where<T>(wherelambda).OrderBy(order, isAsc).Take(topn).AsQueryable().AsNoTracking();
             }
         }
 
@@ -138,7 +136,7 @@ namespace Entity
         /// <returns></returns>
         public bool ExistEntitis(Expression<Func<T, bool>> wherelambda)
         {
-            var tempData = db.Set<T>().Where<T>(wherelambda);
+            var tempData = db.Set<T>().Where<T>(wherelambda).AsNoTracking();
             return tempData.Count() > 0;
         }
 
@@ -146,11 +144,11 @@ namespace Entity
         public IQueryable<T> LoadPagerEntities(int pageSize, int pageIndex, out int total,
            Expression<Func<T, bool>> whereLambda, bool isAsc, string order)
         {
-            var tempData = db.Set<T>().Where<T>(whereLambda);
+            var tempData = db.Set<T>().Where<T>(whereLambda).AsNoTracking();
             total = tempData.Count();
             tempData = tempData.OrderBy(order, isAsc).
                      Skip<T>(pageSize * (pageIndex - 1)).
-                     Take<T>(pageSize).AsQueryable();
+                     Take<T>(pageSize).AsQueryable().AsNoTracking();
             return tempData.AsQueryable();
         }
     }
