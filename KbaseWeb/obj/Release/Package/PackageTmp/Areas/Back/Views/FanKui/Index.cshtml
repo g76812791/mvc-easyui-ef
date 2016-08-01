@@ -1,0 +1,222 @@
+﻿@{
+    ViewBag.Title = "问题反馈列表页";
+}
+@{
+    <script type="text/javascript">
+        $(function () {
+            $('#box').datagrid({
+                width: 700,
+                url: '/Back/FanKui/GetList',
+                title: '问题反馈列表',
+                iconCls: 'icon-table',
+                height: '400',
+                nowrap: true,
+                striped: true,
+                border: true,
+                collapsible: false,//是否可折叠的
+                fit: true,//自动大小
+                columns: [[
+                    {
+                        field: 'Name',
+                        title: '联系人',
+                        width: 100,
+                    },
+                    {
+                        field: 'Phone',
+                        title: '手机/电话',
+                        width: 120
+                    },
+                    {
+                        field: 'QQ',
+                        title: 'QQ',
+                        width: 120
+                    },
+                    {
+                        field: 'Email',
+                        title: 'Email',
+                        width: 200
+                    },
+                    {
+                        field: 'Flag',
+                        title: '是否处理',
+                        width: 100,
+                        formatter: function(v,r) {
+                            return v == 0 ? '未处理' : '已处理';
+                        }
+                    },
+                    {
+                        field: 'CreateTime',
+                        title: '创建时间',
+                        width: 100
+                    }
+                ]],
+
+                singleSelect: false,//是否单选
+                rownumbers: true,//行号
+                frozenColumns: [[
+                    { field: 'ck', checkbox: true }
+                ]],
+                toolbar: '#tb',
+                pagination: true,
+                pageSize: 20,
+                pageList: [10, 20, 40, 50, 100],
+                pageNumber: 1,
+                pagePosition: 'bottom',
+            });
+
+        });
+
+        $(function () {
+            $('#combo').combobox({
+                valueField: 'Id',
+                textField: 'Flag',
+                editable: false,
+                data: [
+                       { 'Id': '-1', 'Flag': '--全部--' },
+                       { 'Id': '0', 'Flag': '未处理' },
+                       { 'Id': '1', 'Flag': '已处理' }
+                ],
+                panelHeight: 'auto',
+            });
+            $('#combo').combobox('setValue', '-1');
+        });
+
+        var url = '';
+        var op = {
+            search: function () {
+                $('#box').datagrid('load', {
+                    beginDate: $.trim($("input[name='beginDate']").val()),
+                    endDate: $.trim($("input[name='endDate']").val()),
+                    Flag: $("#combo").combobox("getValue")
+                });
+            },
+            add: function () {
+                $('#dlg').dialog('open').dialog('setTitle', '添加问题反馈');
+                $('#fm').form('clear');
+                url = "/Back/FanKui/Add";
+            },
+            remove: function () {
+                var rows = $('#box').datagrid('getSelections');
+                if (rows.length > 0) {
+                    $.messager.confirm('确定操作', '您正在要删除所选的记录吗？', function (flag) {
+                        if (flag) {
+                            var ids = [];
+                            for (var i = 0; i < rows.length; i++) {
+                                ids.push(rows[i].Id);
+                            }
+                            ajaxOp.url = "/Back/FanKui/Delete";
+                            ajaxOp.data = { ids: ids.join(',') };
+                            ajaxOp.su = function (result) {
+                                if (result != null && result.Message == "Success") {
+                                    $('#box').datagrid('reload');
+                                } else {
+                                    $.messager.alert('提示信息', '删除异常！', 'warning');
+                                }
+                            };
+                            ajaxOp.Exec();
+                        }
+                    });
+                } else {
+                    $.messager.alert('提示', '请选择要删除的记录！', 'info');
+                }
+            },
+            edit: function () {
+                debugger
+                var rows = $('#box').datagrid('getSelections');
+                if (rows.length == 1) {
+                    var row = $('#box').datagrid('getSelected');
+                    if (row) {
+                        $('#dlg').dialog('open').dialog('setTitle', '编辑问题反馈');
+                        $('#fm').form('load', row);
+                        url = "/Back/FanKui/Update?Id=" + row.Id;
+                    }
+                } else {
+                    $.messager.alert('警告', '修改必须或只能选择一行！', 'warning');
+                }
+            },
+            Handled: function(flag) {
+                var rows = $('#box').datagrid('getSelections');
+                if (rows.length > 0) {
+                            var ids = [];
+                            for (var i = 0; i < rows.length; i++) {
+                                ids.push(rows[i].Id);
+                            }
+                            ajaxOp.url = "/Back/FanKui/Handle";
+                            ajaxOp.data = { ids: ids.join(','),Flag:flag };
+                            ajaxOp.su = function (result) {
+                                if (result != null && result.Message == "Success") {
+                                    $('#box').datagrid('reload');
+                                } else {
+                                    $.messager.alert('提示信息', '操作异常！', 'warning');
+                                }
+                            };
+                            ajaxOp.Exec();
+
+                } else {
+                    $.messager.alert('提示', '请选择要处理的记录！', 'info');
+                }
+            }
+        };
+
+
+        function save() {
+            $('#fm').form('submit', {
+                url: url,
+                onSubmit: function () {
+                    return $(this).form('validate');
+                },
+                success: function (result) {
+
+                    result = JSON.parse(result);
+                    if (result != null && result.Message == "Success") {
+                        $('#dlg').dialog('close');
+                        $('#box').datagrid('reload');
+                    }
+                    else {
+                        $.messager.alert({
+                            title: '提示',
+                            msg: result.Context
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+    
+}
+
+<table id="box"></table>
+
+
+
+<div id="tb" style="padding:5px;">
+    <div style="margin-bottom:5px;">
+@*        <a href="#" class="easyui-linkbutton" iconcls="icon-add" onclick="op.add()" plain="true">添加</a>*@
+        <a href="#" class="easyui-linkbutton" iconcls="icon-edit" plain="true" onclick="op.edit()">修改</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-ok" plain="true" onclick="op.Handled(1)">标记为已处理</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="op.remove()">删除</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" plain="true" onclick="op.Handled(0)">标记为未处理</a>
+    </div>
+    <div style="padding:0 0 0 7px;color:#333;">
+        创建时间：<input type="text" data-options="buttons:buttons" id="beginDate" name="beginDate" class="easyui-datebox" editable="false" style="width:110px">&nbsp;-&nbsp;<input type="text" name="endDate" class="easyui-datebox" data-options="buttons:buttons" editable="false" style="width:110px">
+        状态：<input id="combo" name="combo">
+        <a href="#" class="easyui-linkbutton" iconcls="icon-search" onclick="op.search();">查询</a>
+    </div>
+</div>
+<!--弹出添加用户-->
+<div id="dlg" class="easyui-dialog" data-options="maximizable:'true',onMaximize:function(){}" draggable="false" modal="true" closed="true" style="width:700px;height:550px;padding:10px 20px" buttons="#dlg-buttons">
+    <form id="fm" method="post">
+        <p>联系人：&nbsp;&nbsp;&nbsp;<input name="Name" id="Name" style="width: 350px;" class="easyui-validatebox" data-options="required:true,validType:'isBlank'"></p>
+        <p>手机/电话：<input id="Phone" name="Phone" style="width: 350px;" class="easyui-validatebox" data-options=""></p>
+        <p>QQ：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="QQ" name="QQ" style="width: 350px;" class="easyui-validatebox" data-options=""></p>
+        <p>Email：&nbsp;&nbsp;&nbsp;&nbsp;<input id="Email" name="Email" style="width: 350px;" class="easyui-validatebox" data-options=""></p>
+        <p>内容：&nbsp;&nbsp;&nbsp;<textarea id="Context" name="Context" style="width: 100%; height: 120px;"></textarea></p>
+        <p>备注：&nbsp;&nbsp;&nbsp;<textarea id="Context" name="Context" style="width: 100%; height: 80px;"></textarea></p>
+    </form>
+</div>
+<div id="dlg-buttons">
+    <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="save()">保存</a>
+    <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlg').dialog('close')">取消</a>
+</div>
+
+

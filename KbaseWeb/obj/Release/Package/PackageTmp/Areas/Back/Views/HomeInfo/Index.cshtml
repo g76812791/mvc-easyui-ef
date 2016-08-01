@@ -1,0 +1,176 @@
+﻿@{
+    ViewBag.Title = "首页说明列表页";
+}
+@{
+    <script type="text/javascript">
+        $(function () {
+
+            $('#box').datagrid({
+                width: 700,
+                url: '/Back/HomeInfo/GetList',
+                title: '首页说明列表',
+                iconCls: 'icon-table',
+                height: '400',
+                nowrap: true,
+                striped: true,
+                border: true,
+                collapsible: false,//是否可折叠的
+                fit: true,//自动大小
+                columns: [[
+                    {
+                        field: 'Title',
+                        title: '标题',
+                        width: 300
+                    },
+                    {
+                        field: 'Class',
+                        title: '样式名称',
+                        width: 100
+                    }
+                    ,{
+                        field: 'Url',
+                        title: '跳转连接',
+                        width: 300
+                    },
+                    {
+                        field: 'OrderNum',
+                        title: '顺序号',
+                        width: 200
+                    }
+                ]],
+
+                singleSelect: false,//是否单选
+                rownumbers: true,//行号
+                frozenColumns: [[
+                    { field: 'ck', checkbox: true }
+                ]],
+                toolbar: '#tb',
+                pagination: true,
+                pageSize: 20,
+                pageList: [10, 20, 40, 50, 100],
+                pageNumber: 1,
+                pagePosition: 'bottom',
+            });
+
+
+        });
+       
+        var url = '';
+        var op = {
+            search: function () {
+                $('#box').datagrid('load', {
+                    Title: $.trim($('#Title').val()),
+                });
+            },
+            add: function () {
+                $('#dlg').dialog('open').dialog('setTitle', '添加首页说明');
+                $('#fm').form('clear');
+                CKEDITOR.instances.Content.setData('');
+                url = "/Back/HomeInfo/Add";
+            },
+            remove: function () {
+                var rows = $('#box').datagrid('getSelections');
+                if (rows.length > 0) {
+                    $.messager.confirm('确定操作', '您正在要删除所选的记录吗？', function (flag) {
+                        if (flag) {
+                            var ids = [];
+                            for (var i = 0; i < rows.length; i++) {
+                                ids.push(rows[i].Id);
+                            }
+                            ajaxOp.url = "/Back/HomeInfo/Delete";
+                            ajaxOp.data = { ids: ids.join(',') };
+                            ajaxOp.su = function (result) {
+                                if (result != null && result.Message == "Success") {
+                                    $('#box').datagrid('reload');
+                                } else {
+                                    $.messager.alert('提示信息', '删除异常！', 'warning');
+                                }
+                            };
+                            ajaxOp.Exec();
+                        }
+                    });
+                } else {
+                    $.messager.alert('提示', '请选择要删除的记录！', 'info');
+                }
+            },
+            edit: function () {
+                debugger
+                var rows = $('#box').datagrid('getSelections');
+                if (rows.length == 1) {
+                    var row = $('#box').datagrid('getSelected');
+                    if (row) {
+                        $('#dlg').dialog('open').dialog('setTitle', '编辑首页说明');
+                        $('#fm').form('load', row);
+                        CKEDITOR.instances.Content.setData(row.Content);
+                        url = "/Back/HomeInfo/Update?Id=" + row.Id;
+                    }
+                } else {
+                    $.messager.alert('警告', '修改必须或只能选择一行！', 'warning');
+                }
+            },
+        };
+
+
+        function save() {
+            $('#fm').form('submit', {
+                url: url,
+                onSubmit: function () {
+                    return $(this).form('validate');
+                },
+                success: function (result) {
+
+                    result = JSON.parse(result);
+                    if (result != null && result.Message == "Success") {
+                        $('#dlg').dialog('close');
+                        $('#box').datagrid('reload');
+                    }
+                    else {
+                        $.messager.alert({
+                            title: '提示',
+                            msg: result.Context
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+    <script src="~/Resource/ckeditor/ckeditor.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            CKEDITOR.replace('Content', { height: '370px' });
+        })
+
+    </script>
+}
+
+<table id="box"></table>
+
+
+
+<div id="tb" style="padding:5px;">
+    <div style="margin-bottom:5px;">
+        <a href="#" class="easyui-linkbutton" iconcls="icon-add" onclick="op.add()" plain="true">添加</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-edit" plain="true" onclick="op.edit()">修改</a>
+        <a href="#" class="easyui-linkbutton" iconcls="icon-remove" plain="true" onclick="op.remove()">删除</a>
+    </div>
+    <div style="padding:0 0 0 7px;color:#333;">
+        标题名称：<input type="text" class="textbox" id="Title" name="Title" style="width:110px">
+        <a href="#" class="easyui-linkbutton" iconcls="icon-search" onclick="op.search();">查询</a>
+    </div>
+</div>
+<!--弹出添加用户-->
+<div id="dlg" class="easyui-dialog" data-options="maximizable:'true',onMaximize:function(){}" draggable="false" modal="true" closed="true" style="width:800px;height:610px;padding:10px 20px" buttons="#dlg-buttons">
+    <form id="fm" method="post">
+        <p>标题名称：<input name="Title" id="Title" style="width: 350px;" class="easyui-validatebox" data-options="required:true,validType:'isBlank'"></p>
+        <p>样式名称：<input name="Class" id="Class" style="width: 350px;" class="easyui-validatebox" data-options="required:true,validType:'isBlank'"></p>
+        <p>跳转连接：<input name="Url" id="Url" style="width: 350px;" class="easyui-validatebox" data-options="required:true,validType:'isBlank'"></p>
+        <p>顺序号：&nbsp;&nbsp;<input name="OrderNum" id="OrderNum" class="easyui-numberbox" missingmessage="必须为整数 " data-options="required:true"></p>
+        <p>内容详情：<textarea id="Content" name="Content" style="width: 100%; height: 400px;"></textarea></p>
+    </form>
+</div>
+<div id="dlg-buttons">
+    <a href="#" class="easyui-linkbutton" iconcls="icon-ok" onclick="save()">保存</a>
+    <a href="#" class="easyui-linkbutton" iconcls="icon-cancel" onclick="$('#dlg').dialog('close')">取消</a>
+</div>
+
+

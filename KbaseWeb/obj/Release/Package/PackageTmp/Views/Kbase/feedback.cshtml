@@ -1,0 +1,92 @@
+﻿<script src="~/Scripts/jquery-1.10.2.js"></script>
+<script src="~/Scripts/jquery.validate.js"></script>
+<script src="~/Scripts/jquery.metadata.js"></script>
+<script>
+    $().ready(function () {
+        $("#signupForm").validate({
+            rules: {
+                Name: "required",
+                email: {
+                    required: true,
+                    email: true
+                },
+                QQ: {
+                    digits: true,
+                    minlength: 5
+                },
+                TEL: {
+                    digits: true,
+                    minlength: 11,
+                    maxlength:11
+                   
+                },
+                context: {
+                    required: true,
+                    minlength: 5
+                }
+            },
+            messages: {
+                Name: "请输入姓名",
+                email: {
+                    required: "请输入Email地址",
+                    email: "请输入正确的email地址"
+                },
+                QQ: {
+                    digits: "必须为数字",
+                    minlength: jQuery.format("不能小于{0}个字符")
+                },
+                TEL: {
+                    digits: "必须为数字",
+                    minlength: "确认电话号码是否正确",
+                    maxlength: "确认电话号码是否正确"
+                },
+                context: {
+                    required: "请输入反馈内容",
+                    minlength: jQuery.format("不能小于{0}个字符")
+                }
+            }
+        });
+    });
+</script>
+<div class="slideshow">
+    <div class="banner" id="shide">
+        <h1><span class="disn">意见反馈</span></h1>
+        @*<a class="download" href="/Download/KBase.exe">软件下载</a>*@
+    </div>
+</div>
+<div class="main">
+    <form id="signupForm" method="post" style="margin-left: 30%;" action="/Kbase/SaveFeedback.do">
+        
+        
+        <table id="fankuitable" cellpadding="0" cellspacing="5px" border="0" style="width: 100%;">
+            <tr>
+                <td align="right" style="color:blue; width:100px;">姓名:  </td>
+                <td><input id="Name" name="Name" type="text" class="txtinput" /></td>
+            </tr>
+            <tr>
+                <td align="right" style="color:blue;">邮箱:  </td>
+                <td><input id="email" name="email" type="text" class="txtinput" /></td>
+            </tr>
+            <tr>
+                <td align="right">QQ:  </td>
+                <td>
+                    <input id="QQ" name="QQ" type="text" class="txtinput" />
+
+                </td>
+            </tr>
+            <tr>
+                <td align="right">电话:  </td>
+                <td><input id="Phone" name="Phone" type="text" class="txtinput" /></td>
+            </tr>
+            <tr>
+                <td align="right" style="color:blue">留言:  </td>
+                <td>
+                    <textarea id="Context" style="width: 277px;height: 150px" name="Context" rows="2" cols="20"></textarea>
+                </td>
+            </tr>
+            <tr><td colspan="2"><span style="padding-left: 83px;">注意：蓝色为必填项<input style="margin-left: 110px;" class="submit" type="submit" value="提交" /></span></td></tr>
+        </table>
+
+    </form>  
+</div>
+

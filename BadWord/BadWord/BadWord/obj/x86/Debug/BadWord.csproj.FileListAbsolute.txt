@@ -1,0 +1,15 @@
+C:\Users\Administrator\Desktop\BadWord\BadWord\obj\x86\Debug\BadWord.Form1.resources
+C:\Users\Administrator\Desktop\BadWord\BadWord\obj\x86\Debug\BadWord.Properties.Resources.resources
+C:\Users\Administrator\Desktop\BadWord\BadWord\obj\x86\Debug\BadWord.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\BadWord\BadWord\bin\Debug\BadWord.exe
+C:\Users\Administrator\Desktop\BadWord\BadWord\bin\Debug\BadWord.pdb
+C:\Users\Administrator\Desktop\BadWord\BadWord\obj\x86\Debug\BadWord.exe
+C:\Users\Administrator\Desktop\BadWord\BadWord\obj\x86\Debug\BadWord.pdb
+D:\360极速浏览器下载\BadWord\BadWord\BadWord\obj\x86\Debug\BadWord.exe
+D:\360极速浏览器下载\BadWord\BadWord\BadWord\obj\x86\Debug\BadWord.pdb
+D:\360极速浏览器下载\BadWord\BadWord\BadWord\bin\Debug\BadWord.exe
+D:\360极速浏览器下载\BadWord\BadWord\BadWord\bin\Debug\BadWord.pdb
+D:\360极速浏览器下载\BadWord\BadWord\BadWord\obj\x86\Debug\BadWord.csprojResolveAssemblyReference.cache
+D:\360极速浏览器下载\BadWord\BadWord\BadWord\obj\x86\Debug\BadWord.Form1.resources
+D:\360极速浏览器下载\BadWord\BadWord\BadWord\obj\x86\Debug\BadWord.Properties.Resources.resources
+D:\360极速浏览器下载\BadWord\BadWord\BadWord\obj\x86\Debug\BadWord.csproj.GenerateResource.Cache
