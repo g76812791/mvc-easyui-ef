@@ -24,6 +24,8 @@ namespace KbaseWeb.Filters
         {
             try
             {
+               // var isajax = HttpContext.Current.Request.Headers["x-requested-with"];
+
                 object[] actionFilter = filterContext.ActionDescriptor.GetCustomAttributes(typeof(NoCompress), false);
                 object[] controllerFilter = filterContext.ActionDescriptor.ControllerDescriptor.GetCustomAttributes(typeof(NoCompress), false);
                 if (controllerFilter.Length == 1 || actionFilter.Length == 1)
@@ -31,7 +33,7 @@ namespace KbaseWeb.Filters
                     return;
                 }
                 bool flag = AES.UrlEncrypt(CookieHelp.GetCookieValByKey("Userid") + CookieHelp.GetCookieValByKey("LoginName")) == AES.UrlEncrypt(CookieHelp.GetCookieValByKey("long"));
-                if (string.IsNullOrEmpty(CookieHelp.GetCookieValByKey("Userid")) && !flag)
+                if (string.IsNullOrEmpty(CookieHelp.GetCookieValByKey("Userid")) || !flag)
                 {
                     HttpContext.Current.Response.Clear();
                     filterContext.Result = new RedirectResult(AppConfig.LoginUrl);
