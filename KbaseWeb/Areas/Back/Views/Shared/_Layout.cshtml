@@ -68,6 +68,15 @@
                     return checked;
                 }
             });
+
+            ///tree深度获取 扩展
+            $.extend($.fn.tree.methods, {
+                getLevel: function (jq, target) {
+                    var l = $(target).parentsUntil("ul.tree", "ul");
+                    return l.length + 1;
+                }
+            });
+            // var lv = $('#menue').tree("getLevel", node.target);
         });
    
     </script>
